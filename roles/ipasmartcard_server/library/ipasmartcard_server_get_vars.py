@@ -42,7 +42,7 @@ author:
 
 EXAMPLES = '''
 - name: Get VARS from IPA
-  ipasmartcard_server_get_vars:
+  freeipa.ansible_freeipa.ipasmartcard_server_get_vars:
   register: ipasmartcard_server_vars
 '''
 

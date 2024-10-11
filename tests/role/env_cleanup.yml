@@ -1,6 +1,6 @@
 ---
 - name: Ensure test user is absent.
-  ipauser:
+  freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -10,7 +10,7 @@
     state: absent
 
 - name: Ensure test group is absent.
-  ipagroup:
+  freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -19,7 +19,7 @@
     state: absent
 
 - name: Ensure test hostgroup is absent.
-  ipahostgroup:
+  freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -28,7 +28,7 @@
     state: absent
 
 - name: Ensure test host is absent.
-  ipahost:
+  freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -37,7 +37,7 @@
     state: absent
 
 - name: Ensure test service is absent.
-  ipaservice:
+  freeipa.ansible_freeipa.ipaservice:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -46,7 +46,7 @@
     state: absent
 
 - name: Ensure test roles are absent.
-  iparole:
+  freeipa.ansible_freeipa.iparole:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:

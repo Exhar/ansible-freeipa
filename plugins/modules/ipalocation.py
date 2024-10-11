@@ -35,7 +35,7 @@ module: ipalocation
 short_description: Manage FreeIPA location
 description: Manage FreeIPA location
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of location name strings.
@@ -59,13 +59,13 @@ author:
 
 EXAMPLES = """
 # Ensure location my_location1 is present
-- ipalocation:
+- freeipa.ansible_freeipa.ipalocation:
     ipaadmin_password: SomeADMINpassword
     name: my_location1
     description: My location 1
 
 # Ensure location my_location1 is absent
-- ipalocation:
+- freeipa.ansible_freeipa.ipalocation:
     ipaadmin_password: SomeADMINpassword
     name: my_location1
     state: absent
@@ -75,7 +75,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

@@ -9,7 +9,7 @@
     block:
     # Setup.
     - name: Ensure forwarder with custom port is absent.
-      ipadnsconfig:
+      freeipa.ansible_freeipa.ipadnsconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         forwarders:
@@ -21,7 +21,7 @@
     # Tests.
 
     - name: Ensure forwarder with custom port is present.
-      ipadnsconfig:
+      freeipa.ansible_freeipa.ipadnsconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         forwarders:
@@ -33,7 +33,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure forwarder with custom port is present, again.
-      ipadnsconfig:
+      freeipa.ansible_freeipa.ipadnsconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         forwarders:
@@ -45,7 +45,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure forwarder with custom port is absent.
-      ipadnsconfig:
+      freeipa.ansible_freeipa.ipadnsconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         forwarders:
@@ -57,7 +57,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure forwarder with custom port is absent, again.
-      ipadnsconfig:
+      freeipa.ansible_freeipa.ipadnsconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         forwarders:
@@ -72,7 +72,7 @@
 
     # Cleanup.
     - name: Ensure forwarder with custom port is absent.
-      ipadnsconfig:
+      freeipa.ansible_freeipa.ipadnsconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         forwarders:

@@ -35,7 +35,7 @@ module: ipagroup
 short_description: Manage FreeIPA groups
 description: Manage FreeIPA groups
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The group name
@@ -219,23 +219,23 @@ author:
 
 EXAMPLES = """
 # Create group ops with gid 1234
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: ops
     gidnumber: 1234
 
 # Create group sysops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: sysops
 
 # Create group appops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: appops
 
 # Create multiple groups ops, sysops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     groups:
     - name: ops
@@ -243,7 +243,7 @@ EXAMPLES = """
     - name: sysops
 
 # Add user member pinky to group sysops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: sysops
     action: member
@@ -251,7 +251,7 @@ EXAMPLES = """
     - pinky
 
 # Add user member brain to group sysops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: sysops
     action: member
@@ -259,7 +259,7 @@ EXAMPLES = """
     - brain
 
 # Add group members sysops and appops to group ops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: ops
     group:
@@ -267,7 +267,7 @@ EXAMPLES = """
     - appops
 
 # Add user and group members to groups sysops and appops
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     groups:
     - name: sysops
@@ -278,26 +278,26 @@ EXAMPLES = """
         - group2
 
 # Rename a group
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: oldname
     rename: newestname
     state: renamed
 
 # Create a non-POSIX group
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: nongroup
     nonposix: yes
 
 # Turn a non-POSIX group into a POSIX group.
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: nonposix
     posix: yes
 
 # Create an external group and add members from a trust to it.
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: extgroup
     external: yes
@@ -306,7 +306,7 @@ EXAMPLES = """
     - WINIPA\\Developers
 
 # Create multiple non-POSIX and external groups
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     groups:
     - name: nongroup
@@ -315,7 +315,7 @@ EXAMPLES = """
       external: true
 
 # Remove groups sysops, appops, ops and nongroup
-- ipagroup:
+- freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     name: sysops,appops,ops, nongroup
     state: absent
@@ -325,7 +325,7 @@ RETURN = """
 """
 
 from ansible.module_utils._text import to_text
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, \
     gen_add_list, gen_intersection_list, api_check_param
 from ansible.module_utils import six

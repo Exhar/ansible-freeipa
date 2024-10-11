@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure that multiple dns records are present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       records:
         - name: host01

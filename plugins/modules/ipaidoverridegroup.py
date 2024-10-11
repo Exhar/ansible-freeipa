@@ -38,7 +38,7 @@ module: ipaidoverridegroup
 short_description: Manage FreeIPA idoverridegroup
 description: Manage FreeIPA idoverridegroups
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   idview:
     description: The idoverridegroup idview string.
@@ -90,14 +90,14 @@ author:
 
 EXAMPLES = """
 # Ensure test group test_group is present in idview test_idview
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
 
 # Ensure test group test_group is present in idview test_idview with
 # description
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
@@ -105,7 +105,7 @@ EXAMPLES = """
 
 # Ensure test group test_group is present in idview test_idview without
 # description
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
@@ -113,7 +113,7 @@ EXAMPLES = """
 
 # Ensure test group test_group is present in idview test_idview with internal
 # name test_123_group
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
@@ -121,28 +121,28 @@ EXAMPLES = """
 
 # Ensure test group test_group is present in idview test_idview without
 # internal name
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
     name: ""
 
 # Ensure test group test_group is present in idview test_idview with gid 20001
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
     gid: 20001
 
 # Ensure test group test_group is present in idview test_idview without gid
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
     gid: ""
 
 # Ensure test group test_group is absent in idview test_idview
-- ipaidoverridegroup:
+- freeipa.ansible_freeipa.ipaidoverridegroup:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_group
@@ -154,7 +154,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 from ansible.module_utils import six
 

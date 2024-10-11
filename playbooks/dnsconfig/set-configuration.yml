@@ -5,7 +5,7 @@
 
   tasks:
   - name: Set dnsconfig.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       forwarders:
         - ip_address: 8.8.4.4

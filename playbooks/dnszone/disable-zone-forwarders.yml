@@ -5,7 +5,7 @@
 
   tasks:
   - name: Disable zone forwarders.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       forward_policy: none

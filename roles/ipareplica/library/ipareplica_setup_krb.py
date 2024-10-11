@@ -90,7 +90,7 @@ RETURN = '''
 import os
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_replica import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_replica import (
     check_imports,
     AnsibleModuleLog, setup_logging, installer, DN, paths, sysrestore,
     gen_env_boostrap_finalize_core, constants, api_bootstrap_finalize,

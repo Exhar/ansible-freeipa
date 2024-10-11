@@ -68,7 +68,7 @@ Example playbook to create a backup on the IPA server locally:
   become: true
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: present
 ```
 
@@ -86,7 +86,7 @@ Example playbook to create a backup of the IPA server that is transferred to the
     # ipabackup_keep_on_server: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: present
 ```
 
@@ -104,7 +104,7 @@ Example playbook to create a backup of the IPA server that is transferred to the
     ipabackup_keep_on_server: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: present
 ```
 
@@ -122,7 +122,7 @@ Copy backup `ipa-full-2020-10-01-10-00-00` from server to controller:
     ipabackup_to_controller: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: copied
 ```
 
@@ -142,7 +142,7 @@ Copy backups `ipa-full-2020-10-01-10-00-00` and `ipa-full-2020-10-02-10-00-00` f
     ipabackup_to_controller: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: copied
 ```
 
@@ -160,7 +160,7 @@ Copy all backups from server to controller that are following the backup naming 
     ipabackup_to_controller: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: copied
 ```
 
@@ -177,7 +177,7 @@ Remove backup `ipa-full-2020-10-01-10-00-00` from server:
     ipabackup_name: ipa-full-2020-10-01-10-00-00
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: absent
 ```
 
@@ -196,7 +196,7 @@ Remove backups `ipa-full-2020-10-01-10-00-00` and `ipa-full-2020-10-02-10-00-00`
     - ipa-full-2020-10-02-10-00-00
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: absent
 ```
 
@@ -213,7 +213,7 @@ Remove all backups from server that are following the backup naming scheme:
     ipabackup_name: all
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: absent
 ```
 
@@ -231,7 +231,7 @@ Example playbook to restore an IPA server locally:
     ipabackup_password: SomeDMpassword
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: restored
 ```
 
@@ -250,7 +250,7 @@ Example playbook to restore IPA server from controller:
     ipabackup_from_controller: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: restored
 ```
 
@@ -268,7 +268,7 @@ Example playbook to copy a backup from controller to the IPA server:
     ipabackup_from_controller: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: copied
 ```
 

@@ -35,7 +35,7 @@ module: ipatopologysuffix
 short_description: Verify FreeIPA topology suffix
 description: Verify FreeIPA topology suffix
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   suffix:
     description: Topology suffix
@@ -52,7 +52,7 @@ author:
 """
 
 EXAMPLES = """
-- ipatopologysuffix:
+- freeipa.ansible_freeipa.ipatopologysuffix:
     ipaadmin_password: SomeADMINpassword
     suffix: domain
     state: verified
@@ -61,7 +61,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import IPAAnsibleModule
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import IPAAnsibleModule
 
 
 def main():

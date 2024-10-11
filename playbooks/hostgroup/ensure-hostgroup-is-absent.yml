@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure host-group databases is absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       name: databases
       state: absent

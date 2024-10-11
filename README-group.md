@@ -56,20 +56,20 @@ Example playbook to add groups:
 
   tasks:
   # Create group ops with gid 1234
-  - ipagroup:
+  - freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: ops
       gidnumber: 1234
 
   # Create group sysops
-  - ipagroup:
+  - freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: sysops
       user:
       - pinky
 
   # Create group appops
-  - ipagroup:
+  - freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: appops
 ```
@@ -83,7 +83,7 @@ These three `ipagroup` module calls can be combined into one with the `groups` v
 
   tasks:
   - name: Ensure groups ops, sysops and appops are present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: ops
@@ -125,7 +125,7 @@ And ensure the presence of the groups with this example playbook:
       file: groups_present.json
 
   - name: Groups present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups: "{{ groups }}"
 ```
@@ -141,7 +141,7 @@ Example playbook to rename a group:
 
   tasks:
   - name: Rename group appops to webops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: appops
       rename: webops
@@ -159,7 +159,7 @@ Several groups can also be renamed with a single task, as in the example playboo
 
   tasks:
   - name: Rename group1 to newgroup1 and group2 to newgroup2
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: group1
@@ -179,7 +179,7 @@ Example playbook to add users to a group:
 
   tasks:
   # Add user member brain to group sysops
-  - ipagroup:
+  - freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: sysops
       action: member
@@ -199,7 +199,7 @@ Example playbook to add group members to a group:
 
   tasks:
   # Add group members sysops and appops to group ops
-  - ipagroup:
+  - freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: ops
       group:
@@ -216,7 +216,7 @@ Example playbook to add members from a trusted realm to an external group:
   
   tasks:
   - name: Create an external group and add members from a trust to it.
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: extgroup
       external: yes
@@ -234,7 +234,7 @@ Example playbook to add nonposix and external groups:
 
   tasks:
   - name: Add nonposix group sysops and external group appops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: sysops
@@ -253,7 +253,7 @@ Example playbook to remove groups:
 
   tasks:
   # Remove groups sysops, appops and ops
-  - ipagroup:
+  - freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: sysops,appops,ops
       state: absent
@@ -268,7 +268,7 @@ Example playbook to ensure groups are absent:
 
   tasks:
   - name: Ensure groups ops and sysops are absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: ops

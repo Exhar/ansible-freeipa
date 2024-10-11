@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure delegation "basic manager attributes" member attribute departmentnumber is present
-    ipadelegation:
+    freeipa.ansible_freeipa.ipadelegation:
       ipaadmin_password: SomeADMINpassword
       name: "basic manager attributes"
       attribute:

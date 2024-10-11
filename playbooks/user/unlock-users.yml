@@ -5,7 +5,7 @@
 
   tasks:
   - name: Unlock users pinky and brain
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: pinky,brain
       state: unlocked

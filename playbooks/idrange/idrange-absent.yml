@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure idrange is absent
-    ipaidrange:
+    freeipa.ansible_freeipa.ipaidrange:
       ipaadmin_password: SomeADMINpassword
       name: id_range
       state: absent

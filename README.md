@@ -214,7 +214,7 @@ In this case you need to have separate tasks in the playbook to first deploy rep
   become: true
 
   roles:
-  - role: ipareplica
+  - role: freeipa.ansible_freeipa.ipareplica
     state: present
 
 - name: Playbook to configure IPA replicas (tier2)
@@ -222,7 +222,7 @@ In this case you need to have separate tasks in the playbook to first deploy rep
   become: true
 
   roles:
-  - role: ipareplica
+  - role: freeipa.ansible_freeipa.ipareplica
     state: present
 ```
 
@@ -333,7 +333,7 @@ With this playbook it is possible to add a list of topology segments using the `
 
   tasks:
   - name: Add topology segment
-    ipatopologysegment:
+    freeipa.ansible_freeipa.ipatopologysegment:
       password: "{{ ipaadmin_password }}"
       suffix: "{{ item.suffix }}"
       name: "{{ item.name | default(omit) }}"
@@ -382,7 +382,7 @@ If Ansible Vault is used for passwords, then it is needed to adapt the playbooks
   - playbook_sensitive_data.yml
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: present
 ```
 

@@ -5,7 +5,7 @@
 
   tasks:
   - name: Service HTTP/www.example.com members allow_create_keytab present for users, groups, hosts and hostgroups
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: HTTP/www.example.com
       allow_create_keytab_user:

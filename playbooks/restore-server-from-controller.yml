@@ -9,5 +9,5 @@
     ipabackup_from_controller: yes
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: restored

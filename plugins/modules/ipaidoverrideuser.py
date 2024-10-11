@@ -38,7 +38,7 @@ module: ipaidoverrideuser
 short_description: Manage FreeIPA idoverrideuser
 description: Manage FreeIPA idoverrideuser and idoverrideuser members
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   idview:
     description: The idoverrideuser idview string.
@@ -132,13 +132,13 @@ author:
 
 EXAMPLES = """
 # Ensure test user test_user is present in idview test_idview
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
 
 # Ensure test user test_user is present in idview test_idview with description
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -146,7 +146,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview without
 # description
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -154,7 +154,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with internal
 # name test_123_user
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -162,21 +162,21 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview without internal
 # name
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     name: ""
 
 # Ensure test user test_user is present in idview test_idview with uid 20001
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     uid: 20001
 
 # Ensure test user test_user is present in idview test_idview without uid
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -184,14 +184,14 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with gecos
 # "Gecos Test"
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     gecos: Gecos Test
 
 # Ensure test user test_user is present in idview test_idview without gecos
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -199,7 +199,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with gidnumber
 # 20001
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -207,7 +207,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview without
 # gidnumber
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -215,14 +215,14 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with homedir
 # /Users
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     homedir: /Users
 
 # Ensure test user test_user is present in idview test_idview without homedir
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -230,21 +230,21 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with shell
 # /bin/someshell
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     shell: /bin/someshell
 
 # Ensure test user test_user is present in idview test_idview without shell
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     shell: ""
 
 # Ensure test user test_user is present in idview test_idview with sshpubkey
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -253,7 +253,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview without
 # sshpubkey
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -261,7 +261,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with 1
 # certificate
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -270,7 +270,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview with 3
 # certificate members
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -282,7 +282,7 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview without
 # 2 certificate members
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -294,14 +294,14 @@ EXAMPLES = """
 
 # Ensure test user test_user is present in idview test_idview without
 # certificates
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
     certificate: []
 
 # Ensure test user test_user is absent in idview test_idview
-- ipaidoverrideuser:
+- freeipa.ansible_freeipa.ipaidoverrideuser:
     ipaadmin_password: SomeADMINpassword
     idview: test_idview
     anchor: test_user
@@ -313,7 +313,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list, encode_certificate, convert_input_certificates
 from ansible.module_utils import six

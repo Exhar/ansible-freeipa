@@ -15,7 +15,7 @@
       host2_fqdn: "{{ 'host2.' + ipaserver_domain }}"
 
   - name: Host absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -24,7 +24,7 @@
       state: absent
 
   - name: Host "{{ host1_fqdn }}" present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       force: yes
@@ -32,7 +32,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host2_fqdn }}" present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host2_fqdn }}"
       force: yes
@@ -40,7 +40,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" managed by "{{ 'host2.' + ipaserver_domain }}"
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ host2_fqdn }}"
@@ -48,7 +48,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" managed by "{{ 'host2.' + ipaserver_domain }}" again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ host2_fqdn }}"
@@ -56,7 +56,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" managed by "{{ ansible_facts['fqdn'] }}"
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ ansible_facts['fqdn'] }}"
@@ -65,7 +65,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" managed by "{{ ansible_facts['fqdn'] }}" again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ ansible_facts['fqdn'] }}"
@@ -74,7 +74,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" not managed by "{{ ansible_facts['fqdn'] }}"
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ ansible_facts['fqdn'] }}"
@@ -84,7 +84,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" not managed by "{{ ansible_facts['fqdn'] }}" again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ ansible_facts['fqdn'] }}"
@@ -94,7 +94,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" not managed by "{{ 'host2.' + ipaserver_domain }}"
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ host2_fqdn }}"
@@ -104,7 +104,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" not managed by "{{ 'host2.' + ipaserver_domain }}" again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       managedby_host: "{{ host2_fqdn }}"
@@ -114,7 +114,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"

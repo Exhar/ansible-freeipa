@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure member test/example.com is present in servicedelegationtarget test-delegation-target
-    ipaservicedelegationtarget:
+    freeipa.ansible_freeipa.ipaservicedelegationtarget:
       ipaadmin_password: SomeADMINpassword
       name: test-delegation-target
       principal: test/example.com

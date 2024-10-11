@@ -138,30 +138,30 @@ author:
 EXAMPLES = '''
 # Complete autodiscovery, register return values as ipaclient_test
 - name: IPA discovery
-  ipaclient_test:
+  freeipa.ansible_freeipa.ipaclient_test:
   register: register_ipaclient_test
 
 # Discovery using servers, register return values as ipaclient_test
 - name: IPA discovery
-  ipaclient_test:
+  freeipa.ansible_freeipa.ipaclient_test:
     servers: server1.domain.com,server2.domain.com
   register: register_ipaclient_test
 
 # Discovery using domain name, register return values as ipaclient_test
 - name: IPA discovery
-  ipaclient_test:
+  freeipa.ansible_freeipa.ipaclient_test:
     domain: domain.com
   register: register_ipaclient_test
 
 # Discovery using realm, register return values as ipaclient_test
 - name: IPA discovery
-  ipaclient_test:
+  freeipa.ansible_freeipa.ipaclient_test:
     realm: DOMAIN.COM
   register: register_ipaclient_test
 
 # Discovery using hostname, register return values as ipaclient_test
 - name: IPA discovery
-  ipaclient_test:
+  freeipa.ansible_freeipa.ipaclient_test:
     hostname: host.domain.com
   register: register_ipaclient_test
 '''
@@ -241,7 +241,7 @@ except ImportError:
     from ConfigParser import RawConfigParser
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     paths, sysrestore, options, CheckedIPAddress, validate_domain_name,
     logger, x509, normalize_hostname, installer, version, ScriptError,

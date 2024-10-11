@@ -37,7 +37,7 @@ module: ipadnsconfig
 short_description: Manage FreeIPA dnsconfig
 description: Manage FreeIPA dnsconfig
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   forwarders:
     description: The list of global DNS forwarders.
@@ -87,7 +87,7 @@ author:
 
 EXAMPLES = """
 # Ensure global DNS forward configuration, allowing PTR record synchronization.
-- ipadnsconfig:
+- freeipa.ansible_freeipa.ipadnsconfig:
     ipaadmin_password: SomeADMINpassword
     forwarders:
       - ip_address: 8.8.4.4
@@ -97,7 +97,7 @@ EXAMPLES = """
     allow_sync_ptr: yes
 
 # Ensure forwarder is absent.
-- ipadnsconfig:
+- freeipa.ansible_freeipa.ipadnsconfig:
     ipaadmin_password: SomeADMINpassword
     forwarders:
       - ip_address: 2001:4860:4860::8888
@@ -106,12 +106,12 @@ EXAMPLES = """
     action: member
 
 # Disable PTR record synchronization.
-- ipadnsconfig:
+- freeipa.ansible_freeipa.ipadnsconfig:
     ipaadmin_password: SomeADMINpassword
     allow_sync_ptr: no
 
 # Disable global forwarders.
-- ipadnsconfig:
+- freeipa.ansible_freeipa.ipadnsconfig:
     ipaadmin_password: SomeADMINpassword
     forward_policy: none
 """
@@ -119,7 +119,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, is_ipv4_addr, is_ipv6_addr
 
 

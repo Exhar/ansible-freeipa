@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure sudocmds are absent in sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       name: network
       sudocmd:

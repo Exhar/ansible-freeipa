@@ -13,7 +13,7 @@
   # context by defoult, so we test only for the case where
   # 'ipaapi_context: server' is explicitly set.
   - name: Execute with server context.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: server
       name: ThisShouldNotWork

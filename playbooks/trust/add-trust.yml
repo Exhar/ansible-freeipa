@@ -5,7 +5,7 @@
 
   tasks:
     - name: Ensure the trust is present
-      ipatrust:
+      freeipa.ansible_freeipa.ipatrust:
         ipaadmin_password: SomeADMINpassword
         realm: windows.local
         admin: Administrator

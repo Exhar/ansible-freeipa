@@ -5,7 +5,7 @@
 
   tasks:
   - name: Add user member brain to group sysops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: sysops
       action: member

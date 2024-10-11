@@ -12,7 +12,7 @@
       file: groups.json
 
   - name: Groups present len:{{ group_list | length }}
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups: "{{ group_list }}"
 
@@ -26,7 +26,7 @@
     loop: "{{ group_list }}"
 
   - name: Remove groups
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups: "{{ groups_names }}"
       state: absent

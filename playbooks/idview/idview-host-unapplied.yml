@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure host testhost.example.com is not applied to idview test_idview
-    ipaidview:
+    freeipa.ansible_freeipa.ipaidview:
       ipaadmin_password: SomeADMINpassword
       name: test_idview
       host: testhost.example.com

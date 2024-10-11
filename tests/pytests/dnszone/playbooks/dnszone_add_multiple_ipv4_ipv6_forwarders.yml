@@ -4,7 +4,7 @@
 
   tasks:
   - name: Ensure DNS zone is present with multiple forwarders
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: 04testzone.test
       forwarders:

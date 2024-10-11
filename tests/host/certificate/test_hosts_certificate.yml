@@ -10,14 +10,14 @@
     when: ipaserver_domain is not defined
 
   - name: Host test absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"
       state: absent
 
   - name: Host test present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"
@@ -36,7 +36,7 @@
     delegate_to: localhost
 
   - name: Host test cert members present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"
@@ -49,7 +49,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host test cert members present again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"
@@ -62,7 +62,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host test cert members absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"
@@ -76,7 +76,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host test cert members absent again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"
@@ -90,7 +90,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host test absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ 'test.' + ipaserver_domain }}"

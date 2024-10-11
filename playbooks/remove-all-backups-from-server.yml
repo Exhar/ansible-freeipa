@@ -7,5 +7,5 @@
     ipabackup_name: all
 
   roles:
-  - role: ipabackup
+  - role: freeipa.ansible_freeipa.ipabackup
     state: absent

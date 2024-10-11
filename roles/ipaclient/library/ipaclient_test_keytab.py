@@ -72,7 +72,7 @@ author:
 EXAMPLES = '''
 # Test IPA with local keytab
 - name: Test IPA in force mode with maximum 5 kinit attempts
-  ipaclient_test_keytab:
+  freeipa.ansible_freeipa.ipaclient_test_keytab:
     servers: ["server1.example.com","server2.example.com"]
     domain: example.com
     realm: EXAMPLE.COM
@@ -82,7 +82,7 @@ EXAMPLES = '''
 
 # Test IPA with ipadiscovery return values
 - name: Join IPA
-  ipaclient_test_keytab:
+  freeipa.ansible_freeipa.ipaclient_test_keytab:
     servers: "{{ ipadiscovery.servers }}"
     domain: "{{ ipadiscovery.domain }}"
     realm: "{{ ipadiscovery.realm }}"
@@ -113,7 +113,7 @@ import os
 import tempfile
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     SECURE_PATH, paths, kinit_keytab, run, GSSError, configure_krb5_conf
 )

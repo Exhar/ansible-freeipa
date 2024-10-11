@@ -17,7 +17,7 @@
     # CLEANUP TEST ITEMS
 
     - name: Remove testing groups.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name:
         - extgroup
@@ -32,7 +32,7 @@
         state: absent
 
     - name: Ensure test users testuser1, testuser2 and testuser3 are absent
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         name: testuser1,testuser2,testuser3
         state: absent
@@ -40,7 +40,7 @@
     # CREATE TEST ITEMS
 
     - name: Ensure test users testuser1..testuser3 are present
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         users:
         - name: testuser1
@@ -56,7 +56,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Add nonposix group.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: extgroup
@@ -65,7 +65,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add nonposix group, again.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: extgroup
@@ -74,7 +74,7 @@
       failed_when: result.failed or result.changed
 
     - name: Set group to be external
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: extgroup
@@ -83,7 +83,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Set group to be external, again.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: extgroup
@@ -92,7 +92,7 @@
       failed_when: result.failed or result.changed
 
     - name: Set external group to be non-external.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: extgroup
@@ -101,7 +101,7 @@
       failed_when: not result.failed or "group can not be non-external" not in result.msg
 
     - name: Set external group to be posix.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: extgroup
@@ -110,7 +110,7 @@
       failed_when: not result.failed or "Cannot change `external` group" not in result.msg
 
     - name: Add nonposix group.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -119,7 +119,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Set group to be posix
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -128,7 +128,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Set group to be posix, again.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -137,7 +137,7 @@
       failed_when: result.failed or result.changed
 
     - name: Set posix group to be external.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -146,7 +146,7 @@
       failed_when: not result.failed or "Cannot change `posix` group" not in result.msg
 
     - name: Set posix group to be non-posix.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -155,7 +155,7 @@
       failed_when: not result.failed or "Cannot change `posix` group" not in result.msg
 
     - name: Set posix group to be non-posix.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -164,7 +164,7 @@
       failed_when: not result.failed or "Cannot change `posix` group" not in result.msg
 
     - name: Add nonposix group.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -173,7 +173,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add nonposix group, again.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -185,7 +185,7 @@
     # NONPOSIX MEMBER TEST
 
     - name: Ensure users testuser1, testuser2 and testuser3 are present in group nonposixgroup
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -198,7 +198,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure users testuser1, testuser2 and testuser3 are present in group nonposixgroup again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -214,7 +214,7 @@
     # POSIX MEMBER TEST
 
     - name: Ensure users testuser1, testuser2 and testuser3 are present in group posixgroup
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -227,7 +227,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure users testuser1, testuser2 and testuser3 are present in group posixgroup again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: posixgroup
@@ -245,7 +245,7 @@
       when: trust_test_is_supported | default(false)
       block:
       - name: Ensure users testuser1, testuser2 and testuser3 are present in group externalgroup
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           groups:
           - name: externalgroup
@@ -258,7 +258,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure users testuser1, testuser2 and testuser3 are present in group externalgroup again
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           groups:
           - name: externalgroup
@@ -274,7 +274,7 @@
     # CONVERT NONPOSIX TO POSIX GROUP WITH USERS
 
     - name: Ensure nonposix group nonposixgroup as posix
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -283,7 +283,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure nonposix group nonposixgroup as posix, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -292,7 +292,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure nonposix group nonposixgroup (now posix) has users still
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: nonposixgroup
@@ -307,7 +307,7 @@
     # FAIL ON COMBINATIONS OF NONPOSIX, POSIX AND EXTERNAL
 
     - name: Fail to ensure group as nonposix and posix
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: firstgroup
@@ -320,7 +320,7 @@
       failed_when: not result.failed or "parameters are mutually exclusive for group `fail_group`" not in result.msg
 
     - name: Fail to ensure group as nonposix and external
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: firstgroup
@@ -333,7 +333,7 @@
       failed_when: not result.failed or "parameters are mutually exclusive for group `fail_group`" not in result.msg
 
     - name: Fail to ensure group as posix and external
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
         - name: firstgroup
@@ -348,7 +348,7 @@
     # GROUPS WITH MIXED TYPES
 
     - name: Adding posix, nonposix and external groups in one batch
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
           - name: posix_group_1
@@ -361,7 +361,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Adding non-external and external groups in one batch
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         groups:
           - name: non_external_group_2
@@ -373,7 +373,7 @@
     # CLEANUP
 
     - name: Remove testing groups.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name:
           - extgroup
@@ -389,7 +389,7 @@
         state: absent
 
     - name: Ensure test users testuser1, testuser2 and testuser3 are absent
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         name: testuser1,testuser2,testuser3
         state: absent

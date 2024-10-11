@@ -6,7 +6,7 @@
 
   tasks:
   - name: Playbook to add an indirect automount map
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: auto.indirect
       location: DMZ

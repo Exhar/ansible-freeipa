@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure hostgroup 'cluster' is present in sudorule
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       hostgroup: cluster

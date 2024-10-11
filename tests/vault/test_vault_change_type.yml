@@ -10,19 +10,19 @@
     ansible.builtin.import_tasks: env_setup.yml
 
   - name: Ensure test_vault is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: absent
 
   - name: Create standard vault with no data archived.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       vault_type: standard
 
   - name: Change from standard to asymmetric
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       vault_type: asymmetric
@@ -35,7 +35,7 @@
       krb5ccname: verify_change_from_asymmetric
     block:
     - name: Change from asymmetric to symmetric
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: symmetric
@@ -57,7 +57,7 @@
       krb5ccname: verify_change_from_symmetric
     block:
     - name: Change from symmetric to standard
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: standard
@@ -74,7 +74,7 @@
       failed_when: result.failed or "Salt:" in result.stdout
 
   - name: Change from standard to symmetric
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       vault_type: symmetric
@@ -87,7 +87,7 @@
       krb5ccname: verify_change_from_symmetric
     block:
     - name: Change from symmetric to asymmetric
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: asymmetric
@@ -109,7 +109,7 @@
       krb5ccname: verify_change_from_asymmetric
     block:
     - name: Change from asymmetric to standard
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: standard
@@ -126,20 +126,20 @@
       failed_when: result.failed or "Public Key:" in result.stdout
 
   - name: Ensure test_vault is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: absent
 
   - name: Create standard vault with data archived.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       vault_type: standard
       data: hello
 
   - name: Change from standard to asymmetric, with data
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       vault_type: asymmetric
@@ -148,7 +148,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Retrieve data from asymmetric vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       private_key: "{{ lookup('file', 'A_private.b64') }}"
@@ -161,7 +161,7 @@
       krb5ccname: verify_change_from_asymmetric
     block:
     - name: Change from asymmetric to symmetric, with data
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: symmetric
@@ -179,7 +179,7 @@
       failed_when: result.failed or "Public Key:" in result.stdout
 
   - name: Retrieve data from symmetric vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       password: SomeVAULTpassword
@@ -192,7 +192,7 @@
       krb5ccname: verify_change_from_symmetric
     block:
     - name: Change from symmetric to standard, with data
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: standard
@@ -209,7 +209,7 @@
       failed_when: result.failed or "Salt:" in result.stdout
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: retrieved
@@ -217,7 +217,7 @@
     failed_when: result.failed or result.changed or result.vault.data != 'hello'
 
   - name: Change from standard to symmetric, with data
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       vault_type: symmetric
@@ -226,7 +226,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Retrieve data from symmetric vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: retrieved
@@ -239,7 +239,7 @@
       krb5ccname: verify_change_from_symmetric
     block:
     - name: Change from symmetric to asymmetric, with data
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: asymmetric
@@ -257,7 +257,7 @@
       failed_when: result.failed or "Salt:" in result.stdout
 
   - name: Retrieve data from asymmetric vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: retrieved
@@ -270,7 +270,7 @@
       krb5ccname: verify_change_from_asymmetric
     block:
     - name: Change from asymmetric to standard, with data
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: test_vault
         vault_type: standard
@@ -287,7 +287,7 @@
       failed_when: result.failed or "Public Key:" in result.stdout
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: retrieved
@@ -295,7 +295,7 @@
     failed_when: result.failed or result.changed or result.vault.data != 'hello'
 
   - name: Remove test_vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: test_vault
       state: absent

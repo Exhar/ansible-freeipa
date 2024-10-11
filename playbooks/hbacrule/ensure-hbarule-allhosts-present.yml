@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure HBAC Rule allhosts is present
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allhosts
       usercategory: all

@@ -33,14 +33,14 @@
     # CLEANUP TEST ITEMS
 
     - name: Ensure servicedelegationrule test-delegation-rule is absent
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
         state: absent
 
     - name: Ensure host is absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: "{{ test_host_fqdn }}"
@@ -49,14 +49,14 @@
     # CREATE TEST ITEMS
 
     - name: Ensure host is present
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: "{{ test_host_fqdn }}"
         force: yes
 
     - name: Ensure servicedelegationrule test-delegation-rule is present
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -66,7 +66,7 @@
     # TESTS
 
     - name: Ensure servicedelegationrule test-delegation-rule member host principal "{{ test_host_fqdn }}" is present
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -76,7 +76,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure servicedelegationrule test-delegation-rule member host principal "{{ test_host_fqdn }}" is present again
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -86,7 +86,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure servicedelegationrule test-delegation-rule member host principal "{{ test_host_fqdn_realm }}" is present unchanged
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -96,7 +96,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure servicedelegationrule test-delegation-rule member host principal "{{ 'host/' + test_host_fqdn_realm }}" is present unchanged
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -106,7 +106,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure servicedelegationrule test-delegation-rule member host principal "{{ test_host_fqdn_realm }}" is absent
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -117,7 +117,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure servicedelegationrule test-delegation-rule member host principal "{{ test_host_fqdn }}" is absent unchanged
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -130,7 +130,7 @@
     # CLEANUP TEST ITEMS
 
     - name: Ensure servicedelegationrule test-delegation-rule is absent
-      ipaservicedelegationrule:
+      freeipa.ansible_freeipa.ipaservicedelegationrule:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-rule
@@ -139,7 +139,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure host is absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: "{{ test_host_fqdn }}"

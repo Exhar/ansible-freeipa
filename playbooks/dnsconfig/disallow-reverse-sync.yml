@@ -5,6 +5,6 @@
 
   tasks:
   - name: Disallow reverse record synchronization.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       allow_sync_ptr: no

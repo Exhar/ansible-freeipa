@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure sudo command is absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       name: /usr/bin/su
       state: absent

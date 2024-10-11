@@ -160,7 +160,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_server import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_server import (
     check_imports, AnsibleModuleLog, setup_logging, options, sysrestore, paths,
     ansible_module_get_parsed_ip_addresses,
     api_Backend_ldap2, redirect_stdout, krbinstance

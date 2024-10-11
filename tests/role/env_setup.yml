@@ -3,7 +3,7 @@
   ansible.builtin.import_tasks: env_cleanup.yml
 
 - name: Ensure test user is present.
-  ipauser:
+  freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     users:
@@ -18,7 +18,7 @@
       last: Last
 
 - name: Ensure test group is present.
-  ipagroup:
+  freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ item }}"
@@ -27,7 +27,7 @@
   - group02
 
 - name: Ensure test host is present.
-  ipahost:
+  freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ item }}"
@@ -37,7 +37,7 @@
   - "{{ host2_fqdn }}"
 
 - name: Ensure test hostgroup is present.
-  ipahostgroup:
+  freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ item[0] }}"
@@ -48,7 +48,7 @@
   - ["{{ host1_fqdn }}", "{{ host2_fqdn }}"]
 
 - name: Ensure test service is present.
-  ipaservice:
+  freeipa.ansible_freeipa.ipaservice:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ item }}"

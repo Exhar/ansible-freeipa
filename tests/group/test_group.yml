@@ -4,10 +4,10 @@
   become: true
   gather_facts: true
   module_defaults:
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
 
@@ -25,19 +25,19 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure users user1, user2 and user3 are absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       name: user1,user2,user3
       state: absent
 
   - name: Ensure group group3, group2 and group1 are absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: groupren,group3,group2,group1
       state: absent
 
   # CREATE TEST ITEMS
 
   - name: Ensure users user1..user3 are present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       users:
       - name: user1
         first: user1
@@ -54,19 +54,19 @@
   # TESTS
 
   - name: Ensure group1 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure group1 is present again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
     register: result
     failed_when: result.changed or result.failed
 
   - name: Rename group1 to groupren
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       rename: groupren
       state: renamed
@@ -74,7 +74,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Rename group1 to groupren
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       rename: groupren
       state: renamed
@@ -82,7 +82,7 @@
     failed_when: not result.failed or "No group 'group1'" not in result.msg
 
   - name: Rename group groupren to groupren
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: groupren
       rename: groupren
       state: renamed
@@ -90,7 +90,7 @@
     failed_when: result.changed or result.failed
 
   - name: Rename group groupren back to group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: groupren
       rename: group1
       state: renamed
@@ -98,31 +98,31 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group2 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group2
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure group2 is present again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group2
     register: result
     failed_when: result.changed or result.failed
 
   - name: Ensure group3 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group3
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure group3 is present again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group3
     register: result
     failed_when: result.changed or result.failed
 
   - name: Ensure groups group2 and group3 are present in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       group:
       - group2
@@ -132,7 +132,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure groups group2 and group3 are present in group group1 again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       group:
       - group2
@@ -142,7 +142,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group3 ia present in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       group:
       - group3
@@ -157,7 +157,7 @@
     block:
 
     - name: Ensure service "{{ 'HTTP/' + fqdn_at_domain }}" is present in group group1
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -166,7 +166,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure service "{{ 'HTTP/' + fqdn_at_domain }}" is present in group group1, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -175,7 +175,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure service "{{ 'ldap/' + fqdn_at_domain }}" is present in group group1
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'ldap/' + fqdn_at_domain }}"
@@ -184,7 +184,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure service "{{ 'ldap/' + fqdn_at_domain }}" is present in group group1, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'ldap/' + fqdn_at_domain }}"
@@ -193,7 +193,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure service "{{ 'HTTP/' + fqdn_at_domain }}" is absent in group group1
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -203,7 +203,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure service "{{ 'HTTP/' + fqdn_at_domain }}" is absent in group group1, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -213,7 +213,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure service "{{ 'ldap/' + fqdn_at_domain }}" is absent in group group1
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'ldap/' + fqdn_at_domain }}"
@@ -223,7 +223,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure service "{{ 'ldap/' + fqdn_at_domain }}" is absent in group group1, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'ldap/' + fqdn_at_domain }}"
@@ -233,7 +233,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure services are present in group group1
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -243,7 +243,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure services are present in group group1, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'http/' + fqdn_at_domain }}"
@@ -253,7 +253,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure services are absent in group group1
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -264,7 +264,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure services are absent in group group1, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         name: group1
         service:
         - "{{ 'HTTP/' + fqdn_at_domain }}"
@@ -277,7 +277,7 @@
   # user
 
   - name: Ensure users user1, user2 and user3 are present in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -288,7 +288,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure users user1, user2 and user3 are present in group group1 again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -305,7 +305,7 @@
   #    action: member
 
   - name: Ensure user user7 is absent in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user7
@@ -315,27 +315,27 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group group4 is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group4
       state: absent
     register: result
     failed_when: result.changed or result.failed
 
   - name: Ensure groups group3, group2, and group1 are absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group3,group2,group1
       state: absent
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure group group1 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure users user1, user2 are present in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -345,7 +345,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure users user1, user2 and user3 are present in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -356,7 +356,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure users user1, user2 are present in group group1, again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -366,7 +366,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure users user1, user2 and user3 are present in group group1, again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -377,14 +377,14 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group group1 is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       state: absent
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure group group1 with users user1, user2 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -393,7 +393,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group group1 with users user1, user2 and user3 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -403,7 +403,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group group1 with users user1, user2 and user3 is present, again
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -414,7 +414,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure only users user1, user2 are present in group group1
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group1
       user:
       - user1
@@ -425,14 +425,14 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure group group3, group2 and group1 are absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       name: group3,group2,group1
       state: absent
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure users user1, user2 and user3 are absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       name: user1,user2,user3
       state: absent
     register: result

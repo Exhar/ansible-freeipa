@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure zone is present.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_sync_ptr: true

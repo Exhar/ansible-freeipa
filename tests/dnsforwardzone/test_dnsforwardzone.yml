@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure test forwardzones are absent
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -15,7 +15,7 @@
       state: absent
 
   - name: Ensure forwardzone example.com is created
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -28,7 +28,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure forwardzone example.com is present again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -41,7 +41,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwardzone example.com has two forwarders
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -56,7 +56,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure forwardzone example.com has one forwarder again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -69,7 +69,7 @@
     failed_when: result.changed or result.failed
 
   - name: Skip_overlap_check can only be set on creation so change nothing
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -82,7 +82,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwardzone example.com is absent.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -91,7 +91,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure forwardzone example.com is absent, again.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -100,7 +100,7 @@
     failed_when: result.changed or result.failed
 
   - name: Change all the things at once
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -116,7 +116,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Change zone forward policy
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -125,7 +125,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Change zone forward policy, again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -134,7 +134,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwardzone example.com is absent.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -143,7 +143,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure forwardzone example.com is absent, again.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -152,7 +152,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwardzone example.com is created with minimal args
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -164,7 +164,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure forwardzone example.com is created with minimal args, again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -176,7 +176,7 @@
     failed_when: result.changed or result.failed
 
   - name: Add a forwarder to any existing ones
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -189,7 +189,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Add a forwarder to any existing ones, again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -202,7 +202,7 @@
     failed_when: result.changed or result.failed
 
   - name: Check the list of forwarders is what we expect
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -216,7 +216,7 @@
     failed_when: result.changed or result.failed
 
   - name: Remove a single forwarder
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: absent
@@ -228,7 +228,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Remove a single forwarder, again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: absent
@@ -240,7 +240,7 @@
     failed_when: result.changed or result.failed
 
   - name: Check the list of forwarders is what we expect now
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -253,7 +253,7 @@
     failed_when: result.changed or result.failed
 
   - name: Add a permission for per-forward zone access delegation.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -263,7 +263,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Add a permission for per-forward zone access delegation, again.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -273,7 +273,7 @@
     failed_when: result.changed or result.failed
 
   - name: Remove a permission for per-forward zone access delegation.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -283,7 +283,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Remove a permission for per-forward zone access delegation, again.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -293,7 +293,7 @@
     failed_when: result.changed or result.failed
 
   - name: Disable the forwarder
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -302,7 +302,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Disable the forwarder again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -311,7 +311,7 @@
     failed_when: result.changed or result.failed
 
   - name: Enable the forwarder
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -320,7 +320,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Enable the forwarder, again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -329,14 +329,14 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwardzone example.com is absent again
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
       state: absent
 
   - name: Try to create a new forwarder with action=member
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: present
@@ -350,7 +350,7 @@
     failed_when: not result.failed or "not found" not in result.msg
 
   - name: Try to create a new forwarder with disabled state
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: example.com
@@ -359,7 +359,7 @@
     failed_when: not result.failed or "not found" not in result.msg
 
   - name: Ensure forwardzone is not added without forwarders, with correct message.
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: newfailzone.com
@@ -367,7 +367,7 @@
     failed_when: not result.failed or "No forwarders specified" not in result.msg
 
   - name: Ensure forwardzone example.com is absent - tidy up
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:

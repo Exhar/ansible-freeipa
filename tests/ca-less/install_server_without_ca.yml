@@ -71,5 +71,5 @@
         - pkinit
 
   roles:
-    - role: ipaserver
+    - role: freeipa.ansible_freeipa.ipaserver
       state: present

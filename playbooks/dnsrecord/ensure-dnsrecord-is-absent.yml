@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure that dns localhost AAAA record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: host01
       zone_name: example.com

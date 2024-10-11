@@ -38,7 +38,7 @@ module: ipaservice
 short_description: Manage FreeIPA service
 description: Manage FreeIPA service
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The service to manage
@@ -308,7 +308,7 @@ author:
 
 EXAMPLES = """
   # Ensure service is present
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: HTTP/www.example.com
       pac_type:
@@ -322,13 +322,13 @@ EXAMPLES = """
       ok_to_auth_as_delegate: false
 
   # Ensure service is absent
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: HTTP/www.example.com
       state: absent
 
   # Ensure service member certificate is present.
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: HTTP/www.example.com
       certificate:
@@ -353,7 +353,7 @@ EXAMPLES = """
       state: present
 
   # Ensure principal host/test.example.com present in service.
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: HTTP/www.example.com
       principal:
@@ -361,7 +361,7 @@ EXAMPLES = """
       action: member
 
   # Ensure host can manage service.
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: HTTP/www.example.com
       host:
@@ -370,7 +370,7 @@ EXAMPLES = """
       action: member
 
   # Ensure multiple services are present.
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services:
       - name: HTTP/www.example.com
@@ -379,7 +379,7 @@ EXAMPLES = """
       - name: HTTP/www.service.com
 
   # Ensure multiple services are present
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services:
       - name: HTTP/www.example.com
@@ -406,7 +406,7 @@ EXAMPLES = """
         auth_ind: otp,radius
 
   # Ensure service host members are present
-  - ipaservice:
+  - freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services:
       - name: HTTP/www1.example.com
@@ -419,7 +419,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, encode_certificate, \
     gen_add_del_lists, gen_add_list, gen_intersection_list, ipalib_errors, \
     api_get_realm, to_text, convert_input_certificates

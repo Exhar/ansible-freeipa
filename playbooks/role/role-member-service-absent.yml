@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure role member 'service' is absent.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       service:

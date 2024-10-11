@@ -277,7 +277,7 @@ import traceback
 from shutil import copyfile
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_replica import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_replica import (
     check_imports, AnsibleModuleLog, options, installer, DN, paths, sysrestore,
     ansible_module_get_parsed_ip_addresses, Env, ipautil, ipaldap,
     installutils, ReplicaConfig, load_pkcs12, kinit_keytab, create_api,

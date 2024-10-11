@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure privilege "Broad Privilege" is absent
-    ipaprivilege:
+    freeipa.ansible_freeipa.ipaprivilege:
       ipaadmin_password: SomeADMINpassword
       name: Broad Privilege
       state: absent

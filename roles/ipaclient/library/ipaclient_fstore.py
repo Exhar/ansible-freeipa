@@ -47,7 +47,7 @@ author:
 
 EXAMPLES = '''
 - name: Backup /etc/krb5.conf
-  ipaclient_fstore:
+  freeipa.ansible_freeipa.ipaclient_fstore:
     backup: "/etc/krb5.conf"
 '''
 
@@ -55,7 +55,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports, paths, sysrestore
 )
 

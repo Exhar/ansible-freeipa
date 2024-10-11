@@ -10,7 +10,7 @@
 
 - name: Uninstall - Uninstall replica
   ansible.builtin.include_role:
-    name: ipaserver
+    name: freeipa.ansible_freeipa.ipaserver
   vars:
     state: absent
     ipaserver_ignore_topology_disconnect: "{{ _ignore_topology_disconnect | default(false) }}"

@@ -5,6 +5,6 @@
 
   tasks:
   - name: Ensure servicedelegationrule test-delegation-rule is present
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       name: test-delegation-rule

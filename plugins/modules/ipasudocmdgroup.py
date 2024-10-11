@@ -37,7 +37,7 @@ module: ipasudocmdgroup
 short_description: Manage FreeIPA sudocmd groups
 description: Manage FreeIPA sudocmd groups
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The sudocmodgroup name
@@ -75,13 +75,13 @@ author:
 
 EXAMPLES = """
 # Ensure sudocmd-group 'network' is present
-- ipasudocmdgroup:
+- freeipa.ansible_freeipa.ipasudocmdgroup:
     ipaadmin_password: SomeADMINpassword
     name: network
     state: present
 
 # Ensure sudocmdgroup and sudocmd are present in 'network' sudocmdgroup
-- ipasudocmdgroup:
+- freeipa.ansible_freeipa.ipasudocmdgroup:
     ipaadmin_password: SomeADMINpassword
     name: network
     sudocmd:
@@ -90,7 +90,7 @@ EXAMPLES = """
     action: member
 
 # Ensure sudocmdgroup and sudocmd are absent in 'network' sudocmdgroup
-- ipasudocmdgroup:
+- freeipa.ansible_freeipa.ipasudocmdgroup:
     ipaadmin_password: SomeADMINpassword
     name: network
     sudocmd:
@@ -100,7 +100,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure sudocmd-group 'network' is absent
-- ipasudocmdgroup:
+- freeipa.ansible_freeipa.ipasudocmdgroup:
     ipaadmin_password: SomeADMINpassword
     name: network
     action: member
@@ -110,7 +110,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, \
     gen_add_list, gen_intersection_list, ipalib_errors
 

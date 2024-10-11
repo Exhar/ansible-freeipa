@@ -41,7 +41,7 @@ short_description: Modify IPA global config options
 description:
 - Modify IPA global config options
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
     maxusername:
         description: Set the maximum username length between 1-255
@@ -200,7 +200,7 @@ EXAMPLES = '''
   become: true
   tasks:
     - name: return current values of the global configuration options
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
       register: result
     - name: display default login shell
@@ -208,7 +208,7 @@ EXAMPLES = '''
         msg: '{{ result.config.defaultshell[0] }}'
 
     - name: set defaultshell and maxusername
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         defaultshell: /bin/bash
         maxusername: 64
@@ -217,7 +217,7 @@ EXAMPLES = '''
   hosts: ipaserver
   tasks:
     - name: Enable SID and generate users and groups SIDS
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         enable_sid: yes
         add_sids: yes
@@ -226,7 +226,7 @@ EXAMPLES = '''
   hosts: ipaserver
   tasks:
     - name: Enable SID and generate users and groups SIDS
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         enable_sid: yes
         netbios_name: IPADOM
@@ -343,7 +343,7 @@ config:
 '''
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, ipalib_errors
 
 

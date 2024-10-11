@@ -36,7 +36,7 @@ module: ipasudorule
 short_description: Manage FreeIPA sudo rules
 description: Manage FreeIPA sudo rules
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The sudorule name
@@ -170,12 +170,12 @@ author:
 
 EXAMPLES = """
 # Ensure Sudo Rule tesrule1 is present
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: testrule1
 
 # Ensure sudocmd is present in Sudo Rule
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: pass1234
     name: testrule1
     allow_sudocmd:
@@ -185,35 +185,35 @@ EXAMPLES = """
     state: absent
 
 # Ensure host server is present in Sudo Rule
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: testrule1
     host: server
     action: member
 
 # Ensure hostgroup cluster is present in Sudo Rule
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: testrule1
     hostgroup: cluster
     action: member
 
 # Ensure sudo rule for usercategory "all" is enabled
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: allusers
     usercategory: all
     state: enabled
 
 # Ensure sudo rule for hostcategory "all" is enabled
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: allhosts
     hostcategory: all
     state: enabled
 
 # Ensure sudo rule applies for hosts with hostmasks
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: testrule1
     hostmask:
@@ -221,14 +221,14 @@ EXAMPLES = """
     - 192.168.120.1/24
 
 # Ensure sudorule 'runasuser' has 'ipasuers' group as runas users.
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: testrule1
     runasuser_group: ipausers
     action: member
 
 # Ensure Sudo Rule tesrule1 is absent
-- ipasudorule:
+- freeipa.ansible_freeipa.ipasudorule:
     ipaadmin_password: SomeADMINpassword
     name: testrule1
     state: absent
@@ -237,7 +237,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list, api_get_domain, ensure_fqdn, netaddr, to_text
 

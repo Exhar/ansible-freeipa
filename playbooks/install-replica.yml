@@ -4,5 +4,5 @@
   become: true
 
   roles:
-  - role: ipareplica
+  - role: freeipa.ansible_freeipa.ipareplica
     state: present

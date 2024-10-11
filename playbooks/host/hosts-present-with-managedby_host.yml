@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure hosts are present with managedby_host attribute.
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: host01.example.com

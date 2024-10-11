@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure a URI record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _ftp._tcp
       record_type: 'URI'

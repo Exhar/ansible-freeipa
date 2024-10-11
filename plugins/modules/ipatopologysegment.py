@@ -35,7 +35,7 @@ module: ipatopologysegment
 short_description: Manage FreeIPA topology segments
 description: Manage FreeIPA topology segments
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   suffix:
     description: Topology suffix
@@ -73,41 +73,41 @@ author:
 """
 
 EXAMPLES = """
-- ipatopologysegment:
+- freeipa.ansible_freeipa.ipatopologysegment:
     ipaadmin_password: SomeADMINpassword
     suffix: domain
     left: ipaserver.test.local
     right: ipareplica1.test.local
     state: present
 
-- ipatopologysegment:
+- freeipa.ansible_freeipa.ipatopologysegment:
     ipaadmin_password: SomeADMINpassword
     suffix: domain
     name: ipaserver.test.local-to-replica1.test.local
     state: absent
 
-- ipatopologysegment:
+- freeipa.ansible_freeipa.ipatopologysegment:
     ipaadmin_password: SomeADMINpassword
     suffix: domain
     left: ipaserver.test.local
     right: ipareplica1.test.local
     state: absent
 
-- ipatopologysegment:
+- freeipa.ansible_freeipa.ipatopologysegment:
     ipaadmin_password: SomeADMINpassword
     suffix: ca
     name: ipaserver.test.local-to-replica1.test.local
     direction: left-to-right
     state: reinitialized
 
-- ipatopologysegment:
+- freeipa.ansible_freeipa.ipatopologysegment:
     ipaadmin_password: SomeADMINpassword
     suffix: domain+ca
     left: ipaserver.test.local
     right: ipareplica1.test.local
     state: absent
 
-- ipatopologysegment:
+- freeipa.ansible_freeipa.ipatopologysegment:
     ipaadmin_password: SomeADMINpassword
     suffix: domain+ca
     left: ipaserver.test.local
@@ -126,7 +126,7 @@ not-found:
   type: list
 """
 
-from ansible.module_utils.ansible_freeipa_module import IPAAnsibleModule
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import IPAAnsibleModule
 
 
 def find_left_right(module, suffix, left, right):

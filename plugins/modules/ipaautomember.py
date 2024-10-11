@@ -38,7 +38,7 @@ module: ipaautomember
 short_description: Add and delete FreeIPA Auto Membership Rules.
 description: Add, modify and delete an IPA Auto Membership Rules.
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The automember rule
@@ -117,7 +117,7 @@ author:
 
 EXAMPLES = """
 # Ensure an automember rule exists
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     name: admins
     description: "example description"
@@ -128,7 +128,7 @@ EXAMPLES = """
       expression: "example.com"
 
 # Delete an automember rule
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     name: admins
     description: "my automember rule"
@@ -136,7 +136,7 @@ EXAMPLES = """
     state: absent
 
 # Add an inclusive condition to an existing rule
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     name: "My domain hosts"
     automember_type: hostgroup
@@ -146,13 +146,13 @@ EXAMPLES = """
         expression: ".*.mydomain.com"
 
 # Ensure group membership for all users has been rebuilt
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: group
     state: rebuilt
 
 # Ensure group membership for given users has been rebuilt
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     users:
     - user1
@@ -160,13 +160,13 @@ EXAMPLES = """
     state: rebuilt
 
 # Ensure hostgroup membership for all hosts has been rebuilt
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: hostgroup
     state: rebuilt
 
 # Ensure hostgroup membership for given hosts has been rebuilt
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     hosts:
     - host1.mydomain.com
@@ -174,13 +174,13 @@ EXAMPLES = """
     state: rebuilt
 
 # Ensure default group fallback_group for all unmatched group entries is set
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: group
     default_group: fallback_group
 
 # Ensure default group for all unmatched group entries is not set
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     default_group: ""
     automember_type: group
@@ -188,26 +188,26 @@ EXAMPLES = """
 
 # Ensure default hostgroup fallback_hostgroup for all unmatched group entries
 # is set
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: hostgroup
     default_group: fallback_hostgroup
 
 # Ensure default hostgroup for all unmatched group entries is not set
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: hostgroup
     default_group: ""
     state: absent
 
 # Example playbook to ensure all orphan automember group rules are removed:
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: group
     state: orphans_removed
 
 # Example playbook to ensure all orphan automember hostgroup rules are removed:
-- ipaautomember:
+- freeipa.ansible_freeipa.ipaautomember:
     ipaadmin_password: SomeADMINpassword
     automember_type: hostgroup
     state: orphans_removed
@@ -216,7 +216,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import (
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, ipalib_errors, DN
 )
 

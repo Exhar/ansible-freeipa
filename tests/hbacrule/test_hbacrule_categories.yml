@@ -7,14 +7,14 @@
   tasks:
 
   - name: Ensure HBAC rules are absent
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name:
       - testrule
       state: absent
 
   - name: Ensure HBAC rule is present, with usercategory 'all'
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       usercategory: all
@@ -22,7 +22,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with usercategory 'all', again.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       usercategory: all
@@ -30,7 +30,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with no usercategory.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       usercategory: ""
@@ -38,7 +38,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with no usercategory, again.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       usercategory: ""
@@ -46,7 +46,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with hostcategory 'all'
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       hostcategory: all
@@ -54,7 +54,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with hostcategory 'all', again.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       hostcategory: all
@@ -62,7 +62,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with no hostcategory.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       hostcategory: ""
@@ -70,7 +70,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with no hostcategory, again.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       hostcategory: ""
@@ -78,7 +78,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with servicecategory 'all'
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       servicecategory: all
@@ -86,7 +86,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with servicecategory 'all', again.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       servicecategory: all
@@ -94,7 +94,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with no servicecategory.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       servicecategory: ""
@@ -102,7 +102,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC rule is present, with no servicecategory, again.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: testrule
       servicecategory: ""
@@ -110,7 +110,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure `user` cannot be added if usercategory is `all`.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allusers
       user: shouldfail01
@@ -119,7 +119,7 @@
     failed_when: not result.failed or "Users cannot be added when user category='all'" not in result.msg
 
   - name: Ensure `group` cannot be added if usercategory is `all`.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allusers
       group: shouldfail01
@@ -128,7 +128,7 @@
     failed_when: not result.failed or "Users cannot be added when user category='all'" not in result.msg
 
   - name: Ensure `host` cannot be added if hostcategory is `all`.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allusers
       host: host.shouldfail.com
@@ -137,7 +137,7 @@
     failed_when: not result.failed or "Hosts cannot be added when host category='all'" not in result.msg
 
   - name: Ensure `hostgroup` cannot be added if hostcategory is `all`.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allusers
       hostgroup: shouldfail_hostgroup
@@ -146,7 +146,7 @@
     failed_when: not result.failed or "Hosts cannot be added when host category='all'" not in result.msg
 
   - name: Ensure `hbacsvc` cannot be added if hbacsvccategory is `all`.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allusers
       hbacsvc: "HTTP/fail.example.com"
@@ -155,7 +155,7 @@
     failed_when: not result.failed or "Services cannot be added when service category='all'" not in result.msg
 
   - name: Ensure `hbacsvcgroup` cannot be added if hbacsvccategory is `all`.
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allusers
       hbacsvcgroup: shouldfail_svcgroup
@@ -164,7 +164,7 @@
     failed_when: not result.failed or "Services cannot be added when service category='all'" not in result.msg
 
   - name: Ensure HBAC rules are absent
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name:
       - testrule

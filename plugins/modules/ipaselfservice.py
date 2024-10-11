@@ -35,7 +35,7 @@ module: ipaselfservice
 short_description: Manage FreeIPA selfservices
 description: Manage FreeIPA selfservices and selfservice attributes
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of selfservice name strings.
@@ -73,7 +73,7 @@ author:
 
 EXAMPLES = """
 # Ensure selfservice "Users can manage their own name details" is present
-- ipaselfservice:
+- freeipa.ansible_freeipa.ipaselfservice:
     ipaadmin_password: SomeADMINpassword
     name: "Users can manage their own name details"
     permission: read
@@ -83,7 +83,7 @@ EXAMPLES = """
 
 # Ensure selfservice "Users can manage their own name details" member
 # attribute departmentnumber is present
-- ipaselfservice:
+- freeipa.ansible_freeipa.ipaselfservice:
     ipaadmin_password: SomeADMINpassword
     name: "Users can manage their own name details"
     attribute:
@@ -92,7 +92,7 @@ EXAMPLES = """
 
 # Ensure selfservice "Users can manage their own name details" member
 # attributes employeetype and employeenumber are present
-- ipaselfservice:
+- freeipa.ansible_freeipa.ipaselfservice:
     ipaadmin_password: SomeADMINpassword
     name: "Users can manage their own name details"
     attribute:
@@ -102,7 +102,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure selfservice "Users can manage their own name details" is absent
-- ipaselfservice:
+- freeipa.ansible_freeipa.ipaselfservice:
     ipaadmin_password: SomeADMINpassword
     name: "Users can manage their own name details"
     state: absent
@@ -112,7 +112,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

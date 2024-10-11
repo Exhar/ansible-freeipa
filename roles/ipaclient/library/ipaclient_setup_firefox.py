@@ -54,7 +54,7 @@ author:
 
 EXAMPLES = '''
 - name: Setup firefox for IPA client
-  ipaclient_setup_firefox:
+  freeipa.ansible_freeipa.ipaclient_setup_firefox:
     servers: ["server1.example.com","server2.example.com"]
     domain: example.com
     firefox_dir: /usr/lib/firefox
@@ -64,7 +64,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports, sysrestore, paths, options, configure_firefox
 )
 

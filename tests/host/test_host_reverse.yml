@@ -14,7 +14,7 @@
       host1_fqdn: "{{ 'host1.' + ipaserver_domain }}"
 
   - name: Host absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -36,7 +36,7 @@
       zone_prefix_reverse_24: "{{ ipv4_prefix.split('.')[::-1] | join('.') }}.in-addr.arpa"
 
   - name: Set zone for reverse address.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: "{{ item }}"
       skip_nameserver_check: yes
@@ -50,7 +50,7 @@
       - "{{ zone_prefix_reverse_24 }}"
 
   - name: Host "{{ host1_fqdn }}" present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ip_address: "{{ ipv4_prefix + '.201' }}"
@@ -60,7 +60,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present, again.
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ip_address: "{{ ipv4_prefix + '.201' }}"
@@ -70,7 +70,7 @@
     failed_when: result.changed or result.failed
 
   - name: Hosts host1 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -80,7 +80,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with IPv6
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ip_address: "fd00::0001"
@@ -90,7 +90,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with IPv6, again.
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ip_address: "fd00::0001"
@@ -100,7 +100,7 @@
     failed_when: result.changed or result.failed
 
   - name: Hosts host1 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -110,7 +110,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Delete zone for reverse address.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: "{{ item }}"
       state: absent

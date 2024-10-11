@@ -18,7 +18,7 @@
     when: trust_test_is_supported | default(false)
 
   - name: Ensure testing idranges are absent
-    ipaidrange:
+    freeipa.ansible_freeipa.ipaidrange:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -37,7 +37,7 @@
   - name: Test local idrange
     block:
       - name: Ensure idrange with minimal attributes is present
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -48,7 +48,7 @@
           not (result.failed or result.changed) or (result.failed and 'ipa-adtrust-install has already been run' not in result.msg)
 
       - name: Ensure idrange with minimal attributes is present, again
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -59,7 +59,7 @@
           result.changed or (result.failed and 'ipa-adtrust-install has already been run' not in result.msg)
 
       - name: Ensure idrange with minimal attributes is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -69,7 +69,7 @@
 
       # Test local idrange, even after ipa-adtrust-install.
       - name: Ensure local idrange is present
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -81,7 +81,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure local idrange is present again
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -93,7 +93,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure local idrange is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -103,7 +103,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure local idrange is absent again
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -114,7 +114,7 @@
 
     rescue:
       - name: Ensure local idranges is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: local_id_range
@@ -132,7 +132,7 @@
 
       # Can't use secondary_rid_base with dom_sid/dom_name
       - name: Ensure AD-trust idrange is present
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -146,7 +146,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure AD-trust idrange is present again
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -160,7 +160,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check if AD-trust idrange is present, uning domain name
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -175,7 +175,7 @@
         failed_when: result.changed or result.failed
 
       - name: Modify AD-trust idrange 'base_id'
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -184,7 +184,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Modify AD-trust idrange 'base_id', again
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -193,7 +193,7 @@
         failed_when: result.changed or result.failed
 
       - name: Modify AD-trust idrange 'range_size'
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -202,7 +202,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Modify AD-trust idrange 'rid_base'
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -211,7 +211,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Modify AD-trust idrange 'auto_private_groups'
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -224,7 +224,7 @@
         ansible.builtin.include_tasks: tasks_remove_trust.yml
 
       - name: Ensure AD-trust idrange is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -239,7 +239,7 @@
           trust_range_type: ipa-ad-trust
 
       - name: Ensure AD-trust idrange is present, with dom_name
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -257,7 +257,7 @@
         ansible.builtin.include_tasks: tasks_remove_trust.yml
 
       - name: Ensure AD-trust idrange is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -268,7 +268,7 @@
         ansible.builtin.include_tasks: tasks_remove_trust.yml
 
       - name: Ensure AD-trust idrange is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_id_range
@@ -284,7 +284,7 @@
 
       # Can't use secondary_rid_base or rid_base with "ad-trust-posix"
       - name: Ensure AD-trust-posix idrange is present
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_posix_id_range
@@ -296,7 +296,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure AD-trust-posix idrange is present again
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_posix_id_range
@@ -308,7 +308,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check if AD-trust-posix idrange is present, using dom_name
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_posix_id_range
@@ -325,7 +325,7 @@
         ansible.builtin.include_tasks: tasks_remove_trust.yml
 
       - name: Ensure AD-trust idrange is absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_posix_id_range
@@ -341,7 +341,7 @@
 
       # Can't use secondary_rid_base or rid_base with "ad-trust-posix"
       - name: Ensure AD-trust-posix idrange is present, with dom_name
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: ad_posix_id_range
@@ -358,7 +358,7 @@
         ansible.builtin.include_tasks: tasks_remove_trust.yml
 
       - name: Ensure testing idranges are absent
-        ipaidrange:
+        freeipa.ansible_freeipa.ipaidrange:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name:

@@ -16,14 +16,14 @@
     delegate_to: localhost
 
   - name: User test absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test
       state: absent
 
   - name: User test present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test
@@ -31,7 +31,7 @@
         last: test
 
   - name: User test cert members present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test
@@ -44,7 +44,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User test cert members present again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test
@@ -57,7 +57,7 @@
     failed_when: result.changed or result.failed
 
   - name: User test cert members absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test
@@ -71,7 +71,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User test cert members absent again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test
@@ -85,7 +85,7 @@
     failed_when: result.changed or result.failed
 
   - name: User test absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: test

@@ -7,7 +7,7 @@
 
   tasks:
   - name: Ensure sudocmds are absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -17,7 +17,7 @@
       state: absent
 
   - name: Ensure sudocmd is present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: /usr/bin/su
@@ -26,7 +26,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudocmd is present again
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: /usr/bin/su
@@ -35,7 +35,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudocmd is absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: /usr/bin/su
@@ -44,7 +44,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudocmd is absent again
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: /usr/bin/su
@@ -53,7 +53,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure multiple sudocmd are present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -64,7 +64,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure multiple sudocmd are present again
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -75,7 +75,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure multiple sudocmd are absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -86,7 +86,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure multiple sudocmd are absent again
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -97,7 +97,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudocmds are absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -107,7 +107,7 @@
       state: absent
 
   - name: Ensure sudocmds are absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -115,7 +115,7 @@
       state: absent
 
   - name: Ensure sudocmds are present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -123,7 +123,7 @@
       state: present
 
   - name: Ensure multiple sudocmd are absent when only one was present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:

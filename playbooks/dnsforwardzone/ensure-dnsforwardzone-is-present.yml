@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure DNS forward zone is present
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       name: example.com
       forwarders:

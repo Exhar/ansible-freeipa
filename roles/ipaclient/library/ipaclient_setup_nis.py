@@ -52,7 +52,7 @@ author:
 
 EXAMPLES = '''
 - name: Setup NIS for IPA client
-  ipaclient_setup_nis:
+  freeipa.ansible_freeipa.ipaclient_setup_nis:
     domain: example.com
 '''
 
@@ -60,7 +60,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports, options, sysrestore, paths,
     configure_nisdomain, getargspec
 )

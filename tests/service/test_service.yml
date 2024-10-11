@@ -28,7 +28,7 @@
         ansible.builtin.include_tasks: env_setup.yml
 
       - name: Ensure service is present
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -45,7 +45,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure service is present, again
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -62,7 +62,7 @@
         failed_when: result.changed or result.failed
 
       - name: Modify service.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -73,7 +73,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Modify service, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -84,7 +84,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure service is present, without host object.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ nohost_fqdn }}"
@@ -93,7 +93,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure service is present, without host object, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ nohost_fqdn }}"
@@ -102,7 +102,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure service is present, with host not in DNS.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: HTTP/svc.ihavenodns.info
@@ -112,7 +112,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure service is present, with host not in DNS, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: HTTP/svc.ihavenodns.info
@@ -122,7 +122,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure service is present, whithout host object and with host not in DNS.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: HTTP/no.idontexist.info
@@ -132,7 +132,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure service is present, whithout host object and with host not in DNS, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: HTTP/no.idontexist.info
@@ -142,7 +142,7 @@
         failed_when: result.changed or result.failed
 
       - name: Principal host/test.example.com present in service.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -153,7 +153,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Principal host/test.example.com present in service, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -165,7 +165,7 @@
           result.changed or (result.failed and "already contains one or more values" not in result.msg)
 
       - name: Principal host/test.example.com absent in service.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -177,7 +177,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Principal host/test.example.com absent in service, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -190,7 +190,7 @@
           result.changed or (result.failed and "does not contain 'one or more values to remove'" not in result.msg)
 
       - name: Ensure host can manage service.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -202,7 +202,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure host can manage service, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -212,7 +212,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure host cannot manage service.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -225,7 +225,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure host cannot manage service, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -238,7 +238,7 @@
         failed_when: result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for users, groups, hosts and hostgroups.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -259,7 +259,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for users, groups, hosts and hostgroups, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -280,7 +280,7 @@
         failed_when: result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for users, groups, hosts and hostgroups.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -302,7 +302,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for users, groups, hosts and hostgroups, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -324,7 +324,7 @@
         failed_when: result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for users, groups, hosts and hostgroups
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -345,7 +345,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for users, groups, hosts and hostgroups, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -366,7 +366,7 @@
         failed_when: result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for users, groups, hosts and hostgroups.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -388,7 +388,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for users, groups, hosts and hostgroups, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -410,7 +410,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure service is absent
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -420,7 +420,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure service is absent, again
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -430,7 +430,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure service is present, with multiple auth_ind values.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -441,7 +441,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure service is present, with multiple auth_ind values, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -452,7 +452,7 @@
         failed_when: result.changed or result.failed
 
       - name: Clear auth_ind.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -463,7 +463,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Clear auth_ind, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "HTTP/{{ svc_fqdn }}"
@@ -474,7 +474,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure services are absent.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name:
@@ -488,7 +488,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure services are absent.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name:
@@ -502,7 +502,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure SMB service is present.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "{{ host1_fqdn }}"
@@ -513,7 +513,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure SMB service is again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "{{ host1_fqdn }}"
@@ -524,7 +524,7 @@
         failed_when: result.changed or result.failed
 
       - name: Modify SMB service.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "{{ host1_fqdn }}"
@@ -540,7 +540,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Modify SMB service, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "{{ host1_fqdn }}"
@@ -556,7 +556,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure SMB service is absent.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "cifs/{{ host1_fqdn }}"
@@ -566,7 +566,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure SMB service is absent, again.
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "cifs/{{ host1_fqdn }}"

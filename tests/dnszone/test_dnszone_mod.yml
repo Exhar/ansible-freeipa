@@ -11,7 +11,7 @@
     ansible.builtin.include_tasks: env_setup.yml
 
   - name: Ensure zone is present.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_sync_ptr: true
@@ -38,7 +38,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set different nsec3param_rec.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       nsec3param_rec: "2 8 200 abcd"
@@ -46,7 +46,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set same nsec3param_rec.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       nsec3param_rec: "2 8 200 abcd"
@@ -54,7 +54,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set default_ttl to 1200
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       default_ttl: 1200
@@ -62,7 +62,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set default_ttl to 1200, again
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       default_ttl: 1200
@@ -70,7 +70,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set ttl to 900
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       ttl: 900
@@ -78,7 +78,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set ttl to 900, again
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       ttl: 900
@@ -86,7 +86,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set minimum to 1000
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       minimum: 1000
@@ -94,7 +94,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set minimum to 1000, again
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       minimum: 1000
@@ -102,7 +102,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set expire to 1209601
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       expire: 1209601
@@ -110,7 +110,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set expire to 1209601, again
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       expire: 1209601
@@ -118,7 +118,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set retry to 1200.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       retry: 1200
@@ -126,7 +126,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set retry to 1200, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       retry: 1200
@@ -134,7 +134,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set refresh to 4000.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       refresh: 4000
@@ -142,7 +142,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set refresh to 4000, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       refresh: 4000
@@ -150,7 +150,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set dnssec to false.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       dnssec: false
@@ -158,7 +158,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set dnssec to false, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       dnssec: false
@@ -166,7 +166,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set allow_sync_ptr to false.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_sync_ptr: false
@@ -174,7 +174,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set allow_sync_ptr to false, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_sync_ptr: false
@@ -182,7 +182,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set dynamic_update to false.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       dynamic_update: false
@@ -190,7 +190,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set dynamic_update to false, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       dynamic_update: false
@@ -198,7 +198,7 @@
     failed_when: result.changed or result.failed
 
   - name: Update allow_transfer.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_transfer:
@@ -209,7 +209,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Update allow_transfer, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_transfer:
@@ -220,7 +220,7 @@
     failed_when: result.changed or result.failed
 
   - name: Remove allow transfer.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_transfer: []
@@ -228,7 +228,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Remove allow transfer, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_transfer: []
@@ -236,7 +236,7 @@
     failed_when: result.changed or result.failed
 
   - name: Update allow_query.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_query:
@@ -247,7 +247,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Update allow_query, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_query:
@@ -258,7 +258,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure allow query is empty.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_query: []
@@ -266,7 +266,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure allow query is empty, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       allow_query: []
@@ -274,7 +274,7 @@
     failed_when: result.changed or result.failed
 
   - name: Update admin email.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       admin_email: admin2@example.com
@@ -282,7 +282,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Update admin email, again.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: testzone.local
       admin_email: admin2@example.com

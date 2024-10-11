@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure an MX record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '@'
       record_type: 'MX'

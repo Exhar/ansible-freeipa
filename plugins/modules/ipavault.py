@@ -36,7 +36,7 @@ module: ipavault
 short_description: Manage vaults and secret vaults.
 description: Manage vaults and secret vaults. KRA service must be enabled.
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The vault name
@@ -173,7 +173,7 @@ author:
 
 EXAMPLES = """
 # Ensure vault symvault is present
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -182,7 +182,7 @@ EXAMPLES = """
     salt: MTIzNDU2Nzg5MAo=
 
 # Ensure group ipausers is a vault member.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -190,7 +190,7 @@ EXAMPLES = """
     action: member
 
 # Ensure group ipausers is not a vault member.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -199,7 +199,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure vault users are present.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -209,7 +209,7 @@ EXAMPLES = """
     action: member
 
 # Ensure vault users are absent.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -220,7 +220,7 @@ EXAMPLES = """
     status: absent
 
 # Ensure user owns vault.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -228,7 +228,7 @@ EXAMPLES = """
     owners: user01
 
 # Ensure user does not own vault.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -237,7 +237,7 @@ EXAMPLES = """
     status: absent
 
 # Ensure data is archived to a symmetric vault
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -248,7 +248,7 @@ EXAMPLES = """
     action: member
 
 # Retrieve data archived from a symmetric vault
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -259,7 +259,7 @@ EXAMPLES = """
     msg: "{{ result.vault.data }}"
 
 # Change password of a symmetric vault
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     username: admin
@@ -267,14 +267,14 @@ EXAMPLES = """
     new_password: SomeNEWpassword
 
 # Ensure vault symvault is absent
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: symvault
     user: admin
     state: absent
 
 # Ensure asymmetric vault is present.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: asymvault
     username: user01
@@ -289,7 +289,7 @@ EXAMPLES = """
       tLS0tLQo=
 
 # Ensure data is archived in an asymmetric vault
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: asymvault
     username: admin
@@ -299,7 +299,7 @@ EXAMPLES = """
     action: member
 
 # Retrive data archived in an asymmetric vault, using a private key file.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: asymvault
     username: admin
@@ -307,7 +307,7 @@ EXAMPLES = """
     state: retrieved
 
 # Ensure asymmetric vault is absent.
-- ipavault:
+- freeipa.ansible_freeipa.ipavault:
     ipaadmin_password: SomeADMINpassword
     name: asymvault
     username: user01
@@ -330,7 +330,7 @@ vault:
 import os
 from base64 import b64decode
 from ansible.module_utils._text import to_text
-from ansible.module_utils.ansible_freeipa_module import IPAAnsibleModule, \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import IPAAnsibleModule, \
     gen_add_del_lists, compare_args_ipa, exit_raw_json, ipalib_errors
 
 

@@ -11,14 +11,14 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure servicedelegationrule test-delegation-rule is absent
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
       state: absent
 
   - name: Ensure service is absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -28,7 +28,7 @@
       continue: yes
 
   - name: Ensure servicedelegationrule test-delegation-target is absent
-    ipaservicedelegationtarget:
+    freeipa.ansible_freeipa.ipaservicedelegationtarget:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -39,7 +39,7 @@
   # CREATE TEST ITEMS
 
   - name: Ensure service test-sevice is present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'test-service/' + ansible_facts['fqdn'] }}"
@@ -47,7 +47,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-target is present
-    ipaservicedelegationtarget:
+    freeipa.ansible_freeipa.ipaservicedelegationtarget:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-target
@@ -57,7 +57,7 @@
   # TESTS
 
   - name: Ensure servicedelegationrule test-delegation-rule is present
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -65,7 +65,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule is present again
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -73,7 +73,7 @@
     failed_when: result.changed or result.failed
 
   - name: Do not fail to ensure absence of not existing servicedelegationrule test-delegation-rule member principal
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -84,7 +84,7 @@
     failed_when: result.changed or result.failed
 
   - name: Do not fail to ensure absence of not existing servicedelegationrule test-delegation-rule member target
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -95,7 +95,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member target test-delegation-target is present
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -105,7 +105,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member target test-delegation-target is present, again
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -115,7 +115,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member principal "{{ 'test-service/' + ansible_facts['fqdn'] }}" is present
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -125,7 +125,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member principal "{{ 'test-service/' + ansible_facts['fqdn'] }}" is present again
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -135,7 +135,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member principal "{{ 'test-service/' + ansible_facts['fqdn'] }}" is absent
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -146,7 +146,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member principal "{{ 'test-service/' + ansible_facts['fqdn'] }}" is present absent
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -157,7 +157,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member target test-delegation-target is absent
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -168,7 +168,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule member target test-delegation-target is absent, again
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -179,7 +179,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule is absent
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -188,7 +188,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure servicedelegationrule test-delegation-rule is absent again
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-rule
@@ -199,14 +199,14 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure servicedelegationrule test-delegation-target is absent
-    ipaservicedelegationtarget:
+    freeipa.ansible_freeipa.ipaservicedelegationtarget:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test-delegation-target
       state: absent
 
   - name: Ensure service is absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'test-service/' + ansible_facts['fqdn'] }}"

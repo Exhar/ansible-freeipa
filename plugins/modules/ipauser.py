@@ -35,7 +35,7 @@ module: ipauser
 short_description: Manage FreeIPA users
 description: Manage FreeIPA users
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of users (internally uid).
@@ -625,7 +625,7 @@ author:
 
 EXAMPLES = """
 # Create user pinky
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: pinky
     first: pinky
@@ -639,14 +639,14 @@ EXAMPLES = """
     update_password: on_create
 
 # Create user brain
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: brain
     first: brain
     last: Acme
 
 # Create multiple users pinky and brain
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     users:
     - name: pinky
@@ -657,32 +657,32 @@ EXAMPLES = """
       last: Acme
 
 # Delete user pinky, but preserved
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: pinky
     preserve: yes
     state: absent
 
 # Undelete user pinky
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: pinky
     state: undeleted
 
 # Disable user pinky
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: pinky,brain
     state: disabled
 
 # Enable user pinky and brain
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: pinky,brain
     state: enabled
 
 # Remove but preserve user pinky
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     users:
     - name: pinky
@@ -690,13 +690,13 @@ EXAMPLES = """
     state: absent
 
 # Remove user pinky and brain
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: pinky,brain
     state: disabled
 
 # Ensure a user has SMB attributes
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: smbuser
     first: SMB
@@ -707,7 +707,7 @@ EXAMPLES = """
     smb_home_drive: "U:"
 
 # Rename an existing user
-- ipauser:
+- freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     name: someuser
     rename: anotheruser
@@ -738,7 +738,7 @@ user:
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, date_format, \
     encode_certificate, load_cert_from_str, DN_x500_text, to_text, \
     ipalib_errors, gen_add_list, gen_intersection_list, \

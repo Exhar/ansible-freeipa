@@ -130,7 +130,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_server import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_server import (
     check_imports,
     MAX_DOMAIN_LEVEL, AnsibleModuleLog, options, sysrestore, paths,
     api_Backend_ldap2, ds_init_info, redirect_stdout, setup_logging,

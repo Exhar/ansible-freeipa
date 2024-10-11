@@ -24,14 +24,14 @@
       msg: "{{ users | length }}"
 
   - name: Cleanup test users
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users: "{{ user_names[item : item + slice_size] }}"
       state: absent
     loop: "{{ range(0, user_names | length, slice_size) | list }}"
 
   - name: Users present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users: "{{ users[item : item + slice_size] }}"
     loop: "{{ range(0, users | length, slice_size) | list }}"
@@ -39,7 +39,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Users absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users: "{{ user_names[item : item + slice_size] }}"
       state: absent

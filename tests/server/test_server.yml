@@ -30,21 +30,21 @@
           ipaserver_domain: "ipa.test"
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" without location
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
       location: ""
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" without service weight
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
       service_weight: -1
 
   - name: Ensure location "mylocation" is absent
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: mylocation
@@ -53,7 +53,7 @@
   # CREATE TEST ITEMS
 
   - name: Ensure location "mylocation" is present
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: mylocation
@@ -63,7 +63,7 @@
   # TESTS
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" is present
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -71,7 +71,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" with location "mylocation"
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -80,7 +80,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" with location "mylocation" again
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -89,7 +89,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" without location
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -98,7 +98,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" without location again
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -107,7 +107,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" with service weight 1
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -116,7 +116,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" with service weight 1 again
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -125,7 +125,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" without service weight
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -134,7 +134,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure server "{{ ipa_server_name + '.' + ipaserver_domain }}" without service weight again
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ ipa_server_name + '.' + ipaserver_domain }}"
@@ -147,7 +147,7 @@
   # absent requires an additional server, only sanity test with absent server
 
   - name: Ensure server "{{ 'absent.' + ipaserver_domain }}" is absent
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'absent.' + ipaserver_domain }}"
@@ -162,7 +162,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure location "mylocation" is absent
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: mylocation

@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure role member 'hostgroup' is absent.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: somerole
       hostgroup:

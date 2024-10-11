@@ -5,7 +5,7 @@
 
   tasks:
   - name: Verify topology suffix
-    ipatopologysuffix:
+    freeipa.ansible_freeipa.ipatopologysuffix:
       ipaadmin_password: SomeADMINpassword
       suffix: domain
       state: verified

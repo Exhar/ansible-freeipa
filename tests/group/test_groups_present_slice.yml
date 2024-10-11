@@ -18,7 +18,7 @@
       msg: "{{ group_list | length }}"
 
   - name: Groups present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups: "{{ group_list[item : item + slice_size] }}"
     loop: "{{ range(0, group_list | length, slice_size) | list }}"
@@ -33,7 +33,7 @@
     loop: "{{ group_list }}"
 
   - name: Remove groups
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups: "{{ groups_names }}"
       state: absent

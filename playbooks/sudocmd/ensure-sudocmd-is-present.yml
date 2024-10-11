@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure sudo command is present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       name: /usr/bin/su
       state: present

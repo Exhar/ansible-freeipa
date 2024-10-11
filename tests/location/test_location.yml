@@ -8,7 +8,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure location my_location1 is absent
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -19,7 +19,7 @@
   # TESTS
 
   - name: Ensure location my_location1 is present
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -27,7 +27,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure location my_location1 is present again
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -35,7 +35,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure location my_location1 is present with description
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -44,7 +44,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure location my_location1 is present again with description
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -53,7 +53,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure location my_location1 is absent
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -62,7 +62,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure location my_location1 is absent again
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1
@@ -73,7 +73,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure location my_location1 is absent
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: my_location1

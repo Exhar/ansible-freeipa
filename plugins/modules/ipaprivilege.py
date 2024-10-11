@@ -39,7 +39,7 @@ module: ipaprivilege
 short_description: Manage FreeIPA privilege
 description: Manage FreeIPA privilege and privilege members
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of privilege name strings.
@@ -80,13 +80,13 @@ author:
 
 EXAMPLES = """
 # Ensure privilege "Broad Privilege" is present
-- ipaprivilege:
+- freeipa.ansible_freeipa.ipaprivilege:
     ipaadmin_password: SomeADMINpassword
     name: Broad Privilege
     description: Broad Privilege
 
 # Ensure privilege "Broad Privilege" has permissions set
-- ipaprivilege:
+- freeipa.ansible_freeipa.ipaprivilege:
     ipaadmin_password: SomeADMINpassword
     name: Broad Privilege
     permission:
@@ -96,7 +96,7 @@ EXAMPLES = """
     action: member
 
 # Ensure privilege member permission 'Write IPA Configuration' is absent
-- ipaprivilege:
+- freeipa.ansible_freeipa.ipaprivilege:
     ipaadmin_password: SomeADMINpassword
     name: Broad Privilege
     permission:
@@ -105,14 +105,14 @@ EXAMPLES = """
     state: absent
 
 # Rename privilege "Broad Privilege" to "DNS Special Privilege"
-- ipaprivilege:
+- freeipa.ansible_freeipa.ipaprivilege:
     ipaadmin_password: SomeADMINpassword
     name: Broad Privilege
     rename: DNS Special Privilege
     state: renamed
 
 # Ensure privilege "DNS Special Privilege" is absent
-- ipaprivilege:
+- freeipa.ansible_freeipa.ipaprivilege:
     ipaadmin_password: SomeADMINpassword
     name: DNS Special Privilege
     state: absent
@@ -122,7 +122,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list
 from ansible.module_utils import six

@@ -35,7 +35,7 @@ module: ipatrust
 short_description: Manage FreeIPA Domain Trusts.
 description: Manage FreeIPA Domain Trusts.
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   realm:
     description:
@@ -113,7 +113,7 @@ author:
 
 EXAMPLES = """
 # add ad-trust
-- ipatrust:
+- freeipa.ansible_freeipa.ipatrust:
     ipaadmin_password: SomeADMINpassword
     realm: ad.example.test
     trust_type: ad
@@ -122,7 +122,7 @@ EXAMPLES = """
     state: present
 
 # delete ad-trust
-- ipatrust:
+- freeipa.ansible_freeipa.ipatrust:
     ipaadmin_password: SomeADMINpassword
     realm: ad.example.test
     state: absent
@@ -132,7 +132,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule
 
 

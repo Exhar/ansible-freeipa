@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure host is present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: host01.example.com
       description: Example host

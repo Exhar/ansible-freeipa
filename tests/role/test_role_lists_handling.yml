@@ -12,7 +12,7 @@
     ansible.builtin.import_tasks: env_setup.yml
 
   - name: Add role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       user: user01
@@ -28,7 +28,7 @@
 
   # Test fix for https://github.com/freeipa/ansible-freeipa/issues/409
   - name: Add new privileges to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       privilege:
@@ -62,7 +62,7 @@
 
   # Test fix for https://github.com/freeipa/ansible-freeipa/issues/412
   - name: Add new user to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       user: user02
@@ -86,7 +86,7 @@
       krb5ccname: verify_issue_412
 
   - name: Add new group to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       group: group02
@@ -110,7 +110,7 @@
       krb5ccname: verify_issue_412
 
   - name: Add new host to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       host: "{{ host2_fqdn }}"
@@ -136,7 +136,7 @@
       host2: " {{ host2_fqdn }}"
 
   - name: Add new hostgroup to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       hostgroup: hostgroup02
@@ -160,7 +160,7 @@
       krb5ccname: verify_issue_412
 
   - name: Add new service to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       service: "service02/{{ host2_fqdn }}"
@@ -188,7 +188,7 @@
 
   # Test fix for https://github.com/freeipa/ansible-freeipa/issues/413
   - name: Add new user to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       user: user03
@@ -215,7 +215,7 @@
       service2: "service02/{{ host2_fqdn }}"
 
   - name: Remove user from role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       user: user03
@@ -245,7 +245,7 @@
 
   # Test fix for https://github.com/freeipa/ansible-freeipa/issues/411
   - name: Add non-existing user to role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: testrole
       user: nonexisiting_user

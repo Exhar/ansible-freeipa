@@ -6,7 +6,7 @@
 
   tasks:
   - name: Archive data into asymmetric vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: asymvault
       username: user01

@@ -4,13 +4,13 @@
   become: false
   gather_facts: false
   module_defaults:
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipaidview:
+    freeipa.ansible_freeipa.ipaidview:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
 
@@ -19,7 +19,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure test users test_user1..3 do not exist
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       name:
       - test_user1
       - test_user2
@@ -27,7 +27,7 @@
       state: absent
 
   - name: Ensure test users test_user1..3 are absent in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor:
       - test_user1
@@ -36,14 +36,14 @@
       state: absent
 
   - name: Ensure test idview test_idview does not exist
-    ipaidview:
+    freeipa.ansible_freeipa.ipaidview:
       name: test_idview
       state: absent
 
   # CREATE TEST ITEMS
 
   - name: Ensure test users test_user1..3 exist
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       users:
       - name: test_user1
         first: test
@@ -56,7 +56,7 @@
         last: user3
 
   - name: Ensure test idview test_idview exists
-    ipaidview:
+    freeipa.ansible_freeipa.ipaidview:
       name: test_idview
 
   - name: Generate self-signed certificates.
@@ -72,42 +72,42 @@
   # TESTS
 
   - name: Ensure test user test_user1 is present in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
     register: result
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user2 is present in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user2
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user2 is present in idview test_idview, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user2
     register: result
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user3 is present in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user3
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user3 is present in idview test_idview, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user3
     register: result
@@ -116,7 +116,7 @@
   # description
 
   - name: Ensure test user test_user1 is present in idview test_idview with description
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       description: "test_user1 description"
@@ -124,7 +124,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with description, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       description: "test_user1 description"
@@ -132,7 +132,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without description
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       description: ""
@@ -140,7 +140,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without description, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       description: ""
@@ -150,7 +150,7 @@
   # name
 
   - name: Ensure test user test_user1 is present in idview test_idview with internal name test_123_user
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       name: test_123_user
@@ -158,7 +158,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with internal name test_123_user, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       name: test_123_user
@@ -166,7 +166,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without internal name
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       name: ""
@@ -174,7 +174,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without internal name, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       name: ""
@@ -184,7 +184,7 @@
   # uid
 
   - name: Ensure test user test_user1 is present in idview test_idview with uid 20001
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       uid: 20001
@@ -192,7 +192,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with uid 20001, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       uid: 20001
@@ -200,7 +200,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without uid
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       uid: ""
@@ -208,7 +208,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without uid, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       uid: ""
@@ -218,7 +218,7 @@
   # gecos
 
   - name: Ensure test user test_user1 is present in idview test_idview with gecos "Gecos Test"
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gecos: Gecos Test öäüÇœß
@@ -226,7 +226,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with gecos "Gecos Test", again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gecos: Gecos Test öäüÇœß
@@ -234,7 +234,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without gecos
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gecos: ""
@@ -242,7 +242,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without gecos, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gecos: ""
@@ -252,7 +252,7 @@
   # gidnumber
 
   - name: Ensure test user test_user1 is present in idview test_idview with gidnumber 20001
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gidnumber: 20001
@@ -260,7 +260,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with gidnumber 20001, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gidnumber: 20001
@@ -268,7 +268,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without gidnumber
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gidnumber: ""
@@ -276,7 +276,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without gidnumber, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       gidnumber: ""
@@ -286,7 +286,7 @@
   # homedir
 
   - name: Ensure test user test_user1 is present in idview test_idview with homedir /Users
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       homedir: /Users
@@ -294,7 +294,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with homedir /Users, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       homedir: /Users
@@ -302,7 +302,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without homedir
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       homedir: ""
@@ -310,7 +310,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without homedir, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       homedir: ""
@@ -320,7 +320,7 @@
   # shell
 
   - name: Ensure test user test_user1 is present in idview test_idview with shell /bin/someshell
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       shell: /bin/someshell
@@ -328,7 +328,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with shell /bin/someshell, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       shell: /bin/someshell
@@ -336,7 +336,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without shell
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       shell: ""
@@ -344,7 +344,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without shell, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       shell: ""
@@ -354,7 +354,7 @@
   # sshpubkey
 
   - name: Ensure test user test_user1 is present in idview test_idview with sshpubkey
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       sshpubkey:
@@ -364,7 +364,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with sshpubkey, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       sshpubkey:
@@ -375,7 +375,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without sshpubkey
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       sshpubkey: []
@@ -383,7 +383,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without sshpubkey, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       sshpubkey: []
@@ -393,7 +393,7 @@
   # certificate
 
   - name: Ensure test user test_user1 is present in idview test_idview with 1 certificate
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -402,7 +402,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with 1 certificate, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -411,7 +411,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with 1 certificate member
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -421,7 +421,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with 3 certificate members
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -433,7 +433,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview with 3 certificate members, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -445,7 +445,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without certificate members
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -457,7 +457,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without certificate members, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -469,7 +469,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without certificates
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate: []
@@ -477,7 +477,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without certificates, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate: []
@@ -485,7 +485,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test user test_user1 is present in idview test_idview without certificate members
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       certificate:
@@ -502,7 +502,7 @@
   # absent
 
   - name: Ensure test user test_user1 is absent in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       state: absent
@@ -510,7 +510,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test user test_user1 is absent in idview test_idview, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor: test_user1
       state: absent
@@ -518,7 +518,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure test users test_user2,3 are absent in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor:
       - test_user2
@@ -528,7 +528,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure test users test_user2,3 are absent in idview test_idview, again
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor:
       - test_user2
@@ -540,12 +540,12 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure test user test_user1 does not exist
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       name: test_user1
       state: absent
 
   - name: Ensure test users test_user1..3 are absent in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       idview: test_idview
       anchor:
       - test_user1
@@ -554,7 +554,7 @@
       state: absent
 
   - name: Ensure test idview test_idview does not exist
-    ipaidview:
+    freeipa.ansible_freeipa.ipaidview:
       name: test_idview
       state: absent
 

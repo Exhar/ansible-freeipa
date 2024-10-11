@@ -5,6 +5,6 @@
 
   tasks:
   - name: Disable global forwarders.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       forward_policy: none

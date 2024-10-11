@@ -6,20 +6,20 @@
 
   tasks:
   - name: Ensure HBAC Service Group login is absent
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
       state: absent
 
   - name: Ensure HBAC Service for sshd is present
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
 
   - name: Ensure HBAC Service Group login is present
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -27,7 +27,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Service Group login is present again
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -35,7 +35,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC Service sshd is present in HBAC Service Group login
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -46,7 +46,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Service sshd is present in HBAC Service Group login again
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -57,7 +57,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC Services sshd and foo are absent in HBAC Service Group login
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -70,7 +70,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Services sshd and foo are absent in HBAC Service Group login again
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -83,7 +83,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC Service Group login is absent
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login
@@ -92,7 +92,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Service Group login is absent again
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: login

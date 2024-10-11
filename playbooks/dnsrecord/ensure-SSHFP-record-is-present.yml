@@ -7,7 +7,7 @@
   tasks:
   # SSHFP fingerprint generated with `ssh-keygen -r host04.testzone.local`
   - name: Ensure a SSHFP record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: example.com
       name: host04

@@ -16,7 +16,7 @@
       server_fqdn: "{{ ansible_facts['fqdn'] }}"
 
   - name: Test hosts absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -25,7 +25,7 @@
       state: absent
 
   - name: Host "{{ host1_fqdn }}" present with random password
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       random: yes
@@ -44,14 +44,14 @@
       var: ipahost.host.randompassword
 
   - name: Host "{{ host1_fqdn }}" absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
       state: absent
 
   - name: Host "{{ host1_fqdn }}" is present with random password using hosts parameter
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -64,14 +64,14 @@
                  ipahost.failed
 
   - name: Host "{{ host1_fqdn }}" absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
       state: absent
 
   - name: Hosts "{{ host1_fqdn }}" and "{{ host2_fqdn }}" present with random password
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -99,7 +99,7 @@
       var: ipahost.host["{{ host2_fqdn }}"].randompassword
 
   - name: Enrolled host "{{ server_fqdn }}" fails to set random password with update_password always
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ server_fqdn }}"
@@ -115,7 +115,7 @@
       - "'Password cannot be set on enrolled host' in ipahost.msg"
 
   - name: Hosts "{{ host1_fqdn }}" and "{{ host2_fqdn }}" absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"

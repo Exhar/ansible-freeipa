@@ -4,7 +4,7 @@
   become: true
   tasks:
   - name: Ensure orphan group rules are removed
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       automember_type: group
       state: orphans_removed

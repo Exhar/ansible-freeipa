@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure absence of pwpolicies for group ops
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       name: ops
       state: absent

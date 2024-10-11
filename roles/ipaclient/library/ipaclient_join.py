@@ -105,7 +105,7 @@ author:
 EXAMPLES = '''
 # Join IPA to get the keytab
 - name: Join IPA in force mode with maximum 5 kinit attempts
-  ipaclient_join:
+  freeipa.ansible_freeipa.ipaclient_join:
     servers: ["server1.example.com","server2.example.com"]
     realm: EXAMPLE.COM
     basedn: dc=example,dc=com
@@ -118,7 +118,7 @@ EXAMPLES = '''
 
 # Join IPA to get the keytab using ipadiscovery return values
 - name: Join IPA
-  ipaclient_join:
+  freeipa.ansible_freeipa.ipaclient_join:
     servers: "{{ ipadiscovery.servers }}"
     realm: "{{ ipadiscovery.realm }}"
     basedn: "{{ ipadiscovery.basedn }}"
@@ -139,7 +139,7 @@ import os
 import tempfile
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     SECURE_PATH, sysrestore, paths, options, realm_to_suffix, kinit_keytab,
     GSSError, kinit_password, NUM_VERSION, get_ca_cert, get_ca_certs, errors,

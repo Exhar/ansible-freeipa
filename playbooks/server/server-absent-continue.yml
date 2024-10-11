@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure server "absent.example.com" is absent continuous mode
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       name: absent.example.com
       continue: yes

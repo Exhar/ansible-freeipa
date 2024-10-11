@@ -66,7 +66,7 @@ author:
 EXAMPLES = '''
 # Backup and set hostname
 - name: Backup and set hostname
-  ipaclient_ipa_conf:
+  freeipa.ansible_freeipa.ipaclient_ipa_conf:
     server: server.example.com
     domain: example.com
     realm: EXAMPLE.COM
@@ -78,7 +78,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports, paths, sysrestore, configure_ipa_conf
 )
 

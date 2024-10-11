@@ -5,7 +5,7 @@
 
   tasks:
   - name: Hosts host01.example.com and host01.example.com member certificate absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: host01.example.com

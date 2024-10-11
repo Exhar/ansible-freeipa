@@ -23,7 +23,7 @@
       msg: "{{ host_list | length }}"
 
   - name: Hosts present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_list[item : item + slice_size] }}"
     loop: "{{ range(0, host_list | length, slice_size) | list }}"
@@ -31,7 +31,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Hosts present, again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_list[item : item + slice_size] }}"
     loop: "{{ range(0, host_list | length, slice_size) | list }}"
@@ -39,7 +39,7 @@
     failed_when: result.changed or result.failed
 
   - name: Services present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_list[item : item + slice_size] }}"
     loop: "{{ range(0, service_list | length, slice_size) | list }}"
@@ -47,7 +47,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Services present, again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_list[item : item + slice_size] }}"
     loop: "{{ range(0, service_list | length, slice_size) | list }}"
@@ -55,7 +55,7 @@
     failed_when: result.changed or result.failed
 
   - name: Services absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_absent_list[item : item + slice_size] }}"
       state: absent
@@ -64,7 +64,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Services absent, again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_absent_list[item : item + slice_size] }}"
       state: absent
@@ -73,7 +73,7 @@
     failed_when: result.changed or result.failed
 
   - name: Hosts absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_absent_list[item : item + slice_size] }}"
       state: absent
@@ -82,7 +82,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Hosts absent, again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_absent_list[item : item + slice_size] }}"
       state: absent

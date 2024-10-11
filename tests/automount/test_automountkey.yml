@@ -6,18 +6,18 @@
 
   tasks:
   - name: Ensure test location TestLocation is present
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: TestLocation
 
   - name: Ensure test map TestMap is present
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: TestMap
       location: TestLocation
 
   - name: Ensure key NewKeyName is absent
-    ipaautomountkey:
+    freeipa.ansible_freeipa.ipaautomountkey:
       ipaadmin_password: SomeADMINpassword
       location: TestLocation
       map: TestMap
@@ -25,7 +25,7 @@
       state: absent
 
   - name: Ensure key TestKey is absent
-    ipaautomountkey:
+    freeipa.ansible_freeipa.ipaautomountkey:
       ipaadmin_password: SomeADMINpassword
       location: TestLocation
       map: TestMap
@@ -36,7 +36,7 @@
     block:
     ### test the key creation, and modification
     - name: Ensure key TestKey is present
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -47,7 +47,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure key TestKey is present again
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -59,7 +59,7 @@
 
     ## modify the key
     - name: Ensure key TestKey information has been updated
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -70,7 +70,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure key TestKey information has been updated again
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -82,7 +82,7 @@
 
     ## modify the name
     - name: Ensure key TestKey has been renamed to NewKeyName
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -93,7 +93,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure key TestKey is absent
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -103,7 +103,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure key NewKeyName is present
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -114,7 +114,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure failure when state is renamed and newname is not set
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -126,7 +126,7 @@
     ### cleanup after the tests
     always:
     - name: Ensure key NewKeyName is absent
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -134,7 +134,7 @@
         state: absent
 
     - name: Ensure key TestKey is absent
-      ipaautomountkey:
+      freeipa.ansible_freeipa.ipaautomountkey:
         ipaadmin_password: SomeADMINpassword
         location: TestLocation
         map: TestMap
@@ -142,14 +142,14 @@
         state: absent
 
     - name: Ensure map TestMap is absent
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
         state: absent
 
     - name: Ensure location TestLocation is absent
-      ipaautomountlocation:
+      freeipa.ansible_freeipa.ipaautomountlocation:
         ipaadmin_password: SomeADMINpassword
         name: TestLocation
         state: absent

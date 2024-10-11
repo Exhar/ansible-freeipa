@@ -4,10 +4,10 @@
   become: false
   gather_facts: false
   module_defaults:
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       ipaadmin_password: SomeADMINpassword
       # ipacert only supports client context
       ipaapi_context: "client"
@@ -33,7 +33,7 @@
     when: ipa_domain is not defined
 
   - name: Ensure test host exists
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       name: "certhost.{{ ipa_domain }}"
       state: present
       force: true
@@ -52,7 +52,7 @@
   # TESTS
 
   - name: Request certificate for host
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       csr: '{{ host_req.stdout }}'
       principal: "host/certhost.{{ ipa_domain }}"
       state: requested
@@ -64,7 +64,7 @@
       var: host_cert
 
   - name: Retrieve certificate for host
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: "{{ host_cert.certificate.serial_number }}"
       state: retrieved
     register: retrieved
@@ -75,35 +75,35 @@
       var: retrieved
 
   - name: Place certificate on hold
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: held
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Place certificate on hold, again
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: held
     register: result
     failed_when: result.changed or result.failed
 
   - name: Release hold on certificate
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: released
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Release hold on certificate, again
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: released
     register: result
     failed_when: result.changed or result.failed
 
   - name: Revoke certificate
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: revoked
       reason: keyCompromise
@@ -111,7 +111,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Revoke certificate, again
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: revoked
       reason: keyCompromise
@@ -119,7 +119,7 @@
     failed_when: result.changed or result.failed
 
   - name: Try to revoke inexistent certificate
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: 0x123456789
       reason: 9
       state: revoked
@@ -127,14 +127,14 @@
     failed_when: not (result.failed and ("Request failed with status 404" in result.msg or "Certificate serial number 0x123456789 not found" in result.msg))
 
   - name: Try to release revoked certificate
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: '{{ host_cert.certificate.serial_number }}'
       state: released
     register: result
     failed_when: not result.failed or "Cannot release hold on certificate revoked with reason" not in result.msg
 
   - name: Request certificate for host and save to file
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       csr: '{{ host_req.stdout }}'
       principal: "host/certhost.{{ ipa_domain }}"
       certificate_out: "/root/cert_1.pem"
@@ -150,7 +150,7 @@
     failed_when: result.changed or result.failed
 
   - name: Retrieve certificate for host to a file
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: "{{ host_cert.certificate.serial_number }}"
       certificate_out: "/root/retrieved.pem"
       state: retrieved
@@ -165,7 +165,7 @@
     failed_when: result.changed or result.failed
 
   - name: Request with invalid CSR.
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       csr: |
         -----BEGIN CERTIFICATE REQUEST-----
         BNxXqLcHylNEyg8SH0u63bWyxtgoDBfdZwdGAhYuJ+g4ev79J5eYoB0CAwEAAaAr
@@ -180,7 +180,7 @@
     failed_when: not (result.failed and "Failure decoding Certificate Signing Request" in result.msg)
 
   - name: Request certificate using a file
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       csr_file: "/root/host.csr"
       principal: "host/certhost.{{ ipa_domain }}"
       state: requested
@@ -188,7 +188,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Request certificate using an invalid profile
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       csr_file: "/root/host.csr"
       principal: "host/certhost.{{ ipa_domain }}"
       profile: invalid_profile
@@ -200,7 +200,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Removet test host
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       name: "certhost.{{ ipa_domain }}"
       state: absent
 

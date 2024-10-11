@@ -4,7 +4,7 @@
   become: true
 
   roles:
-  - role: ipaclient
+  - role: freeipa.ansible_freeipa.ipaclient
     state: absent
 
 - name: Uninstall IPA replicas
@@ -12,7 +12,7 @@
   become: true
 
   roles:
-  - role: ipareplica
+  - role: freeipa.ansible_freeipa.ipareplica
     state: absent
 
 - name: Uninstall IPA servers
@@ -20,5 +20,5 @@
   become: true
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: absent

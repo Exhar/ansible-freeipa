@@ -65,7 +65,7 @@ author:
 
 EXAMPLES = '''
 - name: IPA API calls for remaining enrollment parts
-  ipaclient_api:
+  freeipa.ansible_freeipa.ipaclient_api:
     servers: ["server1.example.com","server2.example.com"]
     domain: example.com
     hostname: client1.example.com
@@ -88,7 +88,7 @@ subject_base:
 import os
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     paths, x509, NUM_VERSION, serialization, certdb, api,
     delete_persistent_client_session_data, write_tmp_file,

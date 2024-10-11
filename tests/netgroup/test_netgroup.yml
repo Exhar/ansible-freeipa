@@ -9,7 +9,7 @@
     block:
     # CLEANUP TEST ITEMS
     - name: Ensure netgroups are absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -19,7 +19,7 @@
         state: absent
 
     - name: Ensure hostgroup is absent
-      ipahostgroup:
+      freeipa.ansible_freeipa.ipahostgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -33,19 +33,19 @@
       when: ipaserver_domain is not defined
 
     - name: Ensure netgroup my_netgroup2 is present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup2
 
     - name: Ensure netgroup my_netgroup3 is present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup3
 
     - name: Ensure hostgroup my_hostgroup1 is present
-      ipahostgroup:
+      freeipa.ansible_freeipa.ipahostgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_hostgroup1
@@ -53,7 +53,7 @@
     # TESTS
 
     - name: Ensure netgroup my_netgroup1 is present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -61,7 +61,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure netgroup my_netgroup1 is present again
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -70,7 +70,7 @@
 
     - name: Ensure netgroup my_netgroup1 is present with description and
         nisdomain
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -81,7 +81,7 @@
 
     - name: Ensure netgroup my_netgroup1 is present with new description
         and new nisdomain
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -92,7 +92,7 @@
 
     - name: Ensure netgroup my_netgroup1 is present with description and
         nisdomain again
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -102,7 +102,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure 2 netgroups aren't present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -113,7 +113,7 @@
         "Only one netgroup can be added at a time." not in result.msg
 
     - name: Ensure netgroup my_netgroup1 is absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -122,7 +122,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure netgroup my_netgroup1 is absent again
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup1
@@ -132,7 +132,7 @@
 
     # netgroup and hostgroup with the same name are deprecated (check hostgroup)
     - name: Ensure hostgroup my_netgroup2 isn't present
-      ipahostgroup:
+      freeipa.ansible_freeipa.ipahostgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_netgroup2
@@ -142,7 +142,7 @@
 
     # netgroup and hostgroup with the same name are deprecated (check netgroup)
     - name: Ensure netgroup my_hostgroup1 isn't present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: my_hostgroup1
@@ -151,7 +151,7 @@
         "Hostgroups and netgroups share a common namespace" not in result.msg
 
     - name: Ensure netgroups my_netgroup2, my_netgroup3 are absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -164,7 +164,7 @@
     always:
     # cleanup
     - name: Ensure netgroups are absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -174,7 +174,7 @@
         state: absent
 
     - name: Ensure hostgroups are absent
-      ipahostgroup:
+      freeipa.ansible_freeipa.ipahostgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:

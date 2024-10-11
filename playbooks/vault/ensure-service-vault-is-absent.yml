@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure service vault is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: svcvault
       service: "HTTP/{{ groups.ipaserver[0] }}"

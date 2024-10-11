@@ -4,7 +4,7 @@
 
   tasks:
   - name: Create multiple groups ops, sysops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: ops
@@ -12,7 +12,7 @@
       - name: sysops
 
   - name: Add user and group members to groups sysops and appops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: sysops
@@ -23,7 +23,7 @@
           - group2
 
   - name: Create multiple non-POSIX and external groups
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups:
       - name: nongroup

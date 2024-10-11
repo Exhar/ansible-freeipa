@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure user 'smbuser' is present with smb attributes
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: smbuser
       first: SMB

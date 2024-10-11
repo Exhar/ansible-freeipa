@@ -42,7 +42,7 @@ short_description: Manage FreeIPA autommount map
 description:
 - Add, delete, and modify an IPA automount map
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   location:
     description: automount location map is in
@@ -79,7 +79,7 @@ options:
 
 EXAMPLES = '''
   - name: create key TestKey
-    ipaautomountkey:
+    freeipa.ansible_freeipa.ipaautomountkey:
       ipaadmin_password: SomeADMINpassword
       locationcn: TestLocation
       mapname: TestMap
@@ -88,7 +88,7 @@ EXAMPLES = '''
       state: present
 
   - name: ensure key TestKey is absent
-    ipaautomountkey:
+    freeipa.ansible_freeipa.ipaautomountkey:
       ipaadmin_password: SomeADMINpassword
       location: TestLocation
       mapname: TestMap
@@ -99,7 +99,7 @@ EXAMPLES = '''
 RETURN = '''
 '''
 
-from ansible.module_utils.ansible_freeipa_module import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import (
     IPAAnsibleModule, ipalib_errors
 )
 

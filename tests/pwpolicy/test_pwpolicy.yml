@@ -9,27 +9,27 @@
     ansible.builtin.import_tasks: ../env_freeipa_facts.yml
 
   - name: Ensure maxlife of 90 for global_policy
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       maxlife: 90
 
   - name: Ensure absence of group ops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
       state: absent
 
   - name: Ensure absence of pwpolicies for group ops
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
       state: absent
 
   - name: Ensure presence of group ops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -38,7 +38,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure presence of pwpolicies for group ops
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -55,7 +55,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure presence of pwpolicies for group ops again
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -72,7 +72,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure maxlife of 49 for global_policy
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       maxlife: 49
@@ -80,7 +80,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure maxlife of 49 for global_policy again
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       maxlife: 49
@@ -88,7 +88,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure absence of pwpoliciy global_policy will fail
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       state: absent
@@ -96,7 +96,7 @@
     failed_when: not result.failed or "'global_policy' can not be made absent." not in result.msg
 
   - name: Ensure absence of pwpolicies for group ops
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -105,7 +105,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure maxlife of 90 for global_policy
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       maxlife: 90
@@ -113,7 +113,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure absence of pwpolicies for group ops
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -122,7 +122,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure presence of pwpolicies for group ops
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -137,7 +137,7 @@
       failinterval: 5
 
   - name: Ensure policies are cleared
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -153,7 +153,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure policies are cleared, again
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -169,7 +169,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure minlength is not cleared due to FreeIPA issue
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -185,7 +185,7 @@
     when: ipa_version is version("4.9", ">=")
     block:
     - name: Ensure maxrepeat of 2 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         maxrepeat: 2
@@ -193,7 +193,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure maxrepeat of 2 for global_policy, again
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         maxrepeat: 2
@@ -201,7 +201,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure maxrepeat of 0 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         maxrepeat: 0
@@ -209,7 +209,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure maxsequence of 4 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         maxsequence: 4
@@ -217,7 +217,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure maxsequence of 4 for global_policy, again
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         maxsequence: 4
@@ -225,7 +225,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure maxsequence of 0 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         maxsequence: 0
@@ -233,14 +233,14 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure usercheck and dictcheck have known values
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         dictcheck: false
         usercheck: false
 
     - name: Ensure dictcheck is set for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         dictcheck: yes
@@ -248,7 +248,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure dictcheck is set for global_policy, again
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         dictcheck: yes
@@ -256,7 +256,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure dictcheck is not set for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         dictcheck: no
@@ -264,7 +264,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure usercheck is set for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         usercheck: yes
@@ -272,7 +272,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure usercheck is set for global_policy, again
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         usercheck: yes
@@ -280,7 +280,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure usercheck is not set for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         usercheck: no
@@ -288,7 +288,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure usercheck and dictcheck are cleared for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         dictcheck: ""
@@ -297,7 +297,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure usercheck and dictcheck are cleared for global_policy, again
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         dictcheck: ""
@@ -309,7 +309,7 @@
     when: ipa_version is version("4.9.10", ">=")
     block:
     - name: Ensure grace limit is set to 10 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: 10
@@ -317,7 +317,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure grace limit is set to 0 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: 0
@@ -325,7 +325,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure grace limit is set to 0 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: 0
@@ -333,7 +333,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure grace limit is set to 0 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: -1
@@ -341,7 +341,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure grace limit is cleared for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: ""
@@ -349,7 +349,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure grace limit is cleared for global_policy, again
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: ""
@@ -357,7 +357,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure grace limit is not set to -2 for global_policy
-      ipapwpolicy:
+      freeipa.ansible_freeipa.ipapwpolicy:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         gracelimit: -2

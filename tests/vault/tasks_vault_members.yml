@@ -4,7 +4,7 @@
     ansible.builtin.import_tasks: env_setup.yml
 
   - name: Ensure vault is present
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       vault_type: "{{ vault.vault_type }}"
@@ -13,7 +13,7 @@
     when: vault.vault_type == 'standard'
 
   - name: Ensure vault is present
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       vault_password: SomeVAULTpassword
@@ -23,7 +23,7 @@
     when: vault.vault_type == 'symmetric'
 
   - name: Ensure vault is present
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       vault_type: "{{ vault.vault_type }}"
@@ -33,7 +33,7 @@
     when: vault.vault_type == 'asymmetric'
 
   - name: Ensure vault member user is present.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -43,7 +43,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault member user is present, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -53,7 +53,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure more vault member users are present.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -64,7 +64,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault member user is still present.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -74,7 +74,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vault users are absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -86,7 +86,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault users are absent, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -98,7 +98,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vault user is absent, once more.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -109,7 +109,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vault member group is present.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -118,7 +118,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault member group is present, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -127,7 +127,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vault member group is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -137,7 +137,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault member group is absent, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -147,7 +147,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vault member service is present.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -156,7 +156,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault member service is present, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -165,7 +165,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vault member service is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -175,7 +175,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vault member service is absent, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       action: member
@@ -185,7 +185,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user03 is an owner of vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       owners: user03
@@ -194,7 +194,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user03 is an owner of vault, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       owners: user03
@@ -203,7 +203,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user03 is not owner of vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       owners: user03
@@ -213,7 +213,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user03 is not owner of vault, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       owners: user03
@@ -223,7 +223,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vaultgroup is an ownergroup of vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownergroups: vaultgroup
@@ -232,7 +232,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vaultgroup is an ownergroup of vault, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownergroups: vaultgroup
@@ -241,7 +241,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure vaultgroup is not ownergroup of vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownergroups: vaultgroup
@@ -251,7 +251,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure vaultgroup is not ownergroup of vault, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownergroups: vaultgroup
@@ -261,7 +261,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure service is an owner of vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownerservices: "HTTP/{{ ansible_facts['fqdn'] }}"
@@ -270,7 +270,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service is an owner of vault, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownerservices: "HTTP/{{ ansible_facts['fqdn'] }}"
@@ -279,7 +279,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure service is not owner of vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownerservices: "HTTP/{{ ansible_facts['fqdn'] }}"
@@ -289,7 +289,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service is not owner of vault, again.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       ownerservices: "HTTP/{{ ansible_facts['fqdn'] }}"
@@ -299,7 +299,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure {{ vault.vault_type }} vault is absent
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       state: absent
@@ -307,7 +307,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure {{ vault.vault_type }} vault is absent, again
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: "{{ vault.name }}"
       state: absent

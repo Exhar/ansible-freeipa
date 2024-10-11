@@ -36,7 +36,7 @@ module: ipapwpolicy
 short_description: Manage FreeIPA pwpolicies
 description: Manage FreeIPA pwpolicies
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The group name
@@ -138,7 +138,7 @@ author:
 
 EXAMPLES = """
 # Ensure pwpolicy is set for ops
-- ipapwpolicy:
+- freeipa.ansible_freeipa.ipapwpolicy:
     ipaadmin_password: SomeADMINpassword
     name: ops
     minlife: 7
@@ -152,7 +152,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

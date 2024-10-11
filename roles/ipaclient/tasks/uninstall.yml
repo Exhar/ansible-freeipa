@@ -12,7 +12,7 @@
   changed_when: uninstall.rc == 0
 
 - name: Uninstall - Unconfigure DNS resolver
-  ipaclient_configure_dns_resolver:
+  freeipa.ansible_freeipa.ipaclient_configure_dns_resolver:
     state: absent
   when: ipaclient_cleanup_dns_resolver | bool
 

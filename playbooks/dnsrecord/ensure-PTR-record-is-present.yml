@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure a PTR record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: 5
       record_type: 'PTR'

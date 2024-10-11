@@ -14,13 +14,13 @@
       when: ipaserver_domain is not defined
 
     - name: Ensure test sudo rule is absent
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         state: absent
 
     - name: Ensure test host exist
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         hosts:
           - name: "host01.{{ ipaserver_domain }}"
@@ -30,7 +30,7 @@
 
     # start tests
     - name: Ensure sudorule exist with host member using FQDN.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: "host01.{{ ipaserver_domain }}"
@@ -38,7 +38,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure sudorule host member using short hostname.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: host01
@@ -46,7 +46,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure sudorule exist with another host using short name.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: host02
@@ -54,7 +54,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure sudorule exist with another host member using FQDN.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: "host02.{{ ipaserver_domain }}"
@@ -62,7 +62,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure sudorule exist with another host member using FQDN.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: "host02.{{ ipaserver_domain }}"
@@ -71,25 +71,25 @@
 
     # cleanup for member tests.
     - name: Ensure test sudo rule is absent
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         state: absent
 
     - name: Ensure test sudo rule is absent
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         state: absent
 
     # member tests
     - name: Ensure test sudo rule is present
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
 
     - name: Ensure sudorule host member using FQDN.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: "host01.{{ ipaserver_domain }}"
@@ -98,7 +98,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure sudorule host member using short hostname.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: host01
@@ -107,18 +107,18 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure test sudo rule is absent
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         state: absent
 
     - name: Ensure test sudo rule is present
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
 
     - name: Ensure sudorule host member using FQDN.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: "host01.{{ ipaserver_domain }}"
@@ -127,7 +127,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure sudorule host member using short hostname.
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         host: host01
@@ -138,13 +138,13 @@
     always:
     # cleanup
     - name: Ensure test sudo rule is absent
-      ipasudorule:
+      freeipa.ansible_freeipa.ipasudorule:
         ipaadmin_password: SomeADMINpassword
         name: sudorule_for_hosts
         state: absent
 
     - name: Ensure test host is absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         name:
           - "host01.{{ ipaserver_domain }}"

@@ -6,14 +6,14 @@
 
   tasks:
   - name: Remove test users
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: manager1,manager2,manager3,pinky,pinky2,igagarin,reddy
       state: absent
 
   - name: User manager1 present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: manager1
@@ -23,7 +23,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User manager2 present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: manager2
@@ -33,7 +33,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User manager3 present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: manager3
@@ -43,7 +43,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -88,7 +88,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user presence with 'random:false'
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -99,7 +99,7 @@
     failed_when: result.changed or result.failed
 
   - name: Set street, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -108,7 +108,7 @@
     failed_when: result.changed or result.failed
 
   - name: Clear street attribute.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -117,7 +117,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Clear street attribute, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -126,7 +126,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky present with changed settings
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -143,7 +143,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky add manager manager1
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -153,7 +153,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky add manager manager1 again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -163,7 +163,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky add manager manager2, manager3
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -173,7 +173,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky add manager manager2, manager3 again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -183,7 +183,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky remove manager manager1
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -194,7 +194,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky remove manager manager1 again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -205,7 +205,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky add principal pa
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -215,7 +215,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky add principal pa again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -225,7 +225,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky add principal pa1
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -235,7 +235,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky remove principal pa1
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -246,7 +246,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky remove principal pa1 again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -257,7 +257,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky remove principal pa
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -268,7 +268,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky remove principal non-existing pa2
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -279,7 +279,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky absent and preserved
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -289,7 +289,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky absent and preserved, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -299,7 +299,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky undeleted (preserved before)
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -308,7 +308,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky undeleted (preserved before), again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -317,7 +317,7 @@
     failed_when: result.changed or result.failed
 
   - name: Users pinky disabled
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -326,7 +326,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Users pinky disabled, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -335,7 +335,7 @@
     failed_when: result.changed or result.failed
 
   - name: User pinky enabled
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -344,7 +344,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky enabled, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -353,7 +353,7 @@
     failed_when: result.changed or result.failed
 
   - name: Rename user pinky to reddy
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -363,7 +363,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Rename user pinky to reddy, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -373,7 +373,7 @@
     failed_when: not result.failed or "No user 'pinky'" not in result.msg
 
   - name: Rename user reddy to reddy
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: reddy
@@ -383,7 +383,7 @@
     failed_when: result.changed or result.failed
 
   - name: Rename user reddy back to pinky
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: reddy
@@ -393,7 +393,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky absent and preserved for future exclusion.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -403,7 +403,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -412,7 +412,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User pinky absent and preserved, when already absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: pinky
@@ -422,7 +422,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user with GECOS information exists.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -433,7 +433,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user with GECOS information exists, again.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -444,7 +444,7 @@
     failed_when: result.changed or result.failed
 
   - name: Modify GECOS information.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -453,7 +453,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Updating with existent data, should not change user.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -464,7 +464,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure GECOS parameter is cleared.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -473,7 +473,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure GECOS parameter is cleared, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -482,7 +482,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure GECOS parameter cannot be used with state absent.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -492,7 +492,7 @@
     failed_when: not result.failed or "Argument 'gecos' can not be used with action 'user' and state 'absent'" not in result.msg
 
   - name: Ensure user igagarin is absent.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -501,7 +501,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user with non-ascii name exists.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -511,7 +511,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user with non-ascii name exists has proper GECOS value.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: igagarin
@@ -520,7 +520,7 @@
     failed_when: result.changed or result.failed
 
   - name: Remove test users
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: manager1,manager2,manager3,pinky,pinky2,igagarin

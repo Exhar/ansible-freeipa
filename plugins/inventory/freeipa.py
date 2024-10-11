@@ -40,7 +40,7 @@ options:
   plugin:
     description: Marks this as an instance of the "freeipa" plugin.
     required: True
-    choices: ["freeipa"]
+    choices: ["freeipa.ansible_freeipa.freeipa"]
   ipaadmin_principal:
     description: The admin principal.
     default: admin
@@ -79,12 +79,12 @@ author:
 
 EXAMPLES = """
 # inventory.config file in YAML format
-plugin: freeipa
+plugin: freeipa.ansible_freeipa.freeipa
 server: ipaserver-01.ipa.local
 ipaadmin_password: SomeADMINpassword
 
 # inventory.config file in YAML format with server TLS certificate verification
-plugin: freeipa
+plugin: freeipa.ansible_freeipa.freeipa
 server: ipaserver-01.ipa.local
 ipaadmin_password: SomeADMINpassword
 verify: ca.crt

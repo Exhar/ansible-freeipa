@@ -7,7 +7,7 @@
   tasks:
   # setup environment
   - name: Ensure test maps are absent
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name:
         - TestMap01
@@ -16,20 +16,20 @@
       state: absent
 
   - name: Ensure location TestLocation is absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: TestLocation
       state: absent
 
   - name: Ensure map TestMap is absent
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: TestMap
       location: TestLocation
       state: absent
 
   - name: Ensure location TestLocation is present
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: TestLocation
       state: present
@@ -38,7 +38,7 @@
   - name: Execute Automount Map tests
     block:
     - name: Ensure map TestMap is present
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -47,7 +47,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure map TestMap is present again
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -55,7 +55,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure map TestMap has a different description
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -64,7 +64,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure map TestMap has a different description, again
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -73,7 +73,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure map TestMap has an empty description
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -82,7 +82,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure map TestMap has an empty description, again
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -91,7 +91,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure map TestMap is removed
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -100,7 +100,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure map TestMap has been removed
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap
         location: TestLocation
@@ -109,7 +109,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure map TestMap01 is present
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap01
         location: TestLocation
@@ -118,7 +118,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure map TestMap02 is present
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name: TestMap02
         location: TestLocation
@@ -127,7 +127,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure TestMap01 and TestMap02 are both absent
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name:
           - TestMap01
@@ -138,7 +138,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure TestMap01 and TestMap02 are both absent again
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name:
           - TestMap01
@@ -151,7 +151,7 @@
     # CLEAN UP
     always:
     - name: Ensure test maps are absent
-      ipaautomountmap:
+      freeipa.ansible_freeipa.ipaautomountmap:
         ipaadmin_password: SomeADMINpassword
         name:
           - TestMap01
@@ -160,7 +160,7 @@
         state: absent
 
     - name: Ensure location TestLocation is absent
-      ipaautomountlocation:
+      freeipa.ansible_freeipa.ipaautomountlocation:
         ipaadmin_password: SomeADMINpassword
         name: TestLocation
         state: absent

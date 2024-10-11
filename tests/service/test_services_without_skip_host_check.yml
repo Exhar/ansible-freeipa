@@ -11,7 +11,7 @@
       ansible.builtin.include_tasks: env_setup.yml
 
     - name: Services are present
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
         services:
         - name: "HTTP/{{ svc_fqdn }}"
@@ -41,7 +41,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Services are present again
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
         services:
         - name: "HTTP/{{ svc_fqdn }}"
@@ -55,7 +55,7 @@
     # fail because two services with the same name should be added in the same
     # task.
     - name: Duplicate names in services failure test
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
         services:
         - name: "HTTP/{{ svc_fqdn }}"
@@ -66,7 +66,7 @@
       failed_when: result.changed or not result.failed or "is used more than once" not in result.msg
 
     - name: Services/name and name 'service' present
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
         name: "HTTP/{{ svc_fqdn }}"
         services:
@@ -75,20 +75,20 @@
       failed_when: result.changed or not result.failed or "parameters are mutually exclusive" not in result.msg
 
     - name: Services/name and name are absent
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
       register: result
       failed_when: result.changed or not result.failed or "one of the following is required" not in result.msg
 
     - name: Name is absent
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
         name:
       register: result
       failed_when: result.changed or not result.failed or "At least one name or services is required" not in result.msg
 
     - name: Only one service can be added at a time using name.
-      ipaservice:
+      freeipa.ansible_freeipa.ipaservice:
         ipaadmin_password: SomeADMINpassword
         name: example.com,example1.com
       register: result

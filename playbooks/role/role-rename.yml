@@ -6,7 +6,7 @@
 
   tasks:
   - name: Rename role.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: somerole
       rename: anotherrole

@@ -1,7 +1,7 @@
 ---
 # Cleanup tasks for the service module tests.
 - name: Ensure services are absent.
-  ipaservice:
+  freeipa.ansible_freeipa.ipaservice:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -15,7 +15,7 @@
     state: absent
 
 - name: Ensure host "{{ svc_fqdn }}" is absent
-  ipahost:
+  freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ svc_fqdn }}"
@@ -23,7 +23,7 @@
     state: absent
 
 - name: Ensure host is absent
-  ipahost:
+  freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -35,7 +35,7 @@
     state: absent
 
 - name: Ensure testing users are absent.
-  ipauser:
+  freeipa.ansible_freeipa.ipauser:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -44,7 +44,7 @@
     state: absent
 
 - name: Ensure testing groups are absent.
-  ipagroup:
+  freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -53,7 +53,7 @@
     state: absent
 
 - name: Ensure testing hostgroup hostgroup01 is absent.
-  ipagroup:
+  freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -61,7 +61,7 @@
     state: absent
 
 - name: Ensure testing hostgroup hostgroup02 is absent.
-  ipagroup:
+  freeipa.ansible_freeipa.ipagroup:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -69,7 +69,7 @@
     state: absent
 
 - name: Remove IP address for "nohost" host.
-  ipadnsrecord:
+  freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     zone_name: "{{ test_domain }}."

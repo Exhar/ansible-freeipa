@@ -5,7 +5,7 @@
 
   tasks:
   - name: Disable host host01.example.com
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: host01.example.com
       state: disabled

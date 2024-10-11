@@ -14,7 +14,7 @@
     block:
 
     - name: Add nonposix group.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         nonposix: yes
@@ -22,7 +22,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Set group to be external
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         external: yes
@@ -30,7 +30,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add AD users to group
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         external_member: "AD\\Domain Users"
@@ -38,7 +38,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add AD users to group, again
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         external_member: "AD\\Domain Users"
@@ -46,7 +46,7 @@
       failed_when: result.failed or result.changed
 
     - name: Remove external group
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         state: absent
@@ -54,7 +54,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add nonposix, external group, with AD users.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         nonposix: yes
@@ -64,7 +64,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add nonposix, external group, with AD users, again.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         nonposix: yes
@@ -74,7 +74,7 @@
       failed_when: result.failed or result.changed
 
     - name: Remove group
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         state: absent
@@ -82,7 +82,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Add nonposix group.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         nonposix: yes
@@ -90,7 +90,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Set group to be external, and add users.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         external: yes
@@ -99,7 +99,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Set group to be external, and add users, again.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         external: yes
@@ -108,7 +108,7 @@
       failed_when: result.failed or result.changed
 
     - name: Cleanup environment.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: extgroup
         state: absent

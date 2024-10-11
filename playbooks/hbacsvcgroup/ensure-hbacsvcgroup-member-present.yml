@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure HBAC Service sshd is present in HBAC Service Group login
-    ipahbacsvcgroup:
+    freeipa.ansible_freeipa.ipahbacsvcgroup:
       ipaadmin_password: SomeADMINpassword
       name: login
       hbacsvc:

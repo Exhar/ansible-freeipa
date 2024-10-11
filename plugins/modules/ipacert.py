@@ -37,7 +37,7 @@ module: ipacert
 short_description: Manage FreeIPA certificates
 description: Manage FreeIPA certificates
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   csr:
     description: |
@@ -112,7 +112,7 @@ author:
 
 EXAMPLES = """
 - name: Request a certificate for a web server
-  ipacert:
+  freeipa.ansible_freeipa.ipacert:
     ipaadmin_password: SomeADMINpassword
     state: requested
     csr: |
@@ -126,7 +126,7 @@ EXAMPLES = """
   register: cert
 
 - name: Request certificate for a user, with an appropriate profile.
-  ipacert:
+  freeipa.ansible_freeipa.ipacert:
     ipaadmin_password: SomeADMINpassword
     csr: |
       -----BEGIN CERTIFICATE REQUEST-----
@@ -144,19 +144,19 @@ EXAMPLES = """
     state: requested
 
 - name: Temporarily hold a certificate
-  ipacert:
+  freeipa.ansible_freeipa.ipacert:
     ipaadmin_password: SomeADMINpassword
     serial_number: 12345
     state: held
 
 - name: Remove a certificate hold
-  ipacert:
+  freeipa.ansible_freeipa.ipacert:
     ipaadmin_password: SomeADMINpassword
     state: released
     serial_number: 12345
 
 - name: Permanently revoke a certificate issued by a lightweight sub-CA
-  ipacert:
+  freeipa.ansible_freeipa.ipacert:
     ipaadmin_password: SomeADMINpassword
     state: revoked
     ca: vpn-ca
@@ -164,7 +164,7 @@ EXAMPLES = """
     reason: keyCompromise
 
 - name: Retrieve a certificate
-  ipacert:
+  freeipa.ansible_freeipa.ipacert:
     ipaadmin_password: SomeADMINpassword
     serial_number: 12345
     state: retrieved
@@ -245,7 +245,7 @@ import ssl
 
 from ansible.module_utils import six
 from ansible.module_utils._text import to_text
-from ansible.module_utils.ansible_freeipa_module import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import (
     IPAAnsibleModule, certificate_loader, write_certificate_list,
 )
 

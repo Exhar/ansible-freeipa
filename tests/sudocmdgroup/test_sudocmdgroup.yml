@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure sudocmds are present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -16,14 +16,14 @@
       state: present
 
   - name: Ensure sudocmdgroup is absent
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
       state: absent
 
   - name: Ensure sudocmdgroup is present
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -32,7 +32,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudocmdgroup is present again
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -41,7 +41,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudocmdgroup is absent
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -50,7 +50,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudocmdgroup is absent again
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -59,7 +59,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudocmdgroup is present, with sudocmds.
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -71,7 +71,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudocmdgroup is present, with sudocmds, again.
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -91,7 +91,7 @@
     failed_when: result.failed or not ("/usr/sbin/ifconfig" in result.stdout and "/usr/sbin/iwlist" in result.stdout)
 
   - name: Ensure sudocmdgroup, with sudocmds, is absent
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -100,7 +100,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudocmdgroup, with sudocmds, is absent again
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -109,7 +109,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure testing sudocmdgroup is present
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -118,7 +118,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudo commands are present in existing sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -130,7 +130,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudo commands are present in existing sudocmdgroup, again
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -142,7 +142,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudo commands are absent in existing sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -155,7 +155,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudo commands are absent in existing sudocmdgroup, again
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -168,7 +168,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudo commands are present in sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -181,7 +181,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure one sudo command is not present in sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -193,7 +193,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure one sudo command is present in sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -205,7 +205,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure the other sudo command is not present in sudocmdgroup
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network
@@ -217,7 +217,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure the other sudo commandsis not present in sudocmdgroup, again
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: network

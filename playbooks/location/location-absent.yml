@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure location my_location1 is absent
-    ipalocation:
+    freeipa.ansible_freeipa.ipalocation:
       ipaadmin_password: SomeADMINpassword
       name: my_location1
       state: absent

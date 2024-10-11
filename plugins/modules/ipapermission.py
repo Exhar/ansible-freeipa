@@ -36,7 +36,7 @@ module: ipapermission
 short_description: Manage FreeIPA permission
 description: Manage FreeIPA permission and permission members
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The permission name string.
@@ -137,14 +137,14 @@ author:
 
 EXAMPLES = """
 # Ensure permission NAME is present
-- ipapermission:
+- freeipa.ansible_freeipa.ipapermission:
     name: manage-my-hostgroup
     right: all
     bindtype: permission
     object_type: host
 
 # Ensure permission NAME is absent
-- ipapermission:
+- freeipa.ansible_freeipa.ipapermission:
     name: "Removed Permission Name"
     state: absent
 """
@@ -153,7 +153,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, to_text
 
 

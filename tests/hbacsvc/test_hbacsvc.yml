@@ -6,14 +6,14 @@
 
   tasks:
   - name: Ensure HBAC Service for http is absent
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: http,tftp
       state: absent
 
   - name: Ensure HBAC Service for http is present
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: http
@@ -21,7 +21,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Service for http is present again
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: http
@@ -29,7 +29,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC Service for tftp is present
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: tftp
@@ -38,7 +38,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Service for tftp is present again
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: tftp
@@ -47,7 +47,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure HBAC Services for http and tftp are absent
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: http,tftp
@@ -56,7 +56,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure HBAC Services for http and tftp are absent again
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: http,tftp

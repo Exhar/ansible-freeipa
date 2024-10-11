@@ -13,7 +13,7 @@
     block:
       # SETUP
       - name: Remove test users
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -21,7 +21,7 @@
 
       # TESTS
       - name: Ensure user testuser exists with all smb paramters
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -35,7 +35,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure user testuser exists all smb paramters, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -49,7 +49,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check SMB logon script is correct
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -59,7 +59,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check SMB profile path is correct
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -69,7 +69,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check SMB Home Directory is correct
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -79,7 +79,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check SMB Home Drive is correct
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -91,7 +91,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set SMB logon script
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -100,7 +100,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set SMB logon script, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -109,7 +109,7 @@
         failed_when: result.changed or result.failed
 
       - name: Clear SMB logon script
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -118,7 +118,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Clear SMB logon script, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -127,7 +127,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set SMB profile path
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -136,7 +136,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set SMB profile path, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -145,7 +145,7 @@
         failed_when: result.changed or result.failed
 
       - name: Clear SMB profile path
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -154,7 +154,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Clear SMB profile, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -163,7 +163,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set SMB home directory
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -172,7 +172,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set SMB home directory, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -181,7 +181,7 @@
         failed_when: result.changed or result.failed
 
       - name: Clear SMB home directory
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -190,7 +190,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Clear SMB home directory, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -199,7 +199,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set SMB home drive
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -208,7 +208,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set SMB home drive, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -217,7 +217,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set SMB home drive to invalid value
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -226,7 +226,7 @@
         failed_when: not result.failed or "value of smb_home_drive must be one of" not in result.msg
 
       - name: Clear SMB home drive
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -235,7 +235,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Clear SMB home drive, again
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser
@@ -246,7 +246,7 @@
     always:
       # CLEANUP
       - name: Remove test users
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: testuser

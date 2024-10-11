@@ -20,13 +20,13 @@
     delegate_to: localhost
 
   - name: Host test absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       state: absent
 
   - name: Host test present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       force: yes
@@ -34,7 +34,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host test cert members present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       certificate:
@@ -46,7 +46,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host test cert members present again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       certificate:
@@ -58,7 +58,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host test cert members absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       certificate:
@@ -71,7 +71,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host test cert members absent again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       certificate:
@@ -84,7 +84,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host test absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       state: absent
@@ -92,7 +92,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host test absent again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ 'test.' + ipaserver_domain }}"
       state: absent

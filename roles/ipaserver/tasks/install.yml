@@ -60,7 +60,7 @@
         not ipaserver_external_cert_files is defined
 
 - name: Install - Server installation test
-  ipaserver_test:
+  freeipa.ansible_freeipa.ipaserver_test:
     ### basic ###
     dm_password: "{{ ipadm_password }}"
     password: "{{ ipaadmin_password }}"
@@ -141,7 +141,7 @@
     block:
     - name: Install - Master password creation
       no_log: yes
-      ipaserver_master_password:
+      freeipa.ansible_freeipa.ipaserver_master_password:
         dm_password: "{{ ipadm_password }}"
         master_password: "{{ ipaserver_master_password | default(omit) }}"
       register: result_ipaserver_master_password
@@ -159,7 +159,7 @@
       __derived_master_password: "{{ ipaserver_master_password }}"
 
   - name: Install - Server preparation
-    ipaserver_prepare:
+    freeipa.ansible_freeipa.ipaserver_prepare:
       ### basic ###
       dm_password: "{{ ipadm_password }}"
       password: "{{ ipaadmin_password }}"
@@ -205,14 +205,14 @@
     register: result_ipaserver_prepare
 
   - name: Install - Setup NTP
-    ipaserver_setup_ntp:
+    freeipa.ansible_freeipa.ipaserver_setup_ntp:
       ntp_servers: "{{ result_ipaserver_test.ntp_servers | default(omit) }}"
       ntp_pool: "{{ result_ipaserver_test.ntp_pool | default(omit) }}"
     when: not ipaclient_no_ntp | bool and (ipaserver_external_cert_files
           is undefined or ipaserver_external_cert_files|length < 1)
 
   - name: Install - Setup DS
-    ipaserver_setup_ds:
+    freeipa.ansible_freeipa.ipaserver_setup_ds:
       dm_password: "{{ ipadm_password }}"
       password: "{{ ipaadmin_password }}"
       # master_password: "{{ __derived_master_password }}"
@@ -241,7 +241,7 @@
       idmax: "{{ result_ipaserver_test.idmax }}"
 
   - name: Install - Setup KRB
-    ipaserver_setup_krb:
+    freeipa.ansible_freeipa.ipaserver_setup_krb:
       dm_password: "{{ ipadm_password }}"
       password: "{{ ipaadmin_password }}"
       master_password: "{{ __derived_master_password }}"
@@ -268,7 +268,7 @@
       _pkinit_pkcs12_info: "{{ result_ipaserver_test._pkinit_pkcs12_info if result_ipaserver_test._pkinit_pkcs12_info != None else omit }}"
 
   - name: Install - Setup CA
-    ipaserver_setup_ca:
+    freeipa.ansible_freeipa.ipaserver_setup_ca:
       dm_password: "{{ ipadm_password }}"
       password: "{{ ipaadmin_password }}"
       master_password: "{{ __derived_master_password }}"
@@ -321,13 +321,13 @@
     when: not result_ipaserver_setup_ca.csr_generated | bool
     block:
     - name: Install - Setup otpd
-      ipaserver_setup_otpd:
+      freeipa.ansible_freeipa.ipaserver_setup_otpd:
         realm: "{{ result_ipaserver_test.realm }}"
         hostname: "{{ result_ipaserver_test.hostname }}"
         setup_ca: "{{ result_ipaserver_test.setup_ca }}"
 
     - name: Install - Setup HTTP
-      ipaserver_setup_http:
+      freeipa.ansible_freeipa.ipaserver_setup_http:
         dm_password: "{{ ipadm_password }}"
         password: "{{ ipaadmin_password }}"
         master_password: "{{ __derived_master_password }}"
@@ -359,7 +359,7 @@
         _http_pkcs12_info: "{{ result_ipaserver_test._http_pkcs12_info if result_ipaserver_test._http_pkcs12_info != None else omit }}"
 
     - name: Install - Setup KRA
-      ipaserver_setup_kra:
+      freeipa.ansible_freeipa.ipaserver_setup_kra:
         hostname: "{{ result_ipaserver_test.hostname }}"
         setup_ca: "{{ result_ipaserver_test.setup_ca }}"
         dm_password: "{{ ipadm_password }}"
@@ -370,7 +370,7 @@
       when: result_ipaserver_test.setup_kra | bool
 
     - name: Install - Setup DNS
-      ipaserver_setup_dns:
+      freeipa.ansible_freeipa.ipaserver_setup_dns:
         ip_addresses: "{{ ipaserver_ip_addresses | default([]) }}"
         domain: "{{ result_ipaserver_test.domain }}"
         realm: "{{ result_ipaserver_test.realm }}"
@@ -387,7 +387,7 @@
       when: ipaserver_setup_dns | bool
 
     - name: Install - Setup ADTRUST
-      ipaserver_setup_adtrust:
+      freeipa.ansible_freeipa.ipaserver_setup_adtrust:
         hostname: "{{ result_ipaserver_test.hostname }}"
         setup_ca: "{{ result_ipaserver_test.setup_ca }}"
         setup_adtrust: "{{ result_ipaserver_test.setup_adtrust }}"
@@ -403,7 +403,7 @@
             result_ipaserver_test.sid_generation_always
 
     - name: Install - Set DS password
-      ipaserver_set_ds_password:
+      freeipa.ansible_freeipa.ipaserver_set_ds_password:
         dm_password: "{{ ipadm_password }}"
         password: "{{ ipaadmin_password }}"
         domain: "{{ result_ipaserver_test.domain }}"
@@ -421,7 +421,7 @@
 
     - name: Install - Setup client
       ansible.builtin.include_role:
-        name: ipaclient
+        name: freeipa.ansible_freeipa.ipaclient
       vars:
         state: present
         ipaclient_on_master: yes
@@ -435,7 +435,7 @@
         ipaclient_install_packages: no
 
     - name: Install - Enable IPA
-      ipaserver_enable_ipa:
+      freeipa.ansible_freeipa.ipaserver_enable_ipa:
         hostname: "{{ result_ipaserver_test.hostname }}"
         setup_dns: "{{ ipaserver_setup_dns }}"
         setup_ca: "{{ result_ipaserver_test.setup_ca }}"

@@ -60,11 +60,11 @@ author:
 
 EXAMPLES = """
 # Ensure DNS nameservers and domain are configured
-- ipaclient_configure_dns_resolver:
+- freeipa.ansible_freeipa.ipaclient_configure_dns_resolver:
     nameservers: groups.ipaservers
     searchdomains: "{{ ipaserver_domain | default(ipaclient_domain) }}"
 # Ensure DNS nameservers and domain are not configured
-- ipaclient_configure_dns_resolver:
+- freeipa.ansible_freeipa.ipaclient_configure_dns_resolver:
     state: absent
 """
 
@@ -75,7 +75,7 @@ import os
 import os.path
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     check_imports, services, tasks, paths, sysrestore, CheckedIPAddress
 )
 try:

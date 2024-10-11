@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure zone exist, finding zone name from IP address.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name_from_ip: 10.1.2.3/24
     register: result

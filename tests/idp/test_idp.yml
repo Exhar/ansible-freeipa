@@ -4,7 +4,7 @@
   become: false
   gather_facts: false
   module_defaults:
-    ipaidp:
+    freeipa.ansible_freeipa.ipaidp:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
 
@@ -30,7 +30,7 @@
     # CLEANUP TEST ITEMS
 
     - name: Ensure idps my-keycloak-idp, my-github-idp and my-google-idp are absent
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name:
         - my-keycloak-idp
         - my-github-idp
@@ -43,7 +43,7 @@
     # TESTS
 
     - name: Ensure keycloak idp my-keycloak-idp is present
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         provider: keycloak
         organization: main
@@ -53,7 +53,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp is present, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         provider: keycloak
         organization: main
@@ -63,7 +63,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp is present with all params
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         organization: main
         base_url: https://keycloak.idm.example.com:8443/auth
@@ -77,7 +77,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp is present with all params, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         organization: main
         base_url: https://keycloak.idm.example.com:8443/auth
@@ -91,7 +91,7 @@
       # failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp auth_uri is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         auth_uri: ""
         client_id: my-client-id
@@ -99,7 +99,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp auth_uri is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         auth_uri: ""
         client_id: my-client-id
@@ -107,7 +107,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp dev_auth_uri is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         dev_auth_uri: ""
         client_id: my-client-id
@@ -115,7 +115,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp dev_auth_uri is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         dev_auth_uri: ""
         client_id: my-client-id
@@ -123,7 +123,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp token_uri is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         token_uri: ""
         client_id: my-client-id
@@ -131,7 +131,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp token_uri is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         token_uri: ""
         client_id: my-client-id
@@ -139,7 +139,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp userinfo_uri is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         userinfo_uri: ""
         client_id: my-client-id
@@ -147,7 +147,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp userinfo_uri is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         userinfo_uri: ""
         client_id: my-client-id
@@ -155,7 +155,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp keys_uri is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         keys_uri: ""
         client_id: my-client-id
@@ -163,7 +163,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp keys_uri is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         keys_uri: ""
         client_id: my-client-id
@@ -171,7 +171,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp issuer_url is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         issuer_url: ""
         client_id: my-client-id
@@ -179,7 +179,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp issuer_url is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         issuer_url: ""
         client_id: my-client-id
@@ -187,7 +187,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp scope is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         scope: ""
         client_id: my-client-id
@@ -195,7 +195,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp scope is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         scope: ""
         client_id: my-client-id
@@ -203,7 +203,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp idp_user_id is empty
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         idp_user_id: ""
         client_id: my-client-id
@@ -211,7 +211,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure keycloak idp my-keycloak-idp idp_user_id is empty, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         idp_user_id: ""
         client_id: my-client-id
@@ -219,13 +219,13 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure idp my-keycloak-idp is absent
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         delete_continue: true
         state: absent
 
     - name: Ensure keycloak idp my-keycloak-idp is failing with missing parameters
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-keycloak-idp
         provider: keycloak
         client_id: my-client-id
@@ -234,7 +234,7 @@
                    " is missing" not in result.msg
 
     - name: Ensure github idp my-github-idp is present
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-github-idp
         provider: github
         client_id: my-github-client-id
@@ -242,7 +242,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure github idp my-github-idp is present, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-github-idp
         provider: github
         client_id: my-github-client-id
@@ -250,7 +250,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure google idp my-google-idp is present using provider defaults without specifying provider
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-google-idp
         auth_uri: https://accounts.google.com/o/oauth2/auth
         dev_auth_uri: https://oauth2.googleapis.com/device/code
@@ -264,7 +264,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure google idp my-google-idp is present using provider defaults without specifying provider, again
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-google-idp
         auth_uri: https://accounts.google.com/o/oauth2/auth
         dev_auth_uri: https://oauth2.googleapis.com/device/code
@@ -278,7 +278,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure google idp my-google-idp is present without changes using provider
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name: my-google-idp
         provider: google
         client_id: my-google-client-id
@@ -288,7 +288,7 @@
     # CLEANUP TEST ITEMS
 
     - name: Ensure idps my-keycloak-idp, my-github-idp and my-google-idp are absent
-      ipaidp:
+      freeipa.ansible_freeipa.ipaidp:
         name:
         - my-keycloak-idp
         - my-github-idp

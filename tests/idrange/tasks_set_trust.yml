@@ -1,6 +1,6 @@
 ---
 - name: Ensure DNS forward zone to Windows AD
-  ipadnsforwardzone:
+  freeipa.ansible_freeipa.ipadnsforwardzone:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ adserver.domain }}"
@@ -10,7 +10,7 @@
   register: trust_dnszone
 
 - name: Set trust to Widows AD
-  ipatrust:
+  freeipa.ansible_freeipa.ipatrust:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     realm: "{{ adserver.domain }}"

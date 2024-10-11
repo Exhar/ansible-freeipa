@@ -9,14 +9,14 @@
     ansible.builtin.include_tasks: env_setup.yml
 
   - name: Add test host.
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "iron01.{{ safezone }}"
       ip_address: 192.168.1.253
       force: yes
 
   - name: Cleanup test records.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -32,7 +32,7 @@
       state: absent
 
   - name: Add NS records to test.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -42,7 +42,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Add DS records to test.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -54,7 +54,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Add CERT records to test.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -66,7 +66,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Modify CERT record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       name: host01
@@ -78,7 +78,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Verify modified CERT records exists.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -88,7 +88,7 @@
     failed_when: result.failed or result.changed
 
   - name: Verify if old CERT record does not exist.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -99,7 +99,7 @@
     failed_when: result.failed or result.changed
 
   - name: Verify if unmodified CERT record does exist.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -109,7 +109,7 @@
     failed_when: result.failed or result.changed
 
   - name: Try to modify the same DS record twice.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -130,7 +130,7 @@
     failed_when: not result.failed or "DS record does not contain" not in result.msg
 
   - name: Verify if unmodified DS record still exists.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -140,7 +140,7 @@
     failed_when: result.failed or result.changed
 
   - name: Verify DS record was modified
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -150,7 +150,7 @@
     failed_when: result.failed or result.changed
 
   - name: Verify if modified DS record was not created.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:
@@ -161,7 +161,7 @@
     failed_when: result.failed or result.changed
 
   - name: Cleanup test records.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: safezone.test
       records:

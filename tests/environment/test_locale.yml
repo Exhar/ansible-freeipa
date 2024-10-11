@@ -4,7 +4,7 @@
 
   tasks:
   - name: Ensure a host is not present, with language set to "de_DE".
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: nonexistent
       state: absent
@@ -14,7 +14,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure a host is not present, with language set to "C".
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: nonexistent
       state: absent
@@ -24,7 +24,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure a host is not present, using controller language.
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: nonexistent
       state: absent

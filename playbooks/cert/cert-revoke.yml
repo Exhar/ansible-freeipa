@@ -4,13 +4,13 @@
   become: false
   gather_facts: false
   module_defaults:
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: client
 
   tasks:
   - name: Permanently revoke a certificate issued by a lightweight sub-CA
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: 12345
       ca: vpn-ca
       # reason: keyCompromise (1)

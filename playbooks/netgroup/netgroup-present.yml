@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure netgroup my_netgroup1 is present
-    ipanetgroup:
+    freeipa.ansible_freeipa.ipanetgroup:
       ipaadmin_password: SomeADMINpassword
       name: my_netgroup1
       description: My netgroup 1

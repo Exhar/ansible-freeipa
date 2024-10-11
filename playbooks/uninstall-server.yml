@@ -4,5 +4,5 @@
   become: true
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: absent

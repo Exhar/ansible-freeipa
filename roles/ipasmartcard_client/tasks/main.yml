@@ -45,7 +45,7 @@
   # Validate ipasmartcard_client_ca_certs
 
   - name: Validate CA certs "{{ ipasmartcard_client_ca_certs }}"
-    ipasmartcard_client_validate_ca_certs:
+    freeipa.ansible_freeipa.ipasmartcard_client_validate_ca_certs:
       ca_cert_files: "{{ ipasmartcard_client_ca_certs }}"
     register: result_validate_ca_certs
 
@@ -91,7 +91,7 @@
   # GET VARS FROM IPA
 
   - name: Get VARS from IPA
-    ipasmartcard_client_get_vars:
+    freeipa.ansible_freeipa.ipasmartcard_client_get_vars:
     register: ipasmartcard_client_vars
 
   # Add pkcs11 module to systemwide db

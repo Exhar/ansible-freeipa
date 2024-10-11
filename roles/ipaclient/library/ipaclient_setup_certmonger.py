@@ -65,7 +65,7 @@ author:
 
 EXAMPLES = '''
 - name: Setup certmonger for IPA client
-  ipaclient_setup_certmonger:
+  freeipa.ansible_freeipa.ipaclient_setup_certmonger:
     realm: EXAMPLE.COM
     hostname: client1.example.com
     subject_base: O=EXAMPLE.COM
@@ -77,7 +77,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     options, sysrestore, paths, ScriptError, configure_certmonger
 )

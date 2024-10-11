@@ -4,6 +4,6 @@
 
   tasks:
   - name: Ensure a reverse DNS Zone with name inferred form an IP address
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name_from_ip: 192.8.2.0/22

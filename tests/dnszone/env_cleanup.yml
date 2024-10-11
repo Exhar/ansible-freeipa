@@ -1,6 +1,6 @@
 ---
 - name: Ensure zone is absent.
-  ipadnszone:
+  freeipa.ansible_freeipa.ipadnszone:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:

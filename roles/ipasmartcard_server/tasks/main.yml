@@ -36,7 +36,7 @@
   # Validate ipasmartcard_server_ca_certs
 
   - name: Validate CA certs "{{ ipasmartcard_server_ca_certs }}"
-    ipasmartcard_server_validate_ca_certs:
+    freeipa.ansible_freeipa.ipasmartcard_server_validate_ca_certs:
       ca_cert_files: "{{ ipasmartcard_server_ca_certs }}"
     register: result_validate_ca_certs
 
@@ -94,7 +94,7 @@
   # GET VARS FROM IPA
 
   - name: Get VARS from IPA
-    ipasmartcard_server_get_vars:
+    freeipa.ansible_freeipa.ipasmartcard_server_get_vars:
     register: ipasmartcard_server_vars
 
   # ENABLE NSS OCSP
@@ -161,7 +161,7 @@
   # This enables smart card login to WebUI
 
   - name: Enable OK-AS-DELEGATE flag on the HTTP principal
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       name: "HTTP/{{ ipaserver_hostname | default(ansible_facts['fqdn']) }}"
       ok_to_auth_as_delegate: yes
 

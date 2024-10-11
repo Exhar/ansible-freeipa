@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure vault is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       username: admin

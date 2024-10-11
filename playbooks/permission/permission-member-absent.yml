@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure permission privilege, "User Administrators", is absent
-    ipapermission:
+    freeipa.ansible_freeipa.ipapermission:
       ipaadmin_password: SomeADMINpassword
       name: TestPerm1
       privilege: "User Administrators"

@@ -35,7 +35,7 @@ module: ipaserver
 short_description: Manage FreeIPA server
 description: Manage FreeIPA server
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of server name strings.
@@ -109,55 +109,55 @@ author:
 
 EXAMPLES = """
 # Ensure server server.example.com is already present in the topology
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
 
 # Ensure server server.example.com is absent from the topology
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     state: absent
 
 # Ensure server server.example.com has location mylocation
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     location: mylocation
 
 # Ensure server server.example.com does not have a location
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     location: ""
 
 # Ensure server server.example.com has service weight 1
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     service_weight: 1
 
 # Ensure server server.example.com does not have a service weight
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     service_weight: -1
 
 # Ensure server server.example.com is hidden
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     hidden: yes
 
 # Ensure server server.example.com is not hidden
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     hidden: no
 
 # Ensure server server.example.com is absent from the topology in continuous
 # mode to ignore errors
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     continue: yes
@@ -165,7 +165,7 @@ EXAMPLES = """
 
 # Ensure server "server.example.com" is absent from the topology with skipping
 # the last of role check
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     ignore_last_of_role: yes
@@ -173,14 +173,14 @@ EXAMPLES = """
 
 # Ensure server server "server.example.com" is absent from the topology with
 # skipping the topology disconnect check
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     ignore_topology_disconnect: yes
     state: absent
 
 # Ensure server server.example.com is absent in force mode
-- ipaserver:
+- freeipa.ansible_freeipa.ipaserver:
     ipaadmin_password: SomeADMINpassword
     name: server.example.com
     force: yes
@@ -191,7 +191,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, DNSName
 
 

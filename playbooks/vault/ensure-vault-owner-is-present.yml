@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure vault owners and ownergroups are present.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: symvault
       username: admin

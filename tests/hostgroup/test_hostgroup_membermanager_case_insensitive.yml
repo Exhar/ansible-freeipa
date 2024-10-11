@@ -4,13 +4,13 @@
   become: true
   gather_facts: false
   module_defaults:
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
 
@@ -23,12 +23,12 @@
     block:
       # setup environment
       - name: Ensure host-group testhostgroup is absent
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: testhostgroup
           state: absent
 
       - name: Ensure user manageruser1 and manageruser2 are present
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           users:
           - name: manageruser1
             first: manageruser1
@@ -38,14 +38,14 @@
             last: Last2
 
       - name: Ensure managergroup1 and managergroup2 are present
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           groups:
           - name: managergroup1
           - name: managergroup2
 
       # tests
       - name: Ensure host-group testhostgroup is present
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: testhostgroup
 
       - name: Test membermanager_user parameter presence
@@ -56,7 +56,7 @@
             - { id: 3, value: 'ManagerUser1', expected: false }
         block:
           - name: "Ensure membermanager_user 'manageruser1' is present for testhostgroup"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup
               membermanager_user: "{{ item.value }}"
               action: member
@@ -74,7 +74,7 @@
             - { id: 3, value: 'ManagerGroup1', expected: false }
         block:
           - name: "Ensure membermanager_group 'managergroup1' is present for testhostgroup"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup
               membermanager_group: "{{ item.value }}"
               action: member
@@ -92,7 +92,7 @@
             - { id: 3, user: "{{ 'ManagerUser2' | lower }}", group: "{{ 'ManagerGroup2' | lower }}", expected: false }
         block:
           - name: "Ensure membermanager_group 'managergroup2' and membermanager_user 'manageruser2' are present for testhostgroup"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup
               membermanager_group: "{{ item.group }}"
               membermanager_user: "{{ item.user }}"
@@ -111,7 +111,7 @@
             - { id: 3, value: "{{ 'ManagerGroup1' | upper }}", expected: false }
         block:
           - name: "Ensure membermanager_group 'managergroup1' is absent for testhostgroup"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup
               membermanager_group: "{{ item.value }}"
               action: member
@@ -130,7 +130,7 @@
             - { id: 3, value: "{{ 'ManagerUser1' | upper }}", expected: false }
         block:
           - name: "Ensure membermanager_user 'manageruser1' is absent for testhostgroup"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup
               membermanager_user: "{{ item.value }}"
               action: member
@@ -149,7 +149,7 @@
             - { id: 3, user: "{{ 'ManagerUser2' | upper }}", group: "{{ 'ManagerGroup2' | upper }}", expected: false }
         block:
           - name: "Ensure membermanager_user 'manageruser2' and membermanager_group 'managergroup2' are absent for testhostgroup"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup
               membermanager_group: "{{ item.group }}"
               membermanager_user: "{{ item.user }}"
@@ -164,16 +164,16 @@
     always:
       # cleanup
       - name: Ensure host-group testhostgroup is absent
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: testhostgroup
           state: absent
 
       - name: Ensure user manangeruser1 and manageruser2 is absent
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           name: manageruser1,manageruser2
           state: absent
 
       - name: Ensure group managergroup1 and managergroup2 are absent
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           name: managergroup1,managergroup2
           state: absent

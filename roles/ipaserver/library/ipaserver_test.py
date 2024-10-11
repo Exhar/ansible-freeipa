@@ -302,7 +302,7 @@ from shutil import copyfile
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils._text import to_native
-from ansible.module_utils.ansible_ipa_server import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_server import (
     check_imports,
     AnsibleModuleLog, setup_logging, options, adtrust_imported, kra_imported,
     PKIIniLoader, MIN_DOMAIN_LEVEL, MAX_DOMAIN_LEVEL, check_zone_overlap,

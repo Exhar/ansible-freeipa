@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure shared vault is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: sharedvault
       shared: True

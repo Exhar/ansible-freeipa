@@ -7,7 +7,7 @@
   tasks:
   # Setup.
   - name: Ensure forwarders are absent.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -18,7 +18,7 @@
 
   # Tests.
   - name: Set forward with invalid IPv4.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -27,7 +27,7 @@
     failed_when: not result.failed or "Invalid IP for DNS forwarder" not in result.msg
 
   - name: Set config to invalid IP.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -36,7 +36,7 @@
     failed_when: not result.failed or "Invalid IP for DNS forwarder" not in result.msg
 
   - name: Set config to invalid IPv6.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -45,7 +45,7 @@
     failed_when: not result.failed or "Invalid IP for DNS forwarder" not in result.msg
 
   - name: Set dnsconfig.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -57,7 +57,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Set dnsconfig, with the same values.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -69,7 +69,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwarder 8.8.8.8 is absent.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -80,7 +80,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure forwarder 8.8.8.8 is absent, again.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -91,7 +91,7 @@
     failed_when: result.changed or result.failed
 
   - name: Check if forwarder 8.8.4.4 is present.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -101,7 +101,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwarder 8.8.8.8 is present.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -110,7 +110,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Check forwarder 8.8.4.4 is still present.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:
@@ -120,7 +120,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Disable global forwarders.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forward_policy: none
@@ -128,7 +128,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Disable global forwarders, again.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forward_policy: none
@@ -136,7 +136,7 @@
     failed_when: result.changed or result.failed
 
   - name: Re-enable global forwarders.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forward_policy: first
@@ -144,7 +144,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Re-enable global forwarders, again.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forward_policy: first
@@ -152,7 +152,7 @@
     failed_when: result.changed or result.failed
 
   - name: Disable PTR record synchronization.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       allow_sync_ptr: no
@@ -160,7 +160,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Disable PTR record synchronization, again.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       allow_sync_ptr: no
@@ -168,7 +168,7 @@
     failed_when: result.changed or result.failed
 
   - name: Re-enable PTR record synchronization.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       allow_sync_ptr: yes
@@ -176,7 +176,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Re-enable PTR record synchronization, again.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       allow_sync_ptr: yes
@@ -184,7 +184,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure forwarders are absent.
-    ipadnsconfig:
+    freeipa.ansible_freeipa.ipadnsconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       forwarders:

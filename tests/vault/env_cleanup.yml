@@ -1,7 +1,7 @@
 ---
   # Tasks executed to clean up test environment for Vault module.
   - name: Ensure user vaults are absent
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name:
       - stdvault
@@ -16,7 +16,7 @@
       loop_var: username
 
   - name: Ensure shared vaults are absent
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name:
       - sharedvault
@@ -24,7 +24,7 @@
       state: absent
 
   - name: Ensure test users do not exist.
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -34,7 +34,7 @@
       state: absent
 
   - name: Ensure test groups do not exist.
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: vaultgroup

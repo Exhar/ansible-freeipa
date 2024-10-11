@@ -167,7 +167,7 @@ author:
 
 EXAMPLES = '''
 - name: Create IPA client NSS database
-  ipaclient_setup_nss:
+  freeipa.ansible_freeipa.ipaclient_setup_nss:
     servers: ["server1.example.com","server2.example.com"]
     domain: example.com
     realm: EXAMPLE.COM
@@ -186,7 +186,7 @@ import os
 import time
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     options, sysrestore, paths, ansible_module_get_parsed_ip_addresses,
     api, errors, create_ipa_nssdb, ipautil, ScriptError, CLIENT_INSTALL_ERROR,

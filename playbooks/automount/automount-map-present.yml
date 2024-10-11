@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure map TestMap is present
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: TestMap
       location: TestLocation

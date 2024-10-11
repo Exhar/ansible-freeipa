@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure github idp my-github-idp is absent
-    ipaidp:
+    freeipa.ansible_freeipa.ipaidp:
       ipaadmin_password: SomeADMINpassword
       name: my-github-idp
       state: absent

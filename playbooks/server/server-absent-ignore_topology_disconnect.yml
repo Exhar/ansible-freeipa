@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure server "absent.example.com" is absent with ignoring topology disconnects
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       name: absent.example.com
       ignore_topology_disconnect: yes

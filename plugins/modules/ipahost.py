@@ -35,7 +35,7 @@ module: ipahost
 short_description: Manage FreeIPA hosts
 description: Manage FreeIPA hosts
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The full qualified domain name.
@@ -420,7 +420,7 @@ author:
 
 EXAMPLES = """
 # Ensure host is present
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     name: host01.example.com
     description: Example host
@@ -435,14 +435,14 @@ EXAMPLES = """
     state: present
 
 # Ensure host is present without DNS
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     name: host02.example.com
     description: Example host
     force: yes
 
 # Ensure multiple hosts are present with random passwords
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     hosts:
     - name: host01.example.com
@@ -451,7 +451,7 @@ EXAMPLES = """
       random: yes
 
 # Initiate generation of a random password for the host
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     name: host01.example.com
     description: Example host
@@ -459,7 +459,7 @@ EXAMPLES = """
     random: yes
 
 # Ensure multiple hosts are present with principals
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     hosts:
     - name: host01.example.com
@@ -471,14 +471,14 @@ EXAMPLES = """
     action: member
 
 # Ensure host is disabled
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     name: host01.example.com
     update_dns: yes
     state: disabled
 
 # Ensure host is absent
-- ipahost:
+- freeipa.ansible_freeipa.ipahost:
     ipaadmin_password: SomeADMINpassword
     name: host01.example.com
     state: absent
@@ -507,7 +507,7 @@ host:
           returned: always
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, \
     encode_certificate, is_ipv4_addr, is_ipv6_addr, ipalib_errors, \
     gen_add_list, gen_intersection_list, normalize_sshpubkey, \

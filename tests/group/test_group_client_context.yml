@@ -10,7 +10,7 @@
 
   # Test will only be executed if host is not a server.
   - name: Execute with server context in the client.
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: server
       name: ThisShouldNotWork

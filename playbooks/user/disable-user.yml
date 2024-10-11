@@ -5,7 +5,7 @@
 
   tasks:
   - name: Disable user pinky
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: pinky
       state: disabled

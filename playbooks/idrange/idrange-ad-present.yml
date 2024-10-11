@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure AD-trust idrange is present
-    ipaidrange:
+    freeipa.ansible_freeipa.ipaidrange:
       ipaadmin_password: SomeADMINpassword
       name: ad_id_range
       base_id: 150000000

@@ -21,7 +21,7 @@
 
   # tests
   - name: Ensure that dns record 'host01' is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: host01
@@ -32,7 +32,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that dns record 'host01' is present, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: host01
@@ -43,7 +43,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that dns record 'host02' is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: host02
@@ -54,7 +54,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that dns record 'host02' is present, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: host02
@@ -65,7 +65,7 @@
     failed_when: result.changed or result.failed
 
   - name: Modify record 'host02' with multiple A and AAAA record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       records:
@@ -83,7 +83,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Modify record 'host02' with multiple A and AAAA record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       records:
@@ -101,7 +101,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure 'host02' A6 record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -111,7 +111,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure 'host02' A6 record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -121,7 +121,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure 'host02' A6 record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -132,7 +132,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure 'host02' A6 record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -143,7 +143,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that dns record 'host03' is present, with reverse record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: host03
@@ -154,7 +154,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that dns record 'host03' is present, with reverse record, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: host03
@@ -166,7 +166,7 @@
     failed_when: result.changed or result.failed
 
   - name: Delete all entries associated with host03
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -177,7 +177,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Delete all entries associated with host03, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -188,7 +188,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has CNAME
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -199,7 +199,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has CNAME, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -209,7 +209,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' CNAME is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -220,7 +220,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' CNAME is absent, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -232,7 +232,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' and 'host03' have CNAME, with cname_hostname
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -245,7 +245,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has CNAME, with cname_hostname, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -255,7 +255,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' CNAME is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -266,7 +266,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has A record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -276,7 +276,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has A record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -286,7 +286,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has the same A record with reverse.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -297,7 +297,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has the same A record with reverse, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -308,7 +308,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has another A record with reverse.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -318,7 +318,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has another A record with reverse, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -329,7 +329,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has AAAA record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -340,7 +340,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has AAAA record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -351,7 +351,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has AAAA record, without reverse.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -361,7 +361,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' previous AAAA record, now has a reverse record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -372,7 +372,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' previous AAAA record, now has a reverse record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -383,7 +383,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has PTR record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ zone_prefix_reverse_24 }}"
@@ -393,7 +393,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has PTR record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ zone_prefix_reverse_24 }}"
@@ -403,7 +403,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has PTR record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ zone_prefix_reverse_24 }}"
@@ -414,7 +414,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has PTR record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ zone_prefix_reverse_24 }}"
@@ -425,7 +425,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has DNAME record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -435,7 +435,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has DNAME record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -445,7 +445,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' DNAME record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -456,7 +456,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' DNAME record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -469,7 +469,7 @@
   # This task only ensures proper records are present,
   # it is not testing anything, and should not faild.
   - name: Ensure that 'host04' has a A record with reverse, for NS record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -480,7 +480,7 @@
     failed_when: result.failed
 
   - name: Ensure that 'host04' has NS record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -490,7 +490,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has NS record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -502,7 +502,7 @@
     failed_when: result.changed or not result.failed
 
   - name: Ensure that 'host04' NS record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -513,7 +513,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' NS record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -524,7 +524,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' DLV record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -538,7 +538,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that 'host04' DLV record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -551,7 +551,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure that 'host04' DLV record is present, with a different key tag.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -562,7 +562,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that 'host04' DLV second record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -576,7 +576,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that 'host04' DLV record is changed, in presence of multiple records.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -587,7 +587,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that 'host04' DLV record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -598,7 +598,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that 'host04' DLV record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -609,7 +609,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure that 'host04' DLV record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -620,7 +620,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that dns record 'iron01' is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: iron01
@@ -630,7 +630,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that NS record for "{{ safezone }}" is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: iron01
@@ -640,7 +640,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'iron01' DS record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ safezone }}"
@@ -654,7 +654,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'iron01' DS record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ safezone }}"
@@ -667,7 +667,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'iron01' DS record is present, with a different key tag.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ safezone }}"
@@ -678,7 +678,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'iron01' DS record is present, with a different key tag, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ safezone }}"
@@ -689,7 +689,7 @@
     failed_when: result.changed or (result.failed and "DS record does not contain" not in result.msg)
 
   - name: Ensure that 'iron01' DS record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ safezone }}"
@@ -700,7 +700,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'iron01' DS record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ safezone }}"
@@ -711,7 +711,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' AFSDB record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -722,7 +722,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' AFSDB record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -733,7 +733,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' AFSDB record subtype is 2.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -744,7 +744,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' AFSDB record subtype is 2, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -755,7 +755,7 @@
     failed_when: result.changed or (result.failed and "AFSDB record does not contain" not in result.msg)
 
   - name: Ensure that 'host04' AFSDB record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -766,7 +766,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' AFSDB record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -777,7 +777,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' CERT record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -790,7 +790,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' CERT record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -803,7 +803,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' CERT record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -814,7 +814,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' CERT record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -825,7 +825,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' KX record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -836,7 +836,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' KX record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -847,7 +847,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' KX record is present with preference set to 20.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -858,7 +858,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' KX record is present with preference set to 20, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -869,7 +869,7 @@
     failed_when: result.changed or (result.failed and "KX record does not contain" not in result.msg)
 
   - name: Ensure that 'host04' KX record is present with preference set to 20, one more time.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -880,7 +880,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' KX record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -891,7 +891,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' KX record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -902,7 +902,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' MX record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -913,7 +913,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' MX record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -924,7 +924,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' MX record is present with preference set to 20.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -935,7 +935,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' MX record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -946,7 +946,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' MX record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -957,7 +957,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' LOC record is present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -978,7 +978,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' LOC record is present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -999,7 +999,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' LOC record is present, with loc_size 1.00.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1010,7 +1010,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' LOC record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1021,7 +1021,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' LOC record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1032,7 +1032,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that '_sip._udp' service has NAPTR record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1047,7 +1047,7 @@
     failed_when: result.failed or not result.changed or result.failed
 
   - name: Ensure that '_sip._udp' service has NAPTR record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1062,7 +1062,7 @@
     failed_when: result.failed or result.changed
 
   - name: Change '_sip._udp' service NAPTR record `preference` to 20.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1073,7 +1073,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that '_sip._udp' service has NAPTR record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1086,7 +1086,7 @@
       naptr_replacement: "."
 
   - name: Ensure that '_sip._udp' service has NAPTR record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1099,7 +1099,7 @@
       naptr_replacement: "."
 
   - name: Change '_sip._udp' service NAPTR record `preference` to 50, when multiple records are present. (BZ 1881436)
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1110,7 +1110,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that '_sip._udp' service has NAPTR record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1122,7 +1122,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure that '_sip._udp' service has NAPTR record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1134,7 +1134,7 @@
     failed_when: result.failed or result.changed
 
   - name: Clear NAPTR records.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1144,7 +1144,7 @@
 
 
   - name: Ensure that '_sip._udp' service has SRV record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1157,7 +1157,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that '_sip._udp' service has SRV record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1170,7 +1170,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure '_sip._udp' SRV record has priority equals to 4.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1184,7 +1184,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure '_sip._udp' SRV record has priority equals to 4, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1198,7 +1198,7 @@
     failed_when: result.changed or (result.failed and "SRV record does not contain" not in result.msg)
 
   - name: Ensurer '_sip._udp' SRV record has priority 2, weight 20
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1211,7 +1211,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensurer '_sip._udp' SRV record has priority 2, weight 20, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1224,7 +1224,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that '_sip._udp' SRV record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1235,7 +1235,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that '_sip._udp' SRV record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1247,7 +1247,7 @@
 
   # SSHFP fingerprint generated with `ssh-keygen -r host04."{{ testzone }}"`
   - name: Ensure that 'host04' has SSHFP record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1259,7 +1259,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has SSHFP record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1271,7 +1271,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' SSHFP record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1282,7 +1282,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' SSHFP record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1295,7 +1295,7 @@
   # Data is sha356sum of 'Some Text to Test', it should be created from
   # a real certificate.
   - name: Ensure that 'host04' has TLSA record present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1308,7 +1308,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' has TLSA record present, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1321,7 +1321,7 @@
     failed_when: result.changed or result.failed
 
   - name: Modify 'host04' has TLSA record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1332,7 +1332,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Modify 'host04' has TLSA record, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1343,7 +1343,7 @@
     failed_when: result.changed or (result.failed and "TLSA record does not contain" not in result.msg)
 
   - name: Ensure that 'host04' TLSA record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1354,7 +1354,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' TLSA record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1365,7 +1365,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' has TXT record present.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1385,7 +1385,7 @@
   #   failed_when: result.changed or result.failed
 
   - name: Change value of  'host04' TXT record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1396,7 +1396,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Add a second TXT record to 'host04'.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1406,7 +1406,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Add a second TXT record to 'host04', again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1416,7 +1416,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that one of 'host04' TXT record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1427,7 +1427,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that one of 'host04' TXT record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1438,7 +1438,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that 'host04' TXT record are all absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1451,7 +1451,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that 'host04' TXT record are all absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1464,7 +1464,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that '_ftp._tcp' has URI record.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1476,7 +1476,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that '_ftp._tcp' has URI record, again
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1488,7 +1488,7 @@
     failed_when: result.changed or result.failed
 
   - name: Change '_ftp._tcp' URI record weight to 3 and priority to 5.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1500,7 +1500,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Verify if modification worked.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1512,7 +1512,7 @@
 
 
   - name: Change '_ftp._tcp' URI record weight to 3 and priority to 5, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1524,7 +1524,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that '_ftp._tcp' URI record is absent.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"
@@ -1535,7 +1535,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that '_ftp._tcp' URI record is absent, again.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       zone_name: "{{ testzone }}"

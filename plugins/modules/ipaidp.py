@@ -35,7 +35,7 @@ module: ipaidp
 short_description: Manage FreeIPA idp
 description: Manage FreeIPA idp
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of idp name strings.
@@ -134,7 +134,7 @@ author:
 
 EXAMPLES = """
 # Ensure keycloak idp my-keycloak-idp is present
-- ipaidp:
+- freeipa.ansible_freeipa.ipaidp:
     ipaadmin_password: SomeADMINpassword
     name: my-keycloak-idp
     provider: keycloak
@@ -143,7 +143,7 @@ EXAMPLES = """
     client_id: my-client-id
 
 # Ensure google idp my-google-idp is present
-- ipaidp:
+- freeipa.ansible_freeipa.ipaidp:
     ipaadmin_password: SomeADMINpassword
     name: my-google-idp
     auth_uri: https://accounts.google.com/o/oauth2/auth
@@ -155,21 +155,21 @@ EXAMPLES = """
     idp_user_id: email
 
 # Ensure google idp my-google-idp is present without using provider
-- ipaidp:
+- freeipa.ansible_freeipa.ipaidp:
     ipaadmin_password: SomeADMINpassword
     name: my-google-idp
     provider: google
     client_id: my-google-client-id
 
 # Ensure keycloak idp my-keycloak-idp is absent
-- ipaidp:
+- freeipa.ansible_freeipa.ipaidp:
     ipaadmin_password: SomeADMINpassword
     name: my-keycloak-idp
     delete_continue: true
     state: absent
 
 # Ensure idps my-keycloak-idp, my-github-idp and my-google-idp are absent
-- ipaidp:
+- freeipa.ansible_freeipa.ipaidp:
     ipaadmin_password: SomeADMINpassword
     name:
     - my-keycloak-idp
@@ -183,7 +183,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, template_str, urlparse
 from ansible.module_utils import six
 from copy import deepcopy

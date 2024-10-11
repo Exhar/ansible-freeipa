@@ -12,7 +12,7 @@
   # GET CURRENT CONFIG
 
   - name: Return current values of the global configuration options
-    ipaconfig:
+    freeipa.ansible_freeipa.ipaconfig:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
     register: previous
@@ -23,7 +23,7 @@
     when: ipa_version is version("4.9.8", ">=")
     block:
     - name: Check if SID is enabled.
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         enable_sid: yes
@@ -31,7 +31,7 @@
       register: sid_disabled
 
     - name: Ensure netbios_name can't be changed without SID enabled.  # noqa no-handler
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         netbios_name: IPATESTPLAY
@@ -40,7 +40,7 @@
       when: sid_disabled.changed
 
     - name: Ensure SIDs can't be changed without SID enabled.  # noqa no-handler
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         add_sids: yes
@@ -49,7 +49,7 @@
       when: sid_disabled.changed
 
     - name: Ensure SID is enabled.
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         enable_sid: yes
@@ -57,7 +57,7 @@
       failed_when: result.failed or previous.config.enable_sid == result.changed
 
     - name: Ensure SID is enabled, again.
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         enable_sid: yes
@@ -65,7 +65,7 @@
       failed_when: result.failed or result.changed
 
     - name: Try to Ensure SID is disabled.
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         enable_sid: no
@@ -73,7 +73,7 @@
       failed_when: not result.failed or "SID cannot be disabled." not in result.msg
 
     - name: Ensure netbios_name is "IPATESTPLAY"
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         enable_sid: yes
@@ -82,7 +82,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure netbios_name is "IPATESTPLAY", again
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         netbios_name: IPATESTPLAY
@@ -90,7 +90,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure netbios_name cannot be set with lowercase characters
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         netbios_name: IPATESTplay
@@ -100,7 +100,7 @@
          and "Up to 15 characters and only uppercase ASCII letters, digits and dashes are allowed" not in result.message)
 
     - name: Ensure netbios_name cannot be set different lowercase characters
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         netbios_name: otherPLAY
@@ -112,7 +112,7 @@
     # add_sids is not idempotent as it always tries to generate the missing
     # SIDs for users and groups.
     - name: Add SIDs to users and groups.
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         add_sids: yes
@@ -121,7 +121,7 @@
     always:
     # Once SID is enabled, it cannot be reverted.
     - name: Revert netbios_name to original configuration
-      ipaconfig:
+      freeipa.ansible_freeipa.ipaconfig:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         netbios_name: "{{ previous.config.netbios_name | default(omit) }}"

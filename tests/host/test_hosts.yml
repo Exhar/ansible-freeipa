@@ -19,7 +19,7 @@
       host6_fqdn: "{{ 'host6.' + ipaserver_domain }}"
 
   - name: Host host1..host6 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -31,7 +31,7 @@
       state: absent
 
   - name: Hosts host1..host6 present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -50,7 +50,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Hosts host1..host6 present again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -69,7 +69,7 @@
     failed_when: result.changed or result.failed
 
   - name: Hosts host1..host6 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -83,7 +83,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Hosts host1..host6 absent again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -99,7 +99,7 @@
   # Use failed_when: not result.failed as this test needs to fail because a
   # host is added two times in the same task
   - name: Duplicate names in hosts failure test
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"

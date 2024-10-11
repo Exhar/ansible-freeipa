@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure sudocmdgroup is absent
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       name: network
       state: absent

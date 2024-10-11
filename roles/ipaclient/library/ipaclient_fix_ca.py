@@ -64,7 +64,7 @@ author:
 
 EXAMPLES = '''
 - name: Fix IPA ca certificate
-  ipaclient_fix_ca:
+  freeipa.ansible_freeipa.ipaclient_fix_ca:
     servers: ["server1.example.com","server2.example.com"]
     realm: EXAMPLE.COM
     basedn: dc=example,dc=com
@@ -78,7 +78,7 @@ RETURN = '''
 import os
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports,
     SECURE_PATH, paths, sysrestore, options, NUM_VERSION, get_ca_cert,
     get_ca_certs, errors

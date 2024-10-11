@@ -10,7 +10,7 @@
 
   # Add service to test keytab create/retrieve attributes.
   - name: Ensure test service is present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       pac_type:
@@ -25,7 +25,7 @@
   # tests
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for users.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_user:
@@ -36,7 +36,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for users, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_user:
@@ -47,7 +47,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for users.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_user:
@@ -59,7 +59,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for users, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_user:
@@ -71,7 +71,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for group.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_group:
@@ -82,7 +82,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for group, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_group:
@@ -93,7 +93,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for group.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_group:
@@ -105,7 +105,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for group, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_group:
@@ -117,7 +117,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for host.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_host:
@@ -128,7 +128,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for host, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_host:
@@ -139,7 +139,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for host.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_host:
@@ -151,7 +151,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for host, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_host:
@@ -163,7 +163,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for hostgroup.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_hostgroup:
@@ -174,7 +174,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab present for hostgroup, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_hostgroup:
@@ -185,7 +185,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for hostgroup.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_hostgroup:
@@ -197,7 +197,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_create_keytab absent for hostgroup, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_create_keytab_hostgroup:
@@ -209,7 +209,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for users.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_user:
@@ -220,7 +220,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for users, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_user:
@@ -231,7 +231,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for users.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_user:
@@ -243,7 +243,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for users, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_user:
@@ -255,7 +255,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for group.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_group:
@@ -266,7 +266,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for group, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_group:
@@ -277,7 +277,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for group.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_group:
@@ -289,7 +289,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for group, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_group:
@@ -301,7 +301,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for host.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_host:
@@ -312,7 +312,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for host, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_host:
@@ -323,7 +323,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for host.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_host:
@@ -335,7 +335,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for host, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_host:
@@ -347,7 +347,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for hostgroup.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_hostgroup:
@@ -358,7 +358,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab present for hostgroup, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_hostgroup:
@@ -369,7 +369,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for hostgroup.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_hostgroup:
@@ -381,7 +381,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service "HTTP/{{ svc_fqdn }}" members allow_retrieve_keytab absent for hostgroup, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ svc_fqdn }}"
       allow_retrieve_keytab_hostgroup:

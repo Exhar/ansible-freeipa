@@ -6,13 +6,13 @@
 
   tasks:
   - name: User test absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       state: absent
 
   - name: User test present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       first: test
@@ -21,7 +21,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User test certmapdata members present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       certmapdata:
@@ -36,7 +36,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User test certmapdata members present again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       certmapdata:
@@ -51,7 +51,7 @@
     failed_when: result.changed or result.failed
 
   - name: User test certmapdata members absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       certmapdata:
@@ -67,7 +67,7 @@
     failed_when: not result.changed or result.failed
 
   - name: User test certmapdata members absent again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       certmapdata:
@@ -83,7 +83,7 @@
     failed_when: result.changed or result.failed
 
   - name: User test absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       state: absent

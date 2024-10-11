@@ -22,14 +22,14 @@
           kdestroy -A -q -c idoverride_cache
 
       - name: Remove testing groups.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name:
           - idovergroup
           state: absent
 
       - name: Add group with idoverrideuser.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
@@ -37,7 +37,7 @@
         failed_when: result.failed or not result.changed
 
       - name: Add group with idoverrideuser, again.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
@@ -45,7 +45,7 @@
         failed_when: result.failed or result.changed
 
       - name: Remove idoverrideuser member.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
@@ -55,7 +55,7 @@
         failed_when: result.failed or not result.changed
 
       - name: Remove idoverrideuser member, again.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
@@ -65,7 +65,7 @@
         failed_when: result.failed or result.changed
 
       - name: Add idoverrideuser member.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
@@ -74,7 +74,7 @@
         failed_when: result.failed or not result.changed
 
       - name: Add idoverrideuser member, again.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
@@ -83,14 +83,14 @@
         failed_when: result.failed or result.changed
 
       - name: Cleanup idoverrideuser member.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: idovergroup
           idoverrideuser: "{{ ad_user }}"
           state: absent
 
       - name: Remove testing groups.
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name:
           - idovergroup

@@ -5,6 +5,6 @@
 
   tasks:
   - name: Ensure server "ipareplica1.exmple.com" is present
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_password: SomeADMINpassword
       name: ipareplica1.example.com

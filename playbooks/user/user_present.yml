@@ -6,7 +6,7 @@
 
   tasks:
   - name: User pinky present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: pinky
       uid: 10001

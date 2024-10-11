@@ -22,32 +22,32 @@
       when: ipaserver_domain is not defined
 
     - name: Ensure test groups exist.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
       loop: "{{ groups_present }}"
 
     - name: Ensure test hostgroups exist.
-      ipahostgroup:
+      freeipa.ansible_freeipa.ipahostgroup:
         ipaadmin_password: SomeADMINpassword
         name: "hostgroup{{ item }}"
       loop: "{{ groups_present }}"
 
     - name: Ensure test netgroups exist.
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "netgroup{{ item }}"
       loop: "{{ groups_present }}"
 
     - name: Ensure test hosts exist.
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}.{{ ipaserver_domain }}"
         force: yes
       loop: "{{ groups_present }}"
 
     - name: Ensure test users exist.
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         name: "user{{ item }}"
         first: "{{ item }}"
@@ -55,7 +55,7 @@
       loop: "{{ groups_present }}"
 
     - name: Ensure netgroups don't exist
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         state: absent
@@ -67,7 +67,7 @@
         msg: "Tests are starting."
 
     - name: Ensure netgroups exist
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
       loop: "{{ groups_present }}"
@@ -75,7 +75,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure netgroups exist with members
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item }}"
@@ -89,7 +89,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure netgroups exist with members, lowercase
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item | lower }}"
@@ -103,7 +103,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure netgroups exist with members, uppercase
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item | upper }}"
@@ -117,7 +117,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure netgroup member is absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item }}"
@@ -132,7 +132,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure netgroup member is absent, lowercase
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item | lower }}"
@@ -147,7 +147,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure netgroup member is absent, uppercase
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item | upper }}"
@@ -162,7 +162,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure netgroup member is present, uppercase
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item | upper }}"
@@ -176,7 +176,7 @@
       failed_when: result.failed or not result.changed
 
     - name: Ensure netgroup member is present, lowercase
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item | lower }}"
@@ -190,7 +190,7 @@
       failed_when: result.failed or result.changed
 
     - name: Ensure netgroup member is present, mixed case
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         hostgroup: "hostgroup{{ item }}"
@@ -210,42 +210,42 @@
     always:
     # cleanup
     - name: Ensure netgroups do not exist
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         state: absent
       loop: "{{ groups_present }}"
 
     - name: Ensure test groups do not exist.
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}"
         state: absent
       loop: "{{ groups_present }}"
 
     - name: Ensure test hostgroups do not exist.
-      ipahostgroup:
+      freeipa.ansible_freeipa.ipahostgroup:
         ipaadmin_password: SomeADMINpassword
         name: "hostgroup{{ item }}"
         state: absent
       loop: "{{ groups_present }}"
 
     - name: Ensure test netgroups do not exist.
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         name: "netgroup{{ item }}"
         state: absent
       loop: "{{ groups_present }}"
 
     - name: Ensure test hosts do not exist.
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         name: "{{ item }}.{{ ipaserver_domain }}"
         state: absent
       loop: "{{ groups_present }}"
 
     - name: Ensure test users do not exist.
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         name: "user{{ item }}"
         state: absent

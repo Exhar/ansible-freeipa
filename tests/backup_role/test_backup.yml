@@ -49,14 +49,14 @@
   # Test simple backup on server
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
 
   - name: Backup ipaserver and leave data files on server
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: present
 
@@ -71,7 +71,7 @@
   # Test backup and copy to controller, don't keep copy on server
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
@@ -97,7 +97,7 @@
 
   - name: Backup ipaserver copying files to controller
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: present
       ipabackup_to_controller: yes
@@ -123,7 +123,7 @@
     # Test backup and copy to controller, keep copy on server
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
@@ -149,7 +149,7 @@
 
   - name: Backup ipaserver copying files to controller, keep copy on server
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: present
       ipabackup_to_controller: yes
@@ -202,7 +202,7 @@
 
   - name: Copy all backups from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: copied
       ipabackup_name: all
@@ -221,7 +221,7 @@
   # Copy backup from controller to server
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
@@ -238,7 +238,7 @@
 
   - name: Copy backup from controller to server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: copied
       ipabackup_name: "{{ ipa_backup_data.path | split('/') | last }}"
@@ -284,7 +284,7 @@
 
   - name: Copy backup from server to controller.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: copied
       ipabackup_name: "{{ server_backup_data.path | split('/') | last }}"
@@ -315,7 +315,7 @@
 
   - name: Remov all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
@@ -331,13 +331,13 @@
   # Remove all backups from server
   - name: Create a backup on the server
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: present
 
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
@@ -353,14 +353,14 @@
   # Remove all backup from server
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
 
   - name: Create a backup on the server
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: present
 
@@ -374,7 +374,7 @@
 
   - name: Remove backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: "{{ server_backup_data.path | split('/') | last }}"
@@ -386,7 +386,7 @@
   # Test issue #900
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all
@@ -395,7 +395,7 @@
     block:
       - name: Invalid role configuration that should not produce a backup on the server.
         ansible.builtin.include_role:
-          name: ipabackup
+          name: freeipa.ansible_freeipa.ipabackup
         vars:
           state: present
           ipabackup_name: this_must_fail
@@ -431,7 +431,7 @@
 
   - name: Remove all backup from server.
     ansible.builtin.include_role:
-      name: ipabackup
+      name: freeipa.ansible_freeipa.ipabackup
     vars:
       state: absent
       ipabackup_name: all

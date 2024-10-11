@@ -19,21 +19,21 @@
 
     # CLEANUP TEST ITEMS
     - name: Ensure users user1, user2 are absent
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: user1,user2
         state: absent
 
     - name: Ensure group group1 is absent
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: group1
         state: absent
 
     - name: Ensure hosts are absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -42,7 +42,7 @@
         state: absent
 
     - name: Ensure netgroups TestNetgroup1, admins are absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -52,7 +52,7 @@
 
     # CREATE TEST ITEMS
     - name: Ensure users user1, user2 are present
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         users:
@@ -64,13 +64,13 @@
           last: last2
 
     - name: Ensure group group1 is present
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: group1
 
     - name: Ensure hosts "{{ 'host[1..2].' + ipaserver_domain }}" are present
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         hosts:
@@ -80,13 +80,13 @@
           force: yes
 
     - name: Ensure netgroup admins is present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: admins
 
     - name: Ensure netgroup TestNetgroup1 is present
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: TestNetgroup1
@@ -94,7 +94,7 @@
         nisdomain: "{{ ipaserver_domain }}"
 
     - name: Ensure netgroup is present with members
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: TestNetgroup1
@@ -109,7 +109,7 @@
 
     # TEST
     - name: Ensure members are absent in netgroup
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: TestNetgroup1
@@ -126,7 +126,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure some members are still present in netgroup
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: TestNetgroup1
@@ -138,7 +138,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure host was removed by hostname from netgroup
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: TestNetgroup1
@@ -150,7 +150,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure member user2 presents in netgroup
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: TestNetgroup1
@@ -161,7 +161,7 @@
 
     - name: Ensure members from netgroups my_netgroup1,my_netgroup2 aren't
         absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -177,21 +177,21 @@
     always:
     # CLEANUP TEST ITEMS
     - name: Ensure users user1, user2 are absent
-      ipauser:
+      freeipa.ansible_freeipa.ipauser:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: user1,user2
         state: absent
 
     - name: Ensure group group1 is absent
-      ipagroup:
+      freeipa.ansible_freeipa.ipagroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: group1
         state: absent
 
     - name: Ensure hosts are absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:
@@ -200,7 +200,7 @@
         state: absent
 
     - name: Ensure netgroups TestNetgroup1, admins are absent
-      ipanetgroup:
+      freeipa.ansible_freeipa.ipanetgroup:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name:

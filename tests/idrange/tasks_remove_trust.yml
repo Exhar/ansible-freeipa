@@ -1,13 +1,13 @@
 ---
 - name: Ensure testing trust is absent
-  ipatrust:
+  freeipa.ansible_freeipa.ipatrust:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     realm: "{{ adserver.domain }}"
     state: absent
 
 - name: Ensure testing idranges are absent
-  ipaidrange:
+  freeipa.ansible_freeipa.ipaidrange:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name:
@@ -16,7 +16,7 @@
     state: absent
 
 - name: Remove dns forward zone
-  ipadnsforwardzone:
+  freeipa.ansible_freeipa.ipadnsforwardzone:
     ipaadmin_password: SomeADMINpassword
     ipaapi_context: "{{ ipa_context | default(omit) }}"
     name: "{{ adserver.domain }}"

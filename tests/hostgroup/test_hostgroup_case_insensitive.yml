@@ -4,16 +4,16 @@
   become: true
   gather_facts: false
   module_defaults:
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
 
@@ -38,23 +38,23 @@
         when: ipa_domain is not defined
 
       - name: Ensure hostgroup testhostgroup1 and testhostgroup2 are absent
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: "{{ test_hostgroups }}"
           state: absent
 
       - name: Ensure test hosts are present
-        ipahost:
+        freeipa.ansible_freeipa.ipahost:
           name: "{{ item }}.{{ ipa_domain }}"
           force: true
         loop: "{{ test_hosts }}"
 
       - name: Ensure hostgroup testhostgroup2 is present
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: testhostgroup2
 
       # tests
       - name: Hostgroup should not be renamed only due to case
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: testhostgroup2
           rename: testhostgroup2
           state: renamed
@@ -69,7 +69,7 @@
             - { id: 3, value: "{{ test_hosts[0] }}", expected: false }
         block:
           - name: "Ensure hostgroup testhostgroup with host 'host1'"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup1
               host: "{{ item.value }}"
             register: output
@@ -92,7 +92,7 @@
             - { id: 9, value: "{{ test_hosts[0] | upper }}", expected: false }
         block:
           - name: "Ensure hostgroup testhostgroup with host 'host1'"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup1
               host: "{{ item.value }}"
             register: output
@@ -121,7 +121,7 @@
             - { id: 15, value: "{{ test_hosts[0] | upper }}", state: "absent", expected: false }
         block:
           - name: "Ensure hostgroup testhostgroup with host 'host1'"
-            ipahostgroup:
+            freeipa.ansible_freeipa.ipahostgroup:
               name: testhostgroup1
               host: "{{ item.value }}"
               action: member
@@ -134,11 +134,11 @@
     always:
       # cleanup
       - name: Ensure hostgroup testhostgroup is absent
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           name: "{{ test_hostgroups }}"
           state: absent
 
       - name: Ensure test hosts are absent
-        ipahost:
+        freeipa.ansible_freeipa.ipahost:
           name: "{{ test_hosts | product([ipa_domain]) | map('join') | list }}"
           state: absent

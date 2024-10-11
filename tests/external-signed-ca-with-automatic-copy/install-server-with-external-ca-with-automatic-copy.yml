@@ -7,7 +7,7 @@
     ipaserver_copy_csr_to_controller: yes
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: present
 
 - name: Create CA, get /root/ipa.csr signed by your CA, ..
@@ -31,5 +31,5 @@
     #ipaserver_external_ca_file: "{{ groups.ipaserver[0] + '-cacert.asc' }}"
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: present

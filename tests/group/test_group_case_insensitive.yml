@@ -4,10 +4,10 @@
   become: true
   gather_facts: false
   module_defaults:
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
 
@@ -29,16 +29,16 @@
     block:
       # setup environment
       - name: Ensure testgroup is absent
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           name: testgroup
           state: absent
 
       - name: Ensure test users are present
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           users: "{{ test_users }}"
 
       - name: Ensure test groups are present
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           groups: "{{ test_groups }}"
 
       # tests
@@ -57,7 +57,7 @@
             - { id: 10, value: [], expected: true }
         block:
           - name: Ensure group with user parameter present
-            ipagroup:
+            freeipa.ansible_freeipa.ipagroup:
               name: testgroup
               user: "{{ item.value }}"
             register: output
@@ -81,7 +81,7 @@
             - { id: 10, value: [], expected: true }
         block:
           - name: Ensure group with group present
-            ipagroup:
+            freeipa.ansible_freeipa.ipagroup:
               name: testgroup
               group: "{{ item.value }}"
             register: output
@@ -116,7 +116,7 @@
             - { id: 21, user: "{{ user_names[1] }}", state: "present", expected: false }
         block:
           - name: Ensure group works with group/user attributes and action member
-            ipagroup:
+            freeipa.ansible_freeipa.ipagroup:
               name: testgroup
               user: "{{ item.user | default(omit) }}"
               group: "{{ item.group | default(omit) }}"
@@ -130,12 +130,12 @@
     always:
       # cleanup
       - name: "Ensure test groups test_groups are absent"
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           name: "{{ group_names + ['testgroup'] }}"
           state: absent
 
       - name: "Ensure test users test_users are absent"
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           users: "{{ test_users }}"
           state: absent
 
@@ -144,11 +144,11 @@
     block:
       # setup environment
       - name: Ensure test users are present
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           users: "{{ test_users }}"
 
       - name: Ensure test groups are present
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           groups: "{{ test_groups }}"
 
       # tests
@@ -167,7 +167,7 @@
             - { id: 10, value: [], expected: true }
         block:
           - name: Ensure group with membermanager_user parameter present
-            ipagroup:
+            freeipa.ansible_freeipa.ipagroup:
               name: testgroup
               membermanager_user: "{{ item.value }}"
             register: output
@@ -191,7 +191,7 @@
             - { id: 10, value: [], expected: true }
         block:
           - name: Ensure group with membermanager_group present
-            ipagroup:
+            freeipa.ansible_freeipa.ipagroup:
               name: testgroup
               membermanager_group: "{{ item.value }}"
             register: output
@@ -226,7 +226,7 @@
             - { id: 21, user: "{{ user_names[1] }}", state: "present", expected: false }
         block:
           - name: Ensure group works with group/user attributes and action member
-            ipagroup:
+            freeipa.ansible_freeipa.ipagroup:
               name: testgroup
               membermanager_user: "{{ item.user | default(omit) }}"
               membermanager_group: "{{ item.group | default(omit) }}"
@@ -240,11 +240,11 @@
     always:
       # cleanup
       - name: "Ensure test groups test_groups are absent"
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           name: "{{ group_names + ['testgroup'] }}"
           state: absent
 
       - name: "Ensure test users test_users are absent"
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           name: "{{ user_names }}"
           state: absent

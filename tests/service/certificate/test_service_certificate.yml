@@ -31,31 +31,31 @@
       test_host: "{{ 'testcert.' + ipaserver_domain }}"
 
   - name: Host test absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ test_host }}"
       update_dns: yes
       state: absent
 
   - name: Host test present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ test_host }}"
       ip_address: "{{ ipv4_prefix + '.201' }}"
       update_dns: yes
 
   - name: Ensure testing group group01 is present.
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: group01
 
   - name: Ensure testing group group02 is present.
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: group02
 
   - name: Ensure services are absent.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       continue: yes
@@ -63,7 +63,7 @@
 
   # tests
   - name: Ensure service is present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -80,7 +80,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service is present, again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -97,7 +97,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure service is disabled
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       state: disabled
@@ -105,7 +105,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service member certificate is present.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -116,7 +116,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service member certificate is present, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -127,7 +127,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure service multiple member certificates are present, with duplicate.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -139,7 +139,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service member certificate is absent.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -150,7 +150,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service member certificate is absent, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -161,7 +161,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure service member certificates are absent.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -173,7 +173,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service multiple member certificates is present.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       certificate:
@@ -184,7 +184,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service is disabled
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       state: disabled
@@ -192,7 +192,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure service is disabled, again.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       state: disabled
@@ -201,14 +201,14 @@
 
   # cleanup
   - name: Ensure services are absent.
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       name: "HTTP/{{ test_host }}"
       continue: yes
       state: absent
 
   - name: Ensure host is absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ test_host }}"
       update_dns: yes

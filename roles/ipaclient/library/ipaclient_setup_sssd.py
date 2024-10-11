@@ -106,7 +106,7 @@ author:
 
 EXAMPLES = '''
 - name: Configure SSSD
-  ipaclient_setup_sssd:
+  freeipa.ansible_freeipa.ipaclient_setup_sssd:
     servers: ["server1.example.com","server2.example.com"]
     domain: example.com
     realm: EXAMPLE.COM
@@ -118,7 +118,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports, options, sysrestore, paths,
     configure_sssd_conf, logger
 )

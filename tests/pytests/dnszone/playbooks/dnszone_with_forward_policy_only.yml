@@ -4,7 +4,7 @@
 
   tasks:
   - name: Ensure DNS Zone is present with forward policy `only`
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: 26testzone.test
       forward_policy: only

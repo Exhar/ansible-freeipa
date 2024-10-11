@@ -4,7 +4,7 @@
 
   tasks:
   - name: Ensure aumount key TestKey is renamed to NewKeyName
-    ipaautomountkey:
+    freeipa.ansible_freeipa.ipaautomountkey:
       ipaadmin_password: SomeADMINpassword
       automountlocationcn: TestLocation
       automountmapname: TestMap

@@ -4,13 +4,13 @@
   become: false
   gather_facts: false
   module_defaults:
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: client
 
   tasks:
   - name: Request a certificate for a host
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       csr: |
         -----BEGIN CERTIFICATE REQUEST-----
         MIIBWjCBxAIBADAbMRkwFwYDVQQDDBBob3N0LmV4YW1wbGUuY29tMIGfMA0GCSqG

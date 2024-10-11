@@ -6,6 +6,6 @@
 
   tasks:
   - name: Set password policy grace limit.
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       gracelimit: 3

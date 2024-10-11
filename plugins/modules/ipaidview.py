@@ -35,7 +35,7 @@ module: ipaidview
 short_description: Manage FreeIPA idview
 description: Manage FreeIPA idview and idview host members
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of idview name strings.
@@ -88,19 +88,19 @@ author:
 
 EXAMPLES = """
 # Ensure idview test_idview is present
-- ipaidview:
+- freeipa.ansible_freeipa.ipaidview:
     ipaadmin_password: SomeADMINpassword
     name: test_idview
 
 # name: Ensure host testhost.example.com is applied to idview test_idview
-- ipaidview:
+- freeipa.ansible_freeipa.ipaidview:
     ipaadmin_password: SomeADMINpassword
     name: test_idview
     host: testhost.example.com
     action: member
 
 # Ensure host testhost.example.com is not applied to idview test_idview
-- ipaidview:
+- freeipa.ansible_freeipa.ipaidview:
     ipaadmin_password: SomeADMINpassword
     name: test_idview
     host: testhost.example.com
@@ -109,13 +109,13 @@ EXAMPLES = """
 
 # Ensure idview "test_idview" is present with domain_resolution_order for
 # "ad.example.com:ipa.example.com"
-- ipaidview:
+- freeipa.ansible_freeipa.ipaidview:
     ipaadmin_password: SomeADMINpassword
     name: test_idview
     domain_resolution_order: "ad.example.com:ipa.example.com"
 
 # Ensure idview test_idview is absent
-- ipaidview:
+- freeipa.ansible_freeipa.ipaidview:
     ipaadmin_password: SomeADMINpassword
     name: test_idview
     state: absent
@@ -125,7 +125,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list, ipalib_errors
 from ansible.module_utils import six

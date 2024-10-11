@@ -20,7 +20,7 @@
       host2_fqdn: "{{ 'host2.' + ipaserver_domain }}"
 
   - name: Host host1... and host2... absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -29,7 +29,7 @@
       state: absent
 
   - name: Host hostX... present with principal host/testhostX... X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -44,7 +44,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host hostX... principal 'host/hostX... present (existing already) X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -58,7 +58,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host hostX... principal host/testhostX... present again X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -72,7 +72,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host hostX.. principal host/testhostX... absent X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -87,7 +87,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host hostX... principal host/testhostX... absent again X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -102,7 +102,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host hostX... principal host/testhostX... and host/myhostX... present X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -118,7 +118,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host hostX... principal host/testhostX... and host/myhostX... present again X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -134,7 +134,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host hostX... principal host/testhostX... and host/myhostX... absent X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -151,7 +151,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host hostX... principal host/testhostX... and host/myhostX... absent again X=[1,2]
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts:
       - name: "{{ host1_fqdn }}"
@@ -168,7 +168,7 @@
     failed_when: result.changed or result.failed
 
   - name: Hosts host1... and host2... absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"

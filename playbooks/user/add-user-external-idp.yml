@@ -5,7 +5,7 @@
 
   tasks:
   - name: Create user associated with an external IdP
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: idpuser
       idp: keycloak

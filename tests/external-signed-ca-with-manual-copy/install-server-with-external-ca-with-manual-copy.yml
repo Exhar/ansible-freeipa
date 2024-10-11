@@ -6,7 +6,7 @@
     ipaserver_external_ca: yes
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: present
 
   post_tasks:
@@ -45,5 +45,5 @@
       mode: preserve
 
   roles:
-  - role: ipaserver
+  - role: freeipa.ansible_freeipa.ipaserver
     state: present

@@ -13,7 +13,7 @@
 
   tasks:
   - name: Add topology segment
-    ipatopologysegment:
+    freeipa.ansible_freeipa.ipatopologysegment:
       ipaadmin_password: SomeADMINpassword
       suffix: "{{ item.suffix }}"
       name: "{{ item.name | default(omit) }}"

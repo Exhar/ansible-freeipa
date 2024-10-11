@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure test user test_user certificate member is present in idview test_idview
-    ipaidoverrideuser:
+    freeipa.ansible_freeipa.ipaidoverrideuser:
       ipaadmin_password: SomeADMINpassword
       idview: test_idview
       anchor: test_user

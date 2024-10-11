@@ -12,7 +12,7 @@
     block:
       # Retrieve current configuration.
       - name: Return current values of the global configuration options
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
         register: previousconfig
@@ -23,37 +23,37 @@
 
       # setup environment.
       - name: Create test group
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: somedefaultgroup
 
       - name: Ensure the default e-mail domain is ipa.test.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           emaildomain: ipa.test
 
       - name: Set default shell to '/bin/sh'
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           defaultshell: /bin/sh
 
       - name: Set default group
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           defaultgroup: ipausers
 
       - name: Set default home directory
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           homedirectory: /home
 
       - name: Clear pac-type
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           pac_type: ""
@@ -62,74 +62,74 @@
         when: ipa_version is version('4.8.0', '>=')
         block:
           - name: Set maxhostname to 255
-            ipaconfig:
+            freeipa.ansible_freeipa.ipaconfig:
               ipaadmin_password: SomeADMINpassword
               ipaapi_context: "{{ ipa_context | default(omit) }}"
               maxhostname: 255
 
       - name: Set maxusername to 45
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           maxusername: 45
 
       - name: Set pwdexpnotify to 0
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           pwdexpnotify: 0
 
       - name: Set searchrecordslimit to 10
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           searchrecordslimit: 10
 
       - name: Set searchtimelimit to 1
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           searchtimelimit: 1
 
       - name: Clear configstring
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           configstring: ""
 
       - name: Set configstring to AllowNThash
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           configstring: 'KDC:Disable Lockout'
 
       - name: Set selinuxusermapdefault
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           selinuxusermapdefault: "staff_u:s0-s0:c0.c1023"
 
       - name: Set selinuxusermaporder
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           selinuxusermaporder: 'user_u:s0$staff_u:s0-s0:c0.c1023'
 
       - name: Set usersearch to `uid`
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           usersearch: uid
 
       - name: Set groupsearch to `cn`
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           groupsearch: cn
 
       # tests
       - name: Ensure the default e-mail domain is somedomain.test.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           emaildomain: somedomain.test
@@ -137,7 +137,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure the default e-mail domain is somedomain.test, again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           emaildomain: somedomain.test
@@ -145,7 +145,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set default shell to '/bin/someshell'
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           defaultshell: /bin/someshell
@@ -153,7 +153,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set default shell to '/bin/someshell', again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           defaultshell: /bin/someshell
@@ -161,7 +161,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set default group
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           defaultgroup: somedefaultgroup
@@ -169,7 +169,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set default group, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           defaultgroup: somedefaultgroup
@@ -177,7 +177,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set default home directory
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           homedirectory: /Users
@@ -185,7 +185,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set default home directory, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           homedirectory: /Users
@@ -193,7 +193,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set pac-type
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           pac_type: "nfs:NONE"
@@ -201,7 +201,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set pac-type, again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           pac_type: "nfs:NONE"
@@ -209,7 +209,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set maxusername to 33
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           maxusername: 33
@@ -217,7 +217,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set maxusername to 33, again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           maxusername: 33
@@ -228,7 +228,7 @@
         when: ipa_version is version('4.8.0', '>=')
         block:
           - name: Set maxhostname to 77
-            ipaconfig:
+            freeipa.ansible_freeipa.ipaconfig:
               ipaadmin_password: SomeADMINpassword
               ipaapi_context: "{{ ipa_context | default(omit) }}"
               maxhostname: 77
@@ -236,7 +236,7 @@
             failed_when: not result.changed or result.failed
 
           - name: Set maxhostname to 77, again
-            ipaconfig:
+            freeipa.ansible_freeipa.ipaconfig:
               ipaadmin_password: SomeADMINpassword
               ipaapi_context: "{{ ipa_context | default(omit) }}"
               maxhostname: 77
@@ -244,7 +244,7 @@
             failed_when: result.changed or result.failed
 
       - name: Set pwdexpnotify to 17
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           pwdexpnotify: 17
@@ -252,7 +252,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set pwdexpnotify to 17, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           pwdexpnotify: 17
@@ -260,7 +260,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set searchrecordslimit to -1
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           searchrecordslimit: -1
@@ -268,7 +268,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set searchrecordslimit to -1, again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           searchrecordslimit: -1
@@ -276,7 +276,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set searchtimelimit to 12345
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           searchtimelimit: 12345
@@ -284,7 +284,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set searchtimelimit to 12345, again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           searchtimelimit: 12345
@@ -292,7 +292,7 @@
         failed_when: result.changed or result.failed
 
       - name: Change enable_migration
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           enable_migration: '{{ not (previousconfig.config.enable_migration | bool) }}'
@@ -300,7 +300,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Change enable_migration, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           enable_migration: '{{ not (previousconfig.config.enable_migration | bool) }}'
@@ -308,7 +308,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set configstring to AllowNThash
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           configstring: AllowNThash
@@ -316,7 +316,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set configstring to AllowNThash, again.
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           configstring: AllowNThash
@@ -324,7 +324,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set selinuxusermaporder
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           selinuxusermaporder: 'user_u:s0$staff_u:s0-s0:c0.c1023$sysadm_u:s0-s0:c0.c1023$unconfined_u:s0-s0:c0.c1023'
@@ -332,7 +332,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set selinuxusermaporder, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           selinuxusermaporder: 'user_u:s0$staff_u:s0-s0:c0.c1023$sysadm_u:s0-s0:c0.c1023$unconfined_u:s0-s0:c0.c1023'
@@ -340,7 +340,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set selinuxusermapdefault
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           selinuxusermapdefault: 'user_u:s0'
@@ -348,7 +348,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set selinuxusermapdefault, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           selinuxusermapdefault: 'user_u:s0'
@@ -356,7 +356,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set groupsearch to `description`
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           groupsearch: description
@@ -364,7 +364,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set groupsearch to `gidNumber`, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           groupsearch: description
@@ -372,7 +372,7 @@
         failed_when: result.changed or result.failed
 
       - name: Set usersearch to `uidNumber`
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           usersearch: uidNumber
@@ -380,7 +380,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Set usersearch to `uidNumber`, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           usersearch: uidNumber
@@ -388,7 +388,7 @@
         failed_when: result.changed or result.failed
 
       - name: Reset changed fields
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           maxusername: '{{ previousconfig.config.maxusername | default(32) | int }}'
@@ -418,13 +418,13 @@
         when: ipa_version is version('4.8.0', '>=')
         block:
           - name: Reset maxhostname
-            ipaconfig:
+            freeipa.ansible_freeipa.ipaconfig:
               ipaadmin_password: SomeADMINpassword
               ipaapi_context: "{{ ipa_context | default(omit) }}"
               maxhostname: '{{ previousconfig.config.maxhostname | default(omit) }}'
 
       - name: Reset changed fields, again
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           maxusername: '{{ previousconfig.config.maxusername | default(omit) | int }}'
@@ -454,14 +454,14 @@
         when: ipa_version is version('4.8.0', '>=')
         block:
           - name: Reset maxhostname
-            ipaconfig:
+            freeipa.ansible_freeipa.ipaconfig:
               ipaadmin_password: SomeADMINpassword
               ipaapi_context: "{{ ipa_context | default(omit) }}"
               maxhostname: '{{ previousconfig.config.maxhostname | default(omit) }}'
 
     rescue:
       - name: Set fields to IPA default, due to error
-        ipaconfig:
+        freeipa.ansible_freeipa.ipaconfig:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           maxusername: '{{ previousconfig.config.maxusername | default(omit) | int }}'
@@ -493,7 +493,7 @@
     always:
       # cleanup
       - name: Cleanup test group
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: somedefaultgroup

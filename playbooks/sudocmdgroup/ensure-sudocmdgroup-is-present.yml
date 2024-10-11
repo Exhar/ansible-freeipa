@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure sudocmdgroup sudocmds are present
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       name: network
       description: Group of important commands.

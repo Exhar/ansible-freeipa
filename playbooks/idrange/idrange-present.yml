@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure local idrange is present
-    ipaidrange:
+    freeipa.ansible_freeipa.ipaidrange:
       ipaadmin_password: SomeADMINpassword
       name: id_range
       base_id: 150000000

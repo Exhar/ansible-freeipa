@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure selfservice "basic manager attributes" member attribute departmentnumber is present
-    ipaselfservice:
+    freeipa.ansible_freeipa.ipaselfservice:
       ipaadmin_password: SomeADMINpassword
       name: "basic manager attributes"
       attribute:

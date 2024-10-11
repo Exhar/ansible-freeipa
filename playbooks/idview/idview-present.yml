@@ -5,6 +5,6 @@
 
   tasks:
   - name: Ensure idview test_idview is present
-    ipaidview:
+    freeipa.ansible_freeipa.ipaidview:
       ipaadmin_password: SomeADMINpassword
       name: test_idview

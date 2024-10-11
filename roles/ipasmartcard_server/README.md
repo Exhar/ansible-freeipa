@@ -79,7 +79,7 @@ Example playbook to setup smartcard for the IPA server using admin password and 
   become: true
 
   roles:
-  - role: ipasmartcard_server
+  - role: freeipa.ansible_freeipa.ipasmartcard_server
     state: present
 ```
 
@@ -92,7 +92,7 @@ Example playbook to setup smartcard for the IPA servers in ipareplicas group usi
   become: true
 
   roles:
-  - role: ipasmartcard_server
+  - role: freeipa.ansible_freeipa.ipasmartcard_server
     state: present
 ```
 
@@ -105,7 +105,7 @@ Example playbook to setup smartcard for the IPA servers in ipaserver and iparepl
   become: true
 
   roles:
-  - role: ipasmartcard_server
+  - role: freeipa.ansible_freeipa.ipasmartcard_server
     state: present
 ```
 

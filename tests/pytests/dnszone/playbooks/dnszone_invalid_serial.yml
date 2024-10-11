@@ -5,7 +5,7 @@
 
   tasks:
   - name: Test adding a DNS zone with an invalid serial
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: invalidserialzone.test
       serial: 429496729599

@@ -14,7 +14,7 @@
       host1_fqdn: "{{ 'host1.' + ipaserver_domain }}"
 
   - name: Host host1 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -22,7 +22,7 @@
       state: absent
 
   - name: Host host1 present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -30,7 +30,7 @@
       force: yes
 
   - name: Host host1... present with sshpubkey
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -40,7 +40,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host host1... present with sshpubkey again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -50,7 +50,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host host1... present with other sshpubkey
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -60,7 +60,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host host1... present with other sshpubkey again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -70,7 +70,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host host1... present with two sshpubkeys
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -82,7 +82,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host host1... present with two sshpubkeys again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -94,7 +94,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host host1... present with empty sshpubkey list
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey: []
@@ -102,7 +102,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host host1... present with empty sshpubkey list
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey: []
@@ -110,7 +110,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host host1... present with two sshpubkeys
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey:
@@ -122,7 +122,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host host1... present with empty sshpubkey list
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       sshpubkey: []
@@ -130,7 +130,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host host1... absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"

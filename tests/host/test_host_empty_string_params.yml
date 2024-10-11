@@ -17,7 +17,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure host "{{ host1_fqdn }}" absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"
@@ -26,7 +26,7 @@
   # CREATE TEST ITEMS
 
   - name: Ensure host "{{ host1_fqdn }}" present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"
@@ -37,7 +37,7 @@
   # TESTS
 
   - name: Ensure host "{{ host1_fqdn }}" present with auth_ind otp and radius
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"
@@ -48,7 +48,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host "{{ host1_fqdn }}" present with auth_ind otp and radius, again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"
@@ -59,7 +59,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host "{{ host1_fqdn }}" present with empty auth_ind
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"
@@ -68,7 +68,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host "{{ host1_fqdn }}" present with empty auth_ind, again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"
@@ -79,7 +79,7 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure host "{{ host1_fqdn }}" absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ host1_fqdn }}"

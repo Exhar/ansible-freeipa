@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure symmetric vault is absent.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: symvault
       username: admin

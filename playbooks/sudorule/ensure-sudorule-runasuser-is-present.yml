@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure sudorule 'runasuser' member 'admin' is present.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       runasuser: admin

@@ -10,7 +10,7 @@
       # CLEANUP TEST ITEMS
 
       - name: Ensure delegation "basic manager attributes" is absent
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -19,13 +19,13 @@
       # CREATE TEST ITEMS
 
       - name: Ensure test group managers is present
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: managers
 
       - name: Ensure test group employees is present
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: employees
@@ -33,7 +33,7 @@
       # TESTS
 
       - name: Ensure delegation "basic manager attributes" is present, group/membergroup mixed case
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -46,7 +46,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, group lowercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -59,7 +59,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, group uppercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -72,7 +72,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, permission upercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -85,7 +85,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, permission mixed case
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -98,7 +98,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, attribute upercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -111,7 +111,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, attribute mixed case
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -126,7 +126,7 @@
       # membergroup does not use case insensitive comparison
 
       - name: Ensure delegation "basic manager attributes" is present, membergroup lowercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -139,7 +139,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, membergroup uppercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -152,7 +152,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" is present, group/membergroup mixed case
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -166,7 +166,7 @@
 
       # tests for action: member
       - name: Ensure delegation "basic manager attributes" is present, with group and attribute in mixed case
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -177,7 +177,7 @@
           membergroup: Employees
 
       - name: Ensure delegation "basic manager attributes" is present, attribute mixed case
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -188,7 +188,7 @@
           membergroup: employees
 
       - name: Ensure delegation "basic manager attributes" member is present, attribute upercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -199,7 +199,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure delegation "basic manager attributes" member is present, attribute lowercase
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
@@ -213,14 +213,14 @@
       # CLEANUP TEST ITEMS
 
       - name: Ensure delegation "basic manager attributes" is absent
-        ipadelegation:
+        freeipa.ansible_freeipa.ipadelegation:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "basic manager attributes"
           state: absent
 
       - name: Ensure test groups are absent
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: managers,employees

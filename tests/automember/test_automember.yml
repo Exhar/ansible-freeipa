@@ -8,21 +8,21 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure group testgroup is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
       state: absent
 
   - name: Ensure hostgroup testhostgroup is absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
       state: absent
 
   - name: Ensure group automember rule testgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -30,7 +30,7 @@
       automember_type: group
 
   - name: Ensure hostgroup automember rule testhostgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -41,19 +41,19 @@
 
   # TESTS
   - name: Ensure testgroup group is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
 
   - name: Ensure testhostgroup hostgroup is present
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
 
   - name: Ensure testgroup group automember rule is present
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -63,7 +63,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testgroup group automember rule is present again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -73,7 +73,7 @@
     failed_when: result.changed or result.failed
 
   - name: Change testgroup group automember rule description
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -83,7 +83,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testgroup group automember rule has conditions
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -100,7 +100,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testgroup group automember rule has conditions again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -117,7 +117,7 @@
     failed_when: result.changed or result.failed
 
   - name: Add testgroup group automember rule member condition
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -130,7 +130,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testgroup group automember rule has conditions
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -149,7 +149,7 @@
     failed_when: result.changed or result.failed
 
   - name: Remove testgroup group automember rule member condition
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -163,7 +163,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testgroup group automember rule has conditions again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -180,7 +180,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure testgroup group automember conditions fails on invalid inclusive key
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_principal: admin
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
@@ -195,7 +195,7 @@
                  "Invalid automember condition key 'cns'" not in result.msg
 
   - name: Ensure testgroup group automember conditions fails on invalid exlusive key
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_principal: admin
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
@@ -210,7 +210,7 @@
                  "Invalid automember condition key 'cns'" not in result.msg
 
   - name: Ensure testhostgroup hostgroup automember rule is present
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -220,7 +220,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testhostgroup hostgroup automember rule is present again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -230,7 +230,7 @@
     failed_when: result.changed or result.failed
 
   - name: Change testhostgroup hostgroup automember rule description
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -240,7 +240,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testhostgroup hostgroup automember rule has conditions
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -257,7 +257,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testhostgroup hostgroup automember rule has conditions again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -274,7 +274,7 @@
     failed_when: result.changed or result.failed
 
   - name: Add testhostgroup hostgroup automember rule member condition
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -287,7 +287,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testhostgroup hostgroup automember rule has conditions
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -306,7 +306,7 @@
     failed_when: result.changed or result.failed
 
   - name: Remove testhostgroup hostgroup automember rule member condition
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -320,7 +320,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure testhostgroup hostgroup automember rule has conditions
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -338,7 +338,7 @@
 
 
   - name: Ensure testhostgroup hostgroup automember conditions fails on invalid inclusive key
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_principal: admin
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
@@ -353,7 +353,7 @@
                  "Invalid automember condition key 'cns'" not in result.msg
 
   - name: Ensure testhostgroup hostgroup automember conditions fails on invalid exlusive key
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_principal: admin
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
@@ -369,7 +369,7 @@
 
   # Tests for issue https://bugzilla.redhat.com/show_bug.cgi?id=1976922
   - name: Ensure group testgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -379,7 +379,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group testgroup is present
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -395,7 +395,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group testgroup is present with updated description
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -405,7 +405,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group testgroup is present with updated description, again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -415,7 +415,7 @@
     failed_when: result.changed or result.failed
 
   - name: Verify inclusive and exclusive rules have not changed
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -430,7 +430,7 @@
     failed_when: result.changed or result.failed
 
   - name: Verify no other rules existed.
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -447,21 +447,21 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure group testgroup is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
       state: absent
 
   - name: Ensure hostgroup testhostgroup is absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
       state: absent
 
   - name: Ensure group automember rule testgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       automember_type: group
@@ -469,7 +469,7 @@
       state: absent
 
   - name: Ensure hostgroup automember rule testhostgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       automember_type: hostgroup

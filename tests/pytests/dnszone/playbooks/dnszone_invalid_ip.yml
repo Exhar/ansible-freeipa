@@ -5,7 +5,7 @@
 
   tasks:
   - name: Test adding a DNS zone with an invalid forwarder
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: invalidzone.test
       forwarders:

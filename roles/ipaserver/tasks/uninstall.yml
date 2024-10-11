@@ -21,7 +21,7 @@
           and ipaserver_remove_on_server is not defined
 
   - name: Uninstall - Get connected server
-    ipaserver_get_connected_server:
+    freeipa.ansible_freeipa.ipaserver_get_connected_server:
       ipaadmin_principal: "{{ ipaadmin_principal | default('admin') }}"
       ipaadmin_password: "{{ ipaadmin_password }}"
       hostname: "{{ _remove_hostname }}"
@@ -30,7 +30,7 @@
 
   # REMOVE SERVER FROM DOMAIN
   - name: Uninstall - Server del "{{ _remove_hostname }}"
-    ipaserver:
+    freeipa.ansible_freeipa.ipaserver:
       ipaadmin_principal: "{{ ipaadmin_principal | default('admin') }}"
       ipaadmin_password: "{{ ipaadmin_password }}"
       name: "{{ _remove_hostname }}"

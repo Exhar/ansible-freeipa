@@ -49,7 +49,7 @@ Example playbook to make sure Sudo Rule is present:
 
   tasks:
   # Ensure Sudo Rule is present
-  - ipasudorule:
+  - freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
 ```
@@ -65,7 +65,7 @@ Example playbook to make sure sudocmds are present in Sudo Rule:
 
   tasks:
   # Ensure Sudo Rule is present
-  - ipasudorule:
+  - freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       allow_sudocmd:
@@ -84,7 +84,7 @@ Example playbook to make sure sudocmds are not present in Sudo Rule:
 
   tasks:
   # Ensure Sudo Rule is present
-  - ipasudorule:
+  - freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       allow_sudocmd:
@@ -105,7 +105,7 @@ Example playbook to ensure a Group of RunAs User is present in sudo rule:
 
   tasks:
   - name: Ensure sudorule 'runasuser' has 'ipasuers' group as runas users.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       runasuser_group: ipausers
@@ -123,7 +123,7 @@ Example playbook to make sure Sudo Rule is absent:
 
   tasks:
   # Ensure Sudo Rule is present
-  - ipasudorule:
+  - freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       state: absent

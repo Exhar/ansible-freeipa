@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure host server is present in HBAC Rule allhosts
-    ipahbacrule:
+    freeipa.ansible_freeipa.ipahbacrule:
       ipaadmin_password: SomeADMINpassword
       name: allhosts
       host: server

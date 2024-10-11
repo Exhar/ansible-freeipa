@@ -16,35 +16,35 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure user testuser is absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
       state: absent
 
   - name: Ensure group testgroup is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
       state: absent
 
   - name: Ensure host testhost is absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'testhost.' + ipaserver_domain }}"
       state: absent
 
   - name: Ensure hostgroup testhostgroup is absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
       state: absent
 
   - name: Ensure automember group testgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -52,7 +52,7 @@
       state: absent
 
   - name: Ensure automember hostgroup testhostgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -62,7 +62,7 @@
   # CREATE TEST ITEMS
 
   - name: Ensure user testuser is present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
@@ -72,7 +72,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host testhost is present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'testhost.' + ipaserver_domain }}"
@@ -82,7 +82,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group testgroup is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -91,7 +91,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure hostgroup testhostgroup is present
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -104,7 +104,7 @@
   # GROUP TEST
 
   - name: Ensure automember group testgroup exists
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -113,7 +113,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure automember group condition exits for users
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -126,7 +126,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group testgroup is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -135,7 +135,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group orphans have been removed
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       automember_type: group
@@ -144,7 +144,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group orphans have been removed again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       automember_type: group
@@ -155,7 +155,7 @@
   # HOSTGROUP TEST
 
   - name: Ensure automember hostgroup testhostgroup exists
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -164,7 +164,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure automember hostgroup condition exits for hosts
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -177,7 +177,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure hostgroup testhostgroup is absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
@@ -186,7 +186,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure hostgroup orphans have been removed
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       automember_type: hostgroup
@@ -195,7 +195,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure hostgroup orphans have been removed again
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       automember_type: hostgroup
@@ -206,35 +206,35 @@
   # CLEANUP TEST ITEMS
 
   - name: Ensure user testuser is absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
       state: absent
 
   - name: Ensure group testgroup is absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
       state: absent
 
   - name: Ensure host testhost is absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'testhost.' + ipaserver_domain }}"
       state: absent
 
   - name: Ensure hostgroup testhostgroup is absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup
       state: absent
 
   - name: Ensure automember group testgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testgroup
@@ -242,7 +242,7 @@
       state: absent
 
   - name: Ensure automember hostgroup testhostgroup is absent
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testhostgroup

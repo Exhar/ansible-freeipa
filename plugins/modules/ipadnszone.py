@@ -36,7 +36,7 @@ module: ipadnszone
 short_description: Manage FreeIPA dnszone
 description: Manage FreeIPA dnszone
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The zone name string.
@@ -165,11 +165,11 @@ author:
 EXAMPLES = """
 ---
 # Ensure the zone is present (very minimal)
-- ipadnszone:
+- freeipa.ansible_freeipa.ipadnszone:
     name: test.example.com
 
 # Ensure the zone is present (all available arguments)
-- ipadnszone:
+- freeipa.ansible_freeipa.ipadnszone:
     name: test.example.com
     ipaadmin_password: SomeADMINpassword
     allow_sync_ptr: true
@@ -199,12 +199,12 @@ EXAMPLES = """
     state: present
 
 # Ensure zone is present and disabled
-- ipadnszone:
+- freeipa.ansible_freeipa.ipadnszone:
     name: test.example.com
     state: disabled
 
 # Ensure zone is present and enabled
-- ipadnszone:
+- freeipa.ansible_freeipa.ipadnszone:
     name: test.example.com
     state: enabled
 """
@@ -222,7 +222,7 @@ dnszone:
       returned: always
 """
 
-from ansible.module_utils.ansible_freeipa_module import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import (
     IPAAnsibleModule,
     is_ip_address,
     is_ip_network_address,

@@ -37,8 +37,8 @@ description: |
   A netgroup is a group used for permission checking.
   It can contain both user and host values.
 extends_documentation_fragment:
-  - ipamodule_base_docs
-  - ipamodule_base_docs.delete_continue
+  - freeipa.ansible_freeipa.ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs.delete_continue
 options:
   name:
     description: The list of netgroup name strings.
@@ -107,26 +107,26 @@ author:
 
 EXAMPLES = """
 - name: Ensure netgroup my_netgroup1 is present
-  ipanetgroup:
+  freeipa.ansible_freeipa.ipanetgroup:
     ipaadmin_password: SomeADMINpassword
     name: my_netgroup1
     description: My netgroup 1
 
 - name: Ensure netgroup my_netgroup1 is absent
-  ipanetgroup:
+  freeipa.ansible_freeipa.ipanetgroup:
     ipaadmin_password: SomeADMINpassword
     name: my_netgroup1
     state: absent
 
 - name: Ensure netgroup is present with user "user1"
-  ipanetgroup:
+  freeipa.ansible_freeipa.ipanetgroup:
     ipaadmin_password: SomeADMINpassword
     name: TestNetgroup1
     user: user1
     action: member
 
 - name: Ensure netgroup user, "user1", is absent
-  ipanetgroup:
+  freeipa.ansible_freeipa.ipanetgroup:
     ipaadmin_password: SomeADMINpassword
     name: TestNetgroup1
     user: "user1"
@@ -134,7 +134,7 @@ EXAMPLES = """
     state: absent
 
 - name: Ensure netgroup is present with members
-  ipanetgroup:
+  freeipa.ansible_freeipa.ipanetgroup:
     ipaadmin_password: SomeADMINpassword
     name: TestNetgroup1
     user: user1,user2
@@ -145,7 +145,7 @@ EXAMPLES = """
     action: member
 
 - name: Ensure 2 netgroups TestNetgroup1, admins are absent
-  ipanetgroup:
+  freeipa.ansible_freeipa.ipanetgroup:
     ipaadmin_password: SomeADMINpassword
     name:
     - TestNetgroup1
@@ -157,7 +157,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, \
     gen_add_list, gen_intersection_list, ensure_fqdn
 

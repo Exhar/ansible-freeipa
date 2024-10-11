@@ -6,13 +6,13 @@
 
   tasks:
   - name: Ensure HBAC Service for http is present
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       name: http
       description: Web service
 
   - name: Ensure HBAC Service for tftp is present
-    ipahbacsvc:
+    freeipa.ansible_freeipa.ipahbacsvc:
       ipaadmin_password: SomeADMINpassword
       name: tftp
       description: TFTP service

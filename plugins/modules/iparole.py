@@ -38,7 +38,7 @@ module: iparole
 short_description: Manage FreeIPA role
 description: Manage FreeIPA role
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of role name strings.
@@ -104,12 +104,12 @@ author:
 
 EXAMPLES = """
 - name: Ensure a role named `somerole` is present.
-  iparole:
+  freeipa.ansible_freeipa.iparole:
     ipaadmin_password: SomeADMINpassword
     name: somerole
 
 - name: Ensure user `pinky` is a memmer of role `somerole`.
-  iparole:
+  freeipa.ansible_freeipa.iparole:
     ipaadmin_password: SomeADMINpassword
     name: somerole
     user:
@@ -117,7 +117,7 @@ EXAMPLES = """
     action: member
 
 - name: Ensure a role named `somerole` is absent.
-  iparole:
+  freeipa.ansible_freeipa.iparole:
     ipaadmin_password: SomeADMINpassword
     name: somerole
     state: absent
@@ -127,7 +127,7 @@ EXAMPLES = """
 # pylint: disable=import-error
 # pylint: disable=no-name-in-module
 from ansible.module_utils._text import to_text
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, gen_add_del_lists, compare_args_ipa, \
     gen_intersection_list, ensure_fqdn
 from ansible.module_utils import six

@@ -21,7 +21,7 @@
     loop: "{{ group_list }}"
 
   - name: Groups absent len:{{ group_list | length }}
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       groups: "{{ groups_names }}"
       state: absent

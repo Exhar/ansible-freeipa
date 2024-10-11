@@ -5,7 +5,7 @@
 
   tasks:
   - name: Remove goups sysops, appops and ops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       name: sysops,appops,ops
       state: absent

@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure a TXT record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos
       record_type: 'TXT'

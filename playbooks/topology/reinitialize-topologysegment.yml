@@ -5,7 +5,7 @@
 
   tasks:
   - name: Reinitialize topology segment
-    ipatopologysegment:
+    freeipa.ansible_freeipa.ipatopologysegment:
       ipaadmin_password: SomeADMINpassword
       suffix: domain
       left: ipareplica1.test.local

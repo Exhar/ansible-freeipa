@@ -7,7 +7,7 @@
   tasks:
   # setup environment
   - name: Ensure test maps are absent
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name:
@@ -18,19 +18,19 @@
       state: absent
 
   - name: Ensure test location is present
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: TestIndirect
 
   - name: Ensure parent map is present
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: DirectMap
 
   # TESTS
   - name: Mount point cannot start with '/' if parentmap is not 'auto.master'
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -40,7 +40,7 @@
     failed_when: not result.failed or 'mount point is relative to parent map' not in result.msg
 
   - name: Ensure indirect map is present
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -50,7 +50,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure indirect map is present, again
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -60,7 +60,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure indirect map is absent
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -69,7 +69,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure indirect map is absent, again
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -78,7 +78,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure indirect map is present, after being deleted
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -88,7 +88,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure indirect map is present, after being deleted, again
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMap
@@ -98,7 +98,7 @@
     failed_when: result.failed or result.changed
 
   - name: Ensure indirect map is present with default parent (auto.master)
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMapDefault
@@ -107,7 +107,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure indirect map is present with default parent (auto.master), again
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMapDefault
@@ -116,7 +116,7 @@
     failed_when: result.failed or result.changed
 
   - name: Absolute paths must workd with 'auto.master'
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name: IndirectMapDefaultAbsolute
@@ -126,7 +126,7 @@
 
   # Cleanup
   - name: Ensure test maps are absent
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       location: TestIndirect
       name:
@@ -137,7 +137,7 @@
       state: absent
 
   - name: Ensure test location is absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: TestIndirect
       state: absent

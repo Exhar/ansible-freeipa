@@ -36,8 +36,8 @@ module: ipaidrange
 short_description: Manage FreeIPA idrange
 description: Manage FreeIPA idrange
 extends_documentation_fragment:
-  - ipamodule_base_docs
-  - ipamodule_base_docs.delete_continue
+  - freeipa.ansible_freeipa.ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs.delete_continue
 options:
   name:
     description: The list of idrange name strings.
@@ -102,7 +102,7 @@ author:
 
 EXAMPLES = """
 # Ensure local domain idrange is present
-- ipaidrange:
+- freeipa.ansible_freeipa.ipaidrange:
     ipaadmin_password: SomeADMINpassword
     name: id_range
     base_id: 150000000
@@ -111,13 +111,13 @@ EXAMPLES = """
     secondary_rid_base: 200000000
 
 # Ensure local domain idrange is absent
-- ipaidrange:
+- freeipa.ansible_freeipa.ipaidrange:
     ipaadmin_password: SomeADMINpassword
     name: id_range
     state: absent
 
 # Ensure AD-trust idrange is present
-- ipaidrange:
+- freeipa.ansible_freeipa.ipaidrange:
     name: id_range
     base_id: 150000000
     range_size: 200000
@@ -128,7 +128,7 @@ EXAMPLES = """
 
 # Ensure AD-trust idrange is present, with range type ad-trust-posix,
 # and using domain name
-- ipaidrange:
+- freeipa.ansible_freeipa.ipaidrange:
     name: id_range
     base_id: 150000000
     range_size: 200000
@@ -142,7 +142,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, get_trusted_domain_sid_from_name
 from ansible.module_utils import six
 

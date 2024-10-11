@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure hosts and hostgroups are present in existing databases hostgroup
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       name: databases
       host:

@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure automountlocation TestLocations are absent before testing
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -15,7 +15,7 @@
       state: absent
 
   - name: Ensure empty automountlocation does nothing
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: []
@@ -24,7 +24,7 @@
     failed_when: not result.failed or "At least one location must be provided" not in result.msg
 
   - name: Ensure empty automountlocation does nothing on absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: []
@@ -33,7 +33,7 @@
     failed_when: not result.failed or "At least one location must be provided" not in result.msg
 
   - name: Ensure automountlocation TestLocation is present
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: TestLocation_01
@@ -42,7 +42,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure automountlocation TestLocation is present again
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: TestLocation_01
@@ -51,7 +51,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure automountlocation TestLocation is absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: TestLocation_01
@@ -60,7 +60,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure automountlocation TestLocation is absent again
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: TestLocation_01
@@ -69,7 +69,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure a list of automountlocations are present
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -80,7 +80,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure a list of automountlocations exist
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -91,7 +91,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure a list of automountlocations are absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -102,7 +102,7 @@
     failed_when: result.failed or not result.changed
 
   - name: Ensure multiple automountlocations are absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:

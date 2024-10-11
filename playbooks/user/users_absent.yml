@@ -6,7 +6,7 @@
 
   tasks:
   - name: Users user1..10 absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users:
       - name: user1

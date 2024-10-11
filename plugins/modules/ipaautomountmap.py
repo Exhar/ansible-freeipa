@@ -42,7 +42,7 @@ short_description: Manage FreeIPA autommount map
 description:
 - Add, delete, and modify an IPA automount map
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   automountlocation:
     description: automount location map is anchored to
@@ -80,14 +80,14 @@ options:
 
 EXAMPLES = '''
   - name: ensure map named auto.DMZ in location DMZ is present
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: auto.DMZ
       location: DMZ
       desc: "this is a map for servers in the DMZ"
 
   - name: ensure indirect map exists
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: auto.INDIRECT
       location: DMZ
@@ -95,7 +95,7 @@ EXAMPLES = '''
       mount: indirect
 
   - name: remove a map named auto.DMZ in location DMZ if it exists
-    ipaautomountmap:
+    freeipa.ansible_freeipa.ipaautomountmap:
       ipaadmin_password: SomeADMINpassword
       name: auto.DMZ
       location: DMZ
@@ -105,7 +105,7 @@ EXAMPLES = '''
 RETURN = '''
 '''
 
-from ansible.module_utils.ansible_freeipa_module import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import (
     IPAAnsibleModule, compare_args_ipa
 )
 

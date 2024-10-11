@@ -35,7 +35,7 @@ module: ipahbacrule
 short_description: Manage FreeIPA HBAC rules
 description: Manage FreeIPA HBAC rules
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The hbacrule name
@@ -115,52 +115,52 @@ author:
 
 EXAMPLES = """
 # Ensure HBAC Rule allhosts is present
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: allhosts
     usercategory: all
 
 # Ensure host server is present in HBAC Rule allhosts
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: allhosts
     host: server
     action: member
 
 # Ensure HBAC Rule sshd-pinky is present
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: sshd-pinky
     hostcategory: all
 
 # Ensure user pinky is present in HBAC Rule sshd-pinky
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: sshd-pinky
     user: pinky
     action: member
 
 # Ensure HBAC service sshd is present in HBAC Rule sshd-pinky
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: sshd-pinky
     hbacsvc: sshd
     action: member
 
 # Ensure HBAC Rule sshd-pinky is disabled
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: sshd-pinky
     state: disabled
 
 # Ensure HBAC Rule sshd-pinky is enabled
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: sshd-pinky
     state: enabled
 
 # Ensure HBAC Rule sshd-pinky is absent
-- ipahbacrule:
+- freeipa.ansible_freeipa.ipahbacrule:
     ipaadmin_password: SomeADMINpassword
     name: sshd-pinky
     state: absent
@@ -169,7 +169,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list, ensure_fqdn
 

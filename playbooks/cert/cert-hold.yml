@@ -4,12 +4,12 @@
   become: false
   gather_facts: false
   module_defaults:
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: client
 
   tasks:
   - name: Temporarily hold a certificate
-    ipacert:
+    freeipa.ansible_freeipa.ipacert:
       serial_number: 12345
       state: held

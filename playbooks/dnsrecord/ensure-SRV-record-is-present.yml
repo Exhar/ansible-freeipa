@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure a SRV record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos._udp.example.com
       record_type: 'SRV'

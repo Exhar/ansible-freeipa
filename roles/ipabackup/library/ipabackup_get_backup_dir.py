@@ -43,7 +43,7 @@ author:
 EXAMPLES = '''
 # Get IPA_BACKUP_DIR from ipaplatform
 - name: Get IPA_BACKUP_DIR from ipaplatform
-  ipabackup_get_backup_dir:
+  freeipa.ansible_freeipa.ipabackup_get_backup_dir:
   register: result
 '''
 

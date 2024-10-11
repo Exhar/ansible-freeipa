@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure role members are absent.
-    iparole:
+    freeipa.ansible_freeipa.iparole:
       ipaadmin_password: SomeADMINpassword
       name: somerole
       user:

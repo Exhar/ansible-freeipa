@@ -70,7 +70,7 @@ Example playbook to setup smartcard for the IPA clients using admin password and
   become: true
 
   roles:
-  - role: ipasmartcard_client
+  - role: freeipa.ansible_freeipa.ipasmartcard_client
     state: present
 ```
 

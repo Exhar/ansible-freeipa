@@ -6,6 +6,6 @@
 
   tasks:
   - name: Ensure DNS forward zone is absent
-    ipadnsforwardzone:
+    freeipa.ansible_freeipa.ipadnsforwardzone:
       ipaadmin_password: SomeADMINpassword
       state: absent

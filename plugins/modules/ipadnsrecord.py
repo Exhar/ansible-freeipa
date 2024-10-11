@@ -38,7 +38,7 @@ module: ipadnsrecord
 short_description: Manage FreeIPA DNS records
 description: Manage FreeIPA DNS records
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   records:
     description: The list of user dns records dicts
@@ -893,7 +893,7 @@ author:
 
 EXAMPLES = """
 # Ensure dns record is present
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: vm-001
     zone_name: example.com
@@ -901,7 +901,7 @@ EXAMPLES = """
     record_value: '::1'
 
 # Ensure that dns record exists with a TTL
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: host01
     zone_name: example.com
@@ -910,7 +910,7 @@ EXAMPLES = """
     record_ttl: 300
 
 # Ensure that dns record exists with a reverse record
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: host02
     zone_name: example.com
@@ -919,7 +919,7 @@ EXAMPLES = """
     create_reverse: yes
 
 # Ensure a PTR record is present
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: 5
     zone_name: 2.168.192.in-addr.arpa
@@ -927,7 +927,7 @@ EXAMPLES = """
     record_value: 'internal.ipa.example.com'
 
 # Ensure a TXT record is present
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: _kerberos
     zone_name: example.com
@@ -935,7 +935,7 @@ EXAMPLES = """
     record_value: 'EXAMPLE.COM'
 
 # Ensure a SRV record is present
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: _kerberos._udp.example.com
     zone_name: example.com
@@ -943,7 +943,7 @@ EXAMPLES = """
     record_value: '10 50 88 ipa.example.com'
 
 # Ensure an MX record is present
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: '@'
     zone_name: example.com
@@ -951,7 +951,7 @@ EXAMPLES = """
     record_value: '1 mailserver.example.com'
 
 # Ensure that dns record is absent
-- ipadnsrecord:
+- freeipa.ansible_freeipa.ipadnsrecord:
     ipaadmin_password: SomeADMINpassword
     name: host01
     zone_name: example.com
@@ -965,7 +965,7 @@ RETURN = """
 
 
 from ansible.module_utils._text import to_text
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, is_ipv4_addr, is_ipv6_addr, ipalib_errors
 try:
     import dns.reversename

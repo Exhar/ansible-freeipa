@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure principal member test/example.com is present in servicedelegationrule test-delegation-rule
-    ipaservicedelegationrule:
+    freeipa.ansible_freeipa.ipaservicedelegationrule:
       ipaadmin_password: SomeADMINpassword
       name: test-delegation-rule
       principal: test/example.com

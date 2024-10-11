@@ -58,7 +58,7 @@ author:
 
 EXAMPLES = '''
 - name: IPA extras configurations
-  ipaclient_setup_automount:
+  freeipa.ansible_freeipa.ipaclient_setup_automount:
     servers: ["server1.example.com","server2.example.com"]
 '''
 
@@ -67,7 +67,7 @@ RETURN = '''
 
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_client import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_client import (
     setup_logging, check_imports, options, configure_automount, sysrestore,
     paths, getargspec
 )

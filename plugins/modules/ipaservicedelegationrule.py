@@ -36,7 +36,7 @@ short_description: Manage FreeIPA servicedelegationrule
 description: |
   Manage FreeIPA servicedelegationrule and servicedelegationrule members
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of servicedelegationrule name strings.
@@ -79,13 +79,13 @@ author:
 
 EXAMPLES = """
 # Ensure servicedelegationrule delegation-rule is present
-- ipaservicedelegationrule:
+- freeipa.ansible_freeipa.ipaservicedelegationrule:
     ipaadmin_password: SomeADMINpassword
     name: delegation-rule
 
 # Ensure servicedelegationrule delegation-rule member principal
 # test/example.com is present
-- ipaservicedelegationrule:
+- freeipa.ansible_freeipa.ipaservicedelegationrule:
     ipaadmin_password: SomeADMINpassword
     name: delegation-rule
     principal: test/example.com
@@ -93,7 +93,7 @@ EXAMPLES = """
 
 # Ensure servicedelegationrule delegation-rule member principal
 # test/example.com is absent
-- ipaservicedelegationrule:
+- freeipa.ansible_freeipa.ipaservicedelegationrule:
     ipaadmin_password: SomeADMINpassword
     name: delegation-rule
     principal: test/example.com
@@ -102,7 +102,7 @@ EXAMPLES = """
 
 # Ensure servicedelegationrule delegation-rule member target
 # test/example.com is present
-- ipaservicedelegationrule:
+- freeipa.ansible_freeipa.ipaservicedelegationrule:
     ipaadmin_password: SomeADMINpassword
     name: delegation-rule
     target: delegation-target
@@ -110,7 +110,7 @@ EXAMPLES = """
 
 # Ensure servicedelegationrule delegation-rule member target
 # test/example.com is absent
-- ipaservicedelegationrule:
+- freeipa.ansible_freeipa.ipaservicedelegationrule:
     ipaadmin_password: SomeADMINpassword
     name: delegation-rule
     target: delegation-target
@@ -118,7 +118,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure servicedelegationrule delegation-rule is absent
-- ipaservicedelegationrule:
+- freeipa.ansible_freeipa.ipaservicedelegationrule:
     ipaadmin_password: SomeADMINpassword
     name: delegation-rule
     state: absent
@@ -128,7 +128,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, gen_add_del_lists, gen_add_list, gen_intersection_list, \
     servicedelegation_normalize_principals, ipalib_errors
 from ansible.module_utils import six

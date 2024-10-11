@@ -8,7 +8,7 @@
 
   # setup
   - name: Ensure DNS zones to be used are absent.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: "{{ item }}"
       state: absent
@@ -17,7 +17,7 @@
       - 2.168.192.in-addr.arpa
 
   - name: Ensure DNS zones to be used are present.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: "{{ item }}"
     with_items:
@@ -25,7 +25,7 @@
       - 2.168.192.in-addr.arpa
 
   - name: Ensure that dns record 'host01' is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: host01
       zone_name: testzone.local
@@ -33,7 +33,7 @@
       state: absent
 
   - name: Ensure that dns records for 'vm-001' are absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: vm-001
       zone_name: testzone.local
@@ -41,7 +41,7 @@
       state: absent
 
   - name: Ensure a PTR record is absent for 'vm-001'
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '1'
       record_type: 'PTR'
@@ -50,7 +50,7 @@
       state: absent
 
   - name: Ensure a PTR record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: 2.168.192.in-addr.arpa
       name: "5"
@@ -58,7 +58,7 @@
       state: absent
 
   - name: Ensure a TXT record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos
       record_type: 'TXT'
@@ -67,7 +67,7 @@
       state: absent
 
   - name: Ensure a SRV record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos._udp.testzone.local
       record_type: 'SRV'
@@ -76,7 +76,7 @@
       state: absent
 
   - name: Ensure an MX record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '@'
       record_type: 'MX'
@@ -86,7 +86,7 @@
 
   # tests
   - name: Ensure AAAA  dns record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: vm-001
       record_type: 'AAAA'
@@ -97,7 +97,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that AAAA dns record exists with a TTL
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: host01
       record_type: 'AAAA'
@@ -109,7 +109,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure a PTR record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '5'
       record_type: 'PTR'
@@ -120,7 +120,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure A record is present, with reverse
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: vm-001
       record_type: 'A'
@@ -132,7 +132,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure A record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: vm-001
       record_type: 'A'
@@ -143,7 +143,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure PTR record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '1'
       record_type: 'PTR'
@@ -154,7 +154,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure a TXT record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos
       record_type: 'TXT'
@@ -165,7 +165,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure a SRV record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos._udp.testzone.local
       record_type: 'SRV'
@@ -176,7 +176,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure an MX record is present
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '@'
       record_type: 'MX'
@@ -187,7 +187,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure that dns record is removed
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: host01
       zone_name: testzone.local
@@ -199,7 +199,7 @@
 
   # cleanup
   - name: Ensure that dns record 'host01' is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: host01
       zone_name: testzone.local
@@ -210,7 +210,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure that dns record 'vm-001' is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: vm-001
       zone_name: testzone.local
@@ -221,7 +221,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure a PTR record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: 5
       record_type: 'PTR'
@@ -232,7 +232,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure a TXT record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos
       record_type: 'TXT'
@@ -243,7 +243,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure a SRV record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: _kerberos._udp.testzone.local
       record_type: 'SRV'
@@ -254,7 +254,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure an MX record is absent
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       name: '@'
       record_type: 'MX'
@@ -265,7 +265,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure DNS zones to be used are absent.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       name: "{{ item }}"
       state: absent

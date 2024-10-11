@@ -194,7 +194,7 @@ RETURN = '''
 import os
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_replica import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_replica import (
     check_imports, AnsibleModuleLog, setup_logging, options, installer,
     paths, sysrestore, ansible_module_get_parsed_ip_addresses, service,
     redirect_stdout, create_ipa_conf, ipautil,

@@ -6,7 +6,7 @@
 
   tasks:
     - name: Retrieve data from symmetric vault.
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: symvault
         username: admin

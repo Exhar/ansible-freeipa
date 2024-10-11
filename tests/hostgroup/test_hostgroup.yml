@@ -11,7 +11,7 @@
     when: ipaserver_domain is not defined
 
   - name: Ensure host-group databases, mysql-server and oracle-server are absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -21,7 +21,7 @@
       state: absent
 
   - name: Test hosts db1 and db2 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -30,7 +30,7 @@
       state: absent
 
   - name: Host "{{ 'db1.' + ipaserver_domain }}" present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'db1.' + ipaserver_domain }}"
@@ -39,7 +39,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ 'db2.' + ipaserver_domain }}" present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ 'db2.' + ipaserver_domain }}"
@@ -48,7 +48,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host-group mysql-server is present
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: mysql-server
@@ -57,7 +57,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host-group mysql-server is present again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: mysql-server
@@ -66,7 +66,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host-group oracle-server is present
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: oracle-server
@@ -75,7 +75,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host-group oracle-server is present again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: oracle-server
@@ -84,7 +84,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host-group databases is present
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -97,7 +97,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host-group databases is present again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -110,7 +110,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host db2 is member of host-group databases
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -122,7 +122,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host db2 is member of host-group databases again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -134,7 +134,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure hosts db1 and db2 (no FQDN) are member of host-group databases again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -147,7 +147,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host-group mysql-server is member of host-group databases
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -159,7 +159,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host-group mysql-server is member of host-group databases again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -171,7 +171,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host-group oracle-server is member of host-group databases (again)
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: databases
@@ -183,7 +183,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host-group databases, mysql-server and oracle-server are absent
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -195,7 +195,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host-group databases, mysql-server and oracle-server are absent again
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -207,7 +207,7 @@
     failed_when: result.changed or result.failed
 
   - name: Test hosts db1 and db2 absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:

@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure that 'host04' has multiple A records.
-    ipadnsrecord:
+    freeipa.ansible_freeipa.ipadnsrecord:
       ipaadmin_password: SomeADMINpassword
       zone_name: ipatest.local
       name: host01

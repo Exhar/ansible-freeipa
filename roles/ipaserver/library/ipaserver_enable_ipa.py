@@ -60,7 +60,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_server import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_server import (
     check_imports,
     AnsibleModuleLog, setup_logging, options, paths, api, sysrestore, tasks,
     service, bindinstance, redirect_stdout, services

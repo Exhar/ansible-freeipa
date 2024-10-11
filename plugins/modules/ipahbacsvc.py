@@ -35,7 +35,7 @@ module: ipahbacsvc
 short_description: Manage FreeIPA HBAC Services
 description: Manage FreeIPA HBAC Services
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The group name
@@ -58,13 +58,13 @@ author:
 
 EXAMPLES = """
 # Ensure HBAC Service for http is present
-- ipahbacsvc:
+- freeipa.ansible_freeipa.ipahbacsvc:
     ipaadmin_password: SomeADMINpassword
     name: http
     description: Web service
 
 # Ensure HBAC Service for tftp is absent
-- ipahbacsvc:
+- freeipa.ansible_freeipa.ipahbacsvc:
     ipaadmin_password: SomeADMINpassword
     name: tftp
     state: absent
@@ -73,7 +73,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

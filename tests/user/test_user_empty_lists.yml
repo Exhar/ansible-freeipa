@@ -7,14 +7,14 @@
   tasks:
   # SETUP
   - name: Remove test users
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
       state: absent
 
   - name: Ensure user testuser is present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
@@ -27,7 +27,7 @@
 
   # TESTS - action: user
   - name: Ensure user testuser present with empty sshpubkey
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
@@ -36,7 +36,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user testuser present with empty sshpubkey, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
@@ -45,7 +45,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user testuser present with empty userauthtype
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
@@ -54,7 +54,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user testuser present with empty userauthtype, again
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser
@@ -64,7 +64,7 @@
 
   # CLEANUP
   - name: Remove test users
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testuser

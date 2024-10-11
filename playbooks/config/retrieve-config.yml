@@ -6,7 +6,7 @@
 
   tasks:
   - name: Query IPA global configuration
-    ipaconfig:
+    freeipa.ansible_freeipa.ipaconfig:
       ipaadmin_password: SomeADMINpassword
     register: serverconfig
 

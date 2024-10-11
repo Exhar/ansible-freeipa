@@ -41,7 +41,7 @@ short_description: Manage FreeIPA DNS Forwarder Zones
 description:
   - Add and delete an IPA DNS Forwarder Zones using IPA API
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description:
@@ -99,7 +99,7 @@ options:
 
 EXAMPLES = '''
 # Ensure dns zone is present
-- ipadnsforwardzone:
+- freeipa.ansible_freeipa.ipadnsforwardzone:
     ipaadmin_password: SomeADMINpassword
     state: present
     name: example.com
@@ -110,7 +110,7 @@ EXAMPLES = '''
     skip_overlap_check: true
 
 # Ensure dns zone is present, with forwarder on non-default port
-- ipadnsforwardzone:
+- freeipa.ansible_freeipa.ipadnsforwardzone:
     ipaadmin_password: SomeADMINpassword
     state: present
     name: example.com
@@ -121,7 +121,7 @@ EXAMPLES = '''
     skip_overlap_check: true
 
 # Ensure that dns zone is removed
-- ipadnsforwardzone:
+- freeipa.ansible_freeipa.ipadnsforwardzone:
     ipaadmin_password: SomeADMINpassword
     name: example.com
     state: absent
@@ -132,7 +132,7 @@ RETURN = '''
 
 
 from ansible.module_utils._text import to_text
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

@@ -13,19 +13,19 @@
   - name: Test hbacsvcgroup member case insnsitive
     block:
       - name: Ensure test hbacsvcgroup is absent
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           state: absent
 
       - name: Ensure test HBAC services are present
-        ipahbacsvc:
+        freeipa.ansible_freeipa.ipahbacsvc:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}"
         with_items: "{{ hbacsvc_list }}"
 
       - name: Ensure test hbacsvcgroup is present with duplicate hbacsvc
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc:
@@ -35,7 +35,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure test hbacsvc is absent from hbacsvcgroup, with duplicate hbacsvc
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc:
@@ -47,7 +47,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check if test hbacsvc absent, again, from hbacsvcgroup, with duplicate hbacsvc, would trigger changes
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc:
@@ -60,7 +60,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure test hbacsvcgroup is absent
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           state: absent
@@ -68,7 +68,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check if hbacsvcgroup with members would trigger changes, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -77,7 +77,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure hbacsvcgroup is present with members, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -85,7 +85,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check if hbacsvcgroup with members would not trigger changes, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -94,7 +94,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure hbacsvcgroup is present with members, lowercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | lower }}"
@@ -102,7 +102,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure hbacsvcgroup is present with members, uppercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | upper }}"
@@ -110,18 +110,18 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure test hbacsvcgroup is absent
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           state: absent
 
       - name: Ensure test hbacsvcgroup is present
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
 
       - name: Check if hbacsvcgroup members would trigger changes, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -131,7 +131,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure hbacsvcgroup has members, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -140,7 +140,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check if hbacsvcgroup members would not trigger changes, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -150,7 +150,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure hbacsvcgroup has members, lowercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | lower }}"
@@ -159,7 +159,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure hbacsvcgroup has members, uppercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | upper }}"
@@ -168,7 +168,7 @@
         failed_when: result.changed or result.failed
 
       - name: Check if hbacsvcgroup members absence would trigger changes, uppercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | upper }}"
@@ -179,7 +179,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure hbacsvcgroup has members absent, uppercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | upper }}"
@@ -189,7 +189,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check if hbacsvcgroup members absence would not trigger changes, uppercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | upper }}"
@@ -200,7 +200,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure hbacsvcgroup has members absent, mixed case
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list }}"
@@ -210,7 +210,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure hbacsvcgroup has members absent, lowercase
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           hbacsvc: "{{ hbacsvc_list | lower }}"
@@ -221,13 +221,13 @@
 
     always:
       - name: Ensure test hbac service group is absent
-        ipahbacsvcgroup:
+        freeipa.ansible_freeipa.ipahbacsvcgroup:
           ipaadmin_password: SomeADMINpassword
           name: testgroup
           state: absent
 
       - name: Ensure test hbac services are absent
-        ipahbacsvc:
+        freeipa.ansible_freeipa.ipahbacsvc:
           ipaadmin_password: SomeADMINpassword
           ipaapi_context: "{{ ipa_context | default(omit) }}"
           name: "{{ hbacsvc_list }}"

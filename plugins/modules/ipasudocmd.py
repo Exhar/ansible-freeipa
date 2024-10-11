@@ -37,7 +37,7 @@ module: ipasudocmd
 short_description: Manage FreeIPA sudo command
 description: Manage FreeIPA sudo command
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The sudo command
@@ -61,13 +61,13 @@ author:
 
 EXAMPLES = """
 # Ensure sudocmd is present
-- ipasudocmd:
+- freeipa.ansible_freeipa.ipasudocmd:
     ipaadmin_password: SomeADMINpassword
     name: /usr/bin/su
     state: present
 
 # Ensure sudocmd is absent
-- ipasudocmd:
+- freeipa.ansible_freeipa.ipasudocmd:
     ipaadmin_password: SomeADMINpassword
     name: /usr/bin/su
     state: absent
@@ -76,7 +76,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

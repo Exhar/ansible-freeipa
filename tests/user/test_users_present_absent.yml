@@ -18,20 +18,20 @@
     loop: "{{ users }}"
 
   - name: Cleanup test users len:{{ users | length }}
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users: "{{ user_names }}"
       state: absent
 
   - name: Users present len:{{ users | length }}
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users: "{{ users }}"
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Users absent len:{{ users | length }}
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       users: "{{ user_names }}"
       state: absent

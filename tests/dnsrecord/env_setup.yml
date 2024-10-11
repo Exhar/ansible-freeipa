@@ -8,7 +8,7 @@
 
   # Common setup tasks.
   - name: Ensure DNS testing zones are present.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ item }}"
@@ -24,7 +24,7 @@
     - "{{ zone_ipv6_reverse }}"
 
   - name: Ensure DNSSEC zone '"{{ safezone }}"' is present.
-    ipadnszone:
+    freeipa.ansible_freeipa.ipadnszone:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "{{ safezone }}"

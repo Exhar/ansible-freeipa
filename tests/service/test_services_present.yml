@@ -9,19 +9,19 @@
     ansible.builtin.include_tasks: generate_test_data.yml
 
   - name: Cleanup Services len:{{ service_list | length }}
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_absent_list }}"
       state: absent
 
   - name: Cleanup Hosts len:{{ host_list | length }}
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_absent_list }}"
       state: absent
 
   - name: Hosts present len:{{ host_list | length }}
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_list }}"
       force: true
@@ -29,7 +29,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Hosts present len:{{ host_list | length }}, again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_list }}"
       force: true
@@ -37,21 +37,21 @@
     failed_when: result.changed or result.failed
 
   - name: Services present len:{{ service_list | length }}
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_list }}"
     register: result
     failed_when: not result.changed or result.failed
 
   - name: Services present len:{{ service_list | length }}, again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_list }}"
     register: result
     failed_when: result.changed or result.failed
 
   - name: Services absent len:{{ service_list | length }}
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_absent_list }}"
       state: absent
@@ -59,7 +59,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Services absent len:{{ service_list | length }}, again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_absent_list }}"
       state: absent
@@ -67,7 +67,7 @@
     failed_when: result.changed or result.failed
 
   - name: Hosts absent len:{{ host_list | length }}
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_absent_list }}"
       state: absent
@@ -75,7 +75,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Hosts absent len:{{ host_list | length }}, again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       hosts: "{{ host_absent_list }}"
       state: absent

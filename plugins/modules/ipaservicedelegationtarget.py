@@ -36,7 +36,7 @@ short_description: Manage FreeIPA servicedelegationtarget
 description: |
   Manage FreeIPA servicedelegationtarget and servicedelegationtarget members
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of servicedelegationtarget name strings.
@@ -72,13 +72,13 @@ author:
 
 EXAMPLES = """
 # Ensure servicedelegationtarget delegation-target is present
-- ipaservicedelegationtarget:
+- freeipa.ansible_freeipa.ipaservicedelegationtarget:
     ipaadmin_password: SomeADMINpassword
     name: delegation-target
 
 # Ensure servicedelegationtarget delegation-target member principal
 # test/example.com is present
-- ipaservicedelegationtarget:
+- freeipa.ansible_freeipa.ipaservicedelegationtarget:
     ipaadmin_password: SomeADMINpassword
     name: delegation-target
     principal: test/example.com
@@ -86,7 +86,7 @@ EXAMPLES = """
 
 # Ensure servicedelegationtarget delegation-target member principal
 # test/example.com is absent
-- ipaservicedelegationtarget:
+- freeipa.ansible_freeipa.ipaservicedelegationtarget:
     ipaadmin_password: SomeADMINpassword
     name: delegation-target
     principal: test/example.com
@@ -94,7 +94,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure servicedelegationtarget delegation-target is absent
-- ipaservicedelegationtarget:
+- freeipa.ansible_freeipa.ipaservicedelegationtarget:
     ipaadmin_password: SomeADMINpassword
     name: delegation-target
     state: absent
@@ -104,7 +104,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, gen_add_del_lists, gen_add_list, gen_intersection_list, \
     servicedelegation_normalize_principals
 from ansible.module_utils import six

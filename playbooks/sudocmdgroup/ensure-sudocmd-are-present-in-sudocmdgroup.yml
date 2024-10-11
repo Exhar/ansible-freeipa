@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure sudo commands are present
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       name:
       - /usr/sbin/ifconfig
@@ -13,7 +13,7 @@
       state: present
 
   - name: Ensure sudocmdgroup is present with sudo commands.
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
      ipaadmin_password: SomeADMINpassword
      name: network
      sudocmd:

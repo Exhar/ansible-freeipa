@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure vault is present, with members.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_type: standard

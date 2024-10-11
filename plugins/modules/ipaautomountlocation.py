@@ -40,7 +40,7 @@ short_description: Manage FreeIPA autommount locations
 description:
 - Add and delete an IPA automount location
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The automount location to be managed
@@ -58,13 +58,13 @@ options:
 
 EXAMPLES = '''
   - name: ensure a automount location named DMZ exists
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: DMZ
       state: present
 
   - name: ensure a automount location named DMZ is absent
-    ipaautomountlocation:
+    freeipa.ansible_freeipa.ipaautomountlocation:
       ipaadmin_password: SomeADMINpassword
       name: DMZ
       state: absent
@@ -73,7 +73,7 @@ EXAMPLES = '''
 RETURN = '''
 '''
 
-from ansible.module_utils.ansible_freeipa_module import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import (
     IPAAnsibleModule, ipalib_errors
 )
 

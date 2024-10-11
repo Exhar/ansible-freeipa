@@ -9,7 +9,7 @@
     ansible.builtin.include_tasks: generate_test_data.yml
 
   - name: Services absent len:{{ service_list | length }}
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       services: "{{ service_absent_list }}"
       state: absent

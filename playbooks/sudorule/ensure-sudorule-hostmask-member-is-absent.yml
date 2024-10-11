@@ -6,7 +6,7 @@
 
   tasks:
   - name: Ensure hostmask network is absent in sudorule
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule1
       hostmask: 192.168.122.37/24

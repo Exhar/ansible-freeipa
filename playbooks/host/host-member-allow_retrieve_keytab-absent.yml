@@ -5,7 +5,7 @@
 
   tasks:
   - name: Host host1.example.com members allow_retrieve_keytab absent for users, groups, hosts and hostgroups
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: host01.example.com
       allow_retrieve_keytab_user:

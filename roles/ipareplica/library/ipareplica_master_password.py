@@ -57,7 +57,7 @@ password:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.ansible_ipa_replica import (
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_ipa_replica import (
     check_imports, setup_logging, ipa_generate_password
 )
 

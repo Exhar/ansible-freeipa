@@ -36,7 +36,7 @@ module: ipahostgroup
 short_description: Manage FreeIPA hostgroups
 description: Manage FreeIPA hostgroups
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The hostgroup name
@@ -99,7 +99,7 @@ author:
 
 EXAMPLES = """
 # Ensure host-group databases is present
-- ipahostgroup:
+- freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     host:
@@ -109,7 +109,7 @@ EXAMPLES = """
     - oracle-server
 
 # Ensure hosts and hostgroups are present in existing databases hostgroup
-- ipahostgroup:
+- freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     host:
@@ -120,7 +120,7 @@ EXAMPLES = """
     action: member
 
 # Ensure hosts and hostgroups are absent in databases hostgroup
-- ipahostgroup:
+- freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     host:
@@ -132,13 +132,13 @@ EXAMPLES = """
     state: absent
 
 # Rename hostgroup
-- ipahostgroup:
+- freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     rename: datalake
 
 # Ensure host-group databases is absent
-- ipahostgroup:
+- freeipa.ansible_freeipa.ipahostgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     state: absent
@@ -147,7 +147,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list, ensure_fqdn
 

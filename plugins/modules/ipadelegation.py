@@ -35,7 +35,7 @@ module: ipadelegation
 short_description: Manage FreeIPA delegations
 description: Manage FreeIPA delegations and delegation attributes
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The list of delegation name strings.
@@ -82,7 +82,7 @@ author:
 
 EXAMPLES = """
 # Ensure delegation "basic manager attributes" is present
-- ipadelegation:
+- freeipa.ansible_freeipa.ipadelegation:
     ipaadmin_password: SomeADMINpassword
     name: "basic manager attributes"
     permission: read
@@ -94,7 +94,7 @@ EXAMPLES = """
 
 # Ensure delegation "basic manager attributes" member attribute
 # departmentnumber is present
-- ipadelegation:
+- freeipa.ansible_freeipa.ipadelegation:
     ipaadmin_password: SomeADMINpassword
     name: "basic manager attributes"
     attribute:
@@ -103,7 +103,7 @@ EXAMPLES = """
 
 # Ensure delegation "basic manager attributes" member attributes
 # employeetype and employeenumber are present
-- ipadelegation:
+- freeipa.ansible_freeipa.ipadelegation:
     ipaadmin_password: SomeADMINpassword
     name: "basic manager attributes"
     attribute:
@@ -113,7 +113,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure delegation "basic manager attributes" is absent
-- ipadelegation:
+- freeipa.ansible_freeipa.ipadelegation:
     ipaadmin_password: SomeADMINpassword
     name: "basic manager attributes"
     state: absent
@@ -123,7 +123,7 @@ RETURN = """
 """
 
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa
 
 

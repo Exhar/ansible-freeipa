@@ -30,13 +30,13 @@
       cert3: "{{ lookup('file', 'cert3.b64', rstrip=False) }}"
 
   - name: Host {{ svc_fqdn }} absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ svc_fqdn }}"
       state: absent
 
   - name: Host {{ svc_fqdn }} present
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ svc_fqdn }}"
       force: true
@@ -44,7 +44,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -52,7 +52,7 @@
       state: absent
 
   - name: Service FOO/{{ svc_fqdn }} present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -61,7 +61,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 1,2 members present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -73,7 +73,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 1,2 members present again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -85,7 +85,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 1,2,3 members present
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -98,7 +98,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 1,2,3 members present again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -111,7 +111,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 2,3 member absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -124,7 +124,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 2,3 member absent again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -137,7 +137,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 1,2,3 members absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -151,7 +151,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} certs 1,2,3 members absent again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -165,7 +165,7 @@
     failed_when: result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} absent
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -175,7 +175,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Service FOO/{{ svc_fqdn }} absent again
-    ipaservice:
+    freeipa.ansible_freeipa.ipaservice:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: "FOO/{{ svc_fqdn }}"
@@ -185,7 +185,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host {{ svc_fqdn }} absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ svc_fqdn }}"
       state: absent

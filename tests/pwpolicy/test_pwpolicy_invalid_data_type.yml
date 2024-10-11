@@ -9,14 +9,14 @@
     ansible.builtin.import_tasks: ../env_freeipa_facts.yml
 
   - name: Ensure presence of group ops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
       state: present
 
   - name: Ensure invalid values raise proper error for argument minlife
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -25,7 +25,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'minlife'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument maxlife
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -34,7 +34,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'maxlife'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument history
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -43,7 +43,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'history'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument priority
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -52,7 +52,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'priority'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument lockouttime
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -61,7 +61,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'lockouttime'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument minlength
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -70,7 +70,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'minlength'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument minclasses
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -79,7 +79,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'minclasses'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument maxfail
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -88,7 +88,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'maxfail'" not in result.msg)
 
   - name: Ensure invalid values raise proper error for argument failinterval
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -97,7 +97,7 @@
     failed_when: result.changed or (result.failed and "Invalid value 'error' for argument 'failinterval'" not in result.msg)
 
   - name: Ensure invalid values for dictcheck raise proper error.
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -107,7 +107,7 @@
     when: ipa_version is version("4.9", ">=")
 
   - name: Ensure invalid values for usercheck raise proper error.
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -117,7 +117,7 @@
     when: ipa_version is version("4.9", ">=")
 
   - name: Ensure invalid values for gracelimit raise proper error.
-    ipapwpolicy:
+    freeipa.ansible_freeipa.ipapwpolicy:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops
@@ -127,7 +127,7 @@
     when: ipa_version is version("4.9.10", ">=")
 
   - name: Ensure absence of group ops
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: ops

@@ -6,7 +6,7 @@
 
   tasks:
   - name: User test cert present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: test
       action: member

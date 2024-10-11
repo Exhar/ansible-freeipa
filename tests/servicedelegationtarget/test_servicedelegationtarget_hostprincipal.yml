@@ -33,14 +33,14 @@
     # CLEANUP TEST ITEMS
 
     - name: Ensure servicedelegationtarget test-delegation-target is absent
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
         state: absent
 
     - name: Ensure host is absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: "{{ test_host_fqdn }}"
@@ -49,14 +49,14 @@
     # CREATE TEST ITEMS
 
     - name: Ensure host is present
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: "{{ test_host_fqdn }}"
         force: yes
 
     - name: Ensure servicedelegationtarget test-delegation-target is present
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -66,7 +66,7 @@
     # TESTS
 
     - name: Ensure servicedelegationtarget test-delegation-target member host principal "{{ test_host_fqdn }}" is present
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -76,7 +76,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure servicedelegationtarget test-delegation-target member host principal "{{ test_host_fqdn }}" is present again
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -86,7 +86,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure servicedelegationtarget test-delegation-target member host principal "{{ test_host_fqdn_realm }}" is present unchanged
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -96,7 +96,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure servicedelegationtarget test-delegation-target member host principal "{{ 'host/' + test_host_fqdn_realm }}" is present unchanged
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -106,7 +106,7 @@
       failed_when: result.changed or result.failed
 
     - name: Ensure servicedelegationtarget test-delegation-target member host principal "{{ test_host_fqdn_realm }}" is absent
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -117,7 +117,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure servicedelegationtarget test-delegation-target member host principal "{{ test_host_fqdn }}" is absent unchanged
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -130,7 +130,7 @@
     # CLEANUP TEST ITEMS
 
     - name: Ensure servicedelegationtarget test-delegation-target is absent
-      ipaservicedelegationtarget:
+      freeipa.ansible_freeipa.ipaservicedelegationtarget:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: test-delegation-target
@@ -139,7 +139,7 @@
       failed_when: not result.changed or result.failed
 
     - name: Ensure host is absent
-      ipahost:
+      freeipa.ansible_freeipa.ipahost:
         ipaadmin_password: SomeADMINpassword
         ipaapi_context: "{{ ipa_context | default(omit) }}"
         name: "{{ test_host_fqdn }}"

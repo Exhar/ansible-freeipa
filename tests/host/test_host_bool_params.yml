@@ -14,7 +14,7 @@
       host1_fqdn: "{{ 'host1.' + ipaserver_domain }}"
 
   - name: Host absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"
@@ -22,7 +22,7 @@
       state: absent
 
   - name: Host "{{ host1_fqdn }}" present with requires_pre_auth, ok_as_delegate and ok_to_auth_as_delegate
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       force: yes
@@ -33,7 +33,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with requires_pre_auth, ok_as_delegate and ok_to_auth_as_delegate again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       requires_pre_auth: yes
@@ -43,7 +43,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with requires_pre_auth, ok_as_delegate and ok_to_auth_as_delegate set to no
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       requires_pre_auth: no
@@ -53,7 +53,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with requires_pre_auth, ok_as_delegate and ok_to_auth_as_delegate set to no again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       requires_pre_auth: no
@@ -63,7 +63,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with requires_pre_auth
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       requires_pre_auth: yes
@@ -71,7 +71,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with requires_pre_auth again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       requires_pre_auth: yes
@@ -79,7 +79,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with ok_as_delegate
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ok_as_delegate: yes
@@ -87,7 +87,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with ok_as_delegate again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ok_as_delegate: yes
@@ -95,7 +95,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with ok_to_auth_as_delegate
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ok_to_auth_as_delegate: yes
@@ -103,7 +103,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Host "{{ host1_fqdn }}" present with ok_to_auth_as_delegate again
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name: "{{ host1_fqdn }}"
       ok_to_auth_as_delegate: yes
@@ -111,7 +111,7 @@
     failed_when: result.changed or result.failed
 
   - name: Host absent
-    ipahost:
+    freeipa.ansible_freeipa.ipahost:
       ipaadmin_password: SomeADMINpassword
       name:
       - "{{ host1_fqdn }}"

@@ -9,7 +9,7 @@
 
   # setup
   - name: Ensure test user is present
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: user01
@@ -17,34 +17,34 @@
       last: zeroone
 
   - name: Ensure group01 is present, with user01 on it.
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: group01
       user: user01
 
   - name: Ensure group02 is present
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: group02
 
   - name: Ensure sudocmdgroup is absent
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test_sudorule
       state: absent
 
   - name: Ensure hostgroup is present, with a host.
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: cluster
       host: "{{ ansible_facts['fqdn'] }}"
 
   - name: Ensure some sudocmds are available
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -54,7 +54,7 @@
       state: present
 
   - name: Ensure sudocmdgroup is available
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test_sudorule
@@ -62,7 +62,7 @@
       state: present
 
   - name: Ensure sudocmdgroup is available
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: test_sudorule2
@@ -70,7 +70,7 @@
       state: present
 
   - name: Ensure sudorules are absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -85,7 +85,7 @@
   # tests
 
   - name: Ensure sudorule is present
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -93,7 +93,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -101,7 +101,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user01 is on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -112,7 +112,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user01 is on the list of users sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -123,7 +123,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user01 is not on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -135,7 +135,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user01 is not on the list of users sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -147,7 +147,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group01 is on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -158,7 +158,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group01 is on the list of users sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -169,7 +169,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group01 and group2 are on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -181,7 +181,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group01 and group2 are on the list of users sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -193,7 +193,7 @@
     failed_when: result.changed or result.failed
 
   - name: Check if group02 is on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -205,7 +205,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group01 is not on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -217,7 +217,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group01 is not on the list of users sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -229,7 +229,7 @@
     failed_when: result.changed or result.failed
 
   - name: Check if group02 is on the list of users sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -241,7 +241,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group01 is on the list of group sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -252,7 +252,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group01 is on the list of group sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -263,7 +263,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group01 is not on the list of group sudorule execute as.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -275,7 +275,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group01 is not on the list of groups sudorule execute as, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -287,7 +287,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with usercategory 'all'
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -296,7 +296,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with usercategory 'all', again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -305,7 +305,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is with usercategory 'all' is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -314,7 +314,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with runasusercategory 'all'.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -323,7 +323,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with runasusercategory 'all', again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -332,7 +332,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is with runasusercategory 'all' is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -341,7 +341,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with runasgroupcategory 'all'.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -350,7 +350,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with runasgroupcategory 'all', again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -359,7 +359,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is with runasgroupcategory 'all' is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -368,7 +368,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with usercategory 'all'.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -377,7 +377,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with usercategory 'all', again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -386,7 +386,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with hostategory 'all'
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allhosts
@@ -395,7 +395,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with hostategory 'all', again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allhosts
@@ -404,7 +404,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is disabled
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -413,7 +413,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is disabled, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -422,7 +422,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is enabled
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -431,7 +431,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is enabled, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -440,7 +440,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user is present in sudorule.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -450,7 +450,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user is present in sudorule, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -460,7 +460,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure user is absent from sudorule.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -471,7 +471,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure user is absent from sudorule, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -482,7 +482,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group is present in sudorule.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -492,7 +492,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group is present in sudorule, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -502,7 +502,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure group is absent from sudorule.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -513,7 +513,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure group is absent from sudorule, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -524,7 +524,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule has a sudooption.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -534,7 +534,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule has a sudooption, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -544,7 +544,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule has an order.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -553,7 +553,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule has an order, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -562,7 +562,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule has another order.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -571,7 +571,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present and some sudocmd are allowed.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -582,7 +582,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present and some sudocmd are allowed, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -593,7 +593,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present and some sudocmd are denyed.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -604,7 +604,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present and some sudocmd are denyed, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -615,7 +615,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present and, sudocmds are absent.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -627,7 +627,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present and, sudocmds are absent, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -639,7 +639,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present with cmdcategory 'all'.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allcommands
@@ -648,7 +648,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present with cmdcategory 'all', again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allcommands
@@ -657,7 +657,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure host "{{ ansible_facts['fqdn'] }}" is present in sudorule.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -667,7 +667,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure host "{{ ansible_facts['fqdn'] }}" is present in sudorule, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -677,7 +677,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure hostgroup is present in sudorule.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -687,7 +687,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure hostgroup is present in sudorule, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -697,7 +697,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with an allow_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -708,7 +708,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with an allow_sudocmdgroup, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -719,7 +719,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, but allow_sudocmdgroup is absent.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -730,7 +730,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, but allow_sudocmdgroup is absent.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -741,7 +741,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with an deny_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -752,7 +752,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with an deny_sudocmdgroup, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -763,7 +763,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, but deny_sudocmdgroup is absent.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -774,7 +774,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, but deny_sudocmdgroup is absent, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -785,7 +785,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with `test_sudorule` sudocmdgroup in allow_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -795,7 +795,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with `test_sudorule2` sudocmdgroup in allow_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -805,7 +805,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with both sudocmdgroup in allow_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -817,7 +817,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with both sudocmdgroup, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -829,7 +829,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with only `test_sudorule` sudocmdgroup in allow_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -839,7 +839,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with `test_sudorule` sudocmdgroup in deny_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -849,7 +849,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with `test_sudorule2` sudocmdgroup in deny_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -859,7 +859,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with both sudocmdgroup in deny_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -871,7 +871,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present, with both sudocmdgroup, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -883,7 +883,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present, with only `test_sudorule` sudocmdgroup in deny_sudocmdgroup.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -893,7 +893,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -902,7 +902,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is absent, again.
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule1
@@ -911,7 +911,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule allhosts is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allhosts
@@ -920,7 +920,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule allhosts is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allhosts
@@ -929,7 +929,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule allusers is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -938,7 +938,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule allusers is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allusers
@@ -947,7 +947,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule allcommands is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allcommands
@@ -956,7 +956,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule allcommands is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: allcommands
@@ -965,7 +965,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule with external user in 'runasuser' is present
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasuser:
@@ -974,7 +974,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule with external user in 'runasuser' is present, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasuser:
@@ -983,7 +983,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule member external user in 'runasuser' is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasuser:
@@ -994,7 +994,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule member external user in 'runasuser' is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasuser:
@@ -1005,7 +1005,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule member external user in 'runasuser' is present
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasuser:
@@ -1015,7 +1015,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule member external user in 'runasuser' is present, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasuser:
@@ -1025,7 +1025,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule with external group in 'runasgroup' is present
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasgroup:
@@ -1034,7 +1034,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule with external group in 'runasgroup' user is present, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasgroup:
@@ -1043,7 +1043,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule member external group in 'runasgroup' is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasgroup:
@@ -1054,7 +1054,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule member external group in 'runasgroup' is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasgroup:
@@ -1065,7 +1065,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule member external group in 'runasgroup' is present
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasgroup:
@@ -1075,7 +1075,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule member external group in 'runasgroup' is present, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       runasgroup:
@@ -1085,7 +1085,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule 'test_upstream_issue_664' is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: test_upstream_issue_664
       state: absent
@@ -1093,7 +1093,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present with hostmask
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule_hostmask
       hostmask:
@@ -1103,7 +1103,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present with hostmask, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule_hostmask
       hostmask:
@@ -1113,7 +1113,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule hostmask member is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule_hostmask
       hostmask: 192.168.122.0/24
@@ -1123,7 +1123,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule hostmask member is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule_hostmask
       hostmask: 192.168.122.0/24
@@ -1133,7 +1133,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule is present with another hostmask
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       name: testrule_hostmask
       hostmask: 192.168.122.0/24
@@ -1141,7 +1141,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule is present with another hostmask, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule_hostmask
@@ -1150,7 +1150,7 @@
     failed_when: result.changed
 
   - name: Check sudorule with hostmask is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule_hostmask
@@ -1161,7 +1161,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule hostmask member is present
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule_hostmask
@@ -1171,7 +1171,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule hostmask member is present, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule_hostmask
@@ -1181,7 +1181,7 @@
     failed_when: result.changed or result.failed
 
   - name: Ensure sudorule hostmask member is absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule_hostmask
@@ -1192,7 +1192,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure sudorule hostmask member is absent, again
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: testrule_hostmask
@@ -1204,7 +1204,7 @@
 
   # cleanup
   - name: Ensure sudocmdgroup is absent
-    ipasudocmdgroup:
+    freeipa.ansible_freeipa.ipasudocmdgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -1214,7 +1214,7 @@
       state: absent
 
   - name: Ensure sudocmds are absent
-    ipasudocmd:
+    freeipa.ansible_freeipa.ipasudocmd:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -1224,7 +1224,7 @@
       state: absent
 
   - name: Ensure sudorules are absent
-    ipasudorule:
+    freeipa.ansible_freeipa.ipasudorule:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -1236,14 +1236,14 @@
       state: absent
 
   - name: Ensure hostgroup is absent.
-    ipahostgroup:
+    freeipa.ansible_freeipa.ipahostgroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: cluster
       state: absent
 
   - name: Ensure groups are absent
-    ipagroup:
+    freeipa.ansible_freeipa.ipagroup:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name:
@@ -1252,7 +1252,7 @@
       state: absent
 
   - name: Ensure user is absent
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       ipaapi_context: "{{ ipa_context | default(omit) }}"
       name: user01

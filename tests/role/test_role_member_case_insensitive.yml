@@ -30,13 +30,13 @@
       # setup
 
       - name: Ensure test role is absent
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrule
           state: absent
 
       - name: Ensure test users are present
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           users:
           - name: "{{ item }}"
@@ -45,13 +45,13 @@
         with_items: "{{ user_list }}"
 
       - name: Ensure test groups are present
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}"
         with_items: "{{ group_list }}"
 
       - name: Ensure test hosts are present
-        ipahost:
+        freeipa.ansible_freeipa.ipahost:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}.{{ ipaserver_domain }}"
           ip_address: 192.168.122.101
@@ -59,13 +59,13 @@
         with_items: "{{ host_list }}"
 
       - name: Ensure test hostgroups are present
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}"
         with_items: "{{ hostgroup_list }}"
 
       - name: Ensure test services are present
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}.{{ ipaserver_domain }}"
         with_items: "{{ service_list }}"
@@ -73,7 +73,7 @@
       # Test with action: hbacrule
 
       - name: Check role present with members would trigger a change, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -94,7 +94,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure role is present with members, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -114,7 +114,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check role present with members would not trigger a change, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -135,7 +135,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure role is present with members, lowercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -155,7 +155,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure role is present with members, upercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -175,7 +175,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure test role is absent
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           state: absent
@@ -183,12 +183,12 @@
       # Test with action: members
 
       - name: Ensure test role is present
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
 
       - name: Check role members present would trigger a change, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -210,7 +210,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure role is present with members, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -231,7 +231,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check role members present would  not trigger a change, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -253,7 +253,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure role is present with members, lowercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -274,7 +274,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure role is present with members, upercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -296,7 +296,7 @@
 
       # # Test absent members
       - name: Check role members absent would trigger a change, upercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -319,7 +319,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Ensure role members are absent, upercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -341,7 +341,7 @@
         failed_when: not result.changed or result.failed
 
       - name: Check role members absent would not trigger a change, upercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -364,7 +364,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure role members are absent, mixed case
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -386,7 +386,7 @@
         failed_when: result.changed or result.failed
 
       - name: Ensure role members are absent, lowercase
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           user:
@@ -409,13 +409,13 @@
 
     always:
       - name: Ensure test role is absent
-        iparole:
+        freeipa.ansible_freeipa.iparole:
           ipaadmin_password: SomeADMINpassword
           name: testrole
           state: absent
 
       - name: Ensure test users are absent
-        ipauser:
+        freeipa.ansible_freeipa.ipauser:
           ipaadmin_password: SomeADMINpassword
           users:
           - name: "{{ item }}"
@@ -423,28 +423,28 @@
         with_items: "{{ user_list }}"
 
       - name: Ensure test groups are absent
-        ipagroup:
+        freeipa.ansible_freeipa.ipagroup:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}"
           state: absent
         with_items: "{{ group_list }}"
 
       - name: Ensure test hosts are absent
-        ipahost:
+        freeipa.ansible_freeipa.ipahost:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}.{{ ipaserver_domain }}"
           state: absent
         with_items: "{{ host_list }}"
 
       - name: Ensure test hostgroups are absent
-        ipahostgroup:
+        freeipa.ansible_freeipa.ipahostgroup:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}"
           state: absent
         with_items: "{{ hostgroup_list }}"
 
       - name: Ensure test services are absent
-        ipaservice:
+        freeipa.ansible_freeipa.ipaservice:
           ipaadmin_password: SomeADMINpassword
           name: "{{ item }}.{{ ipaserver_domain }}"
           continue: yes

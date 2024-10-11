@@ -4,7 +4,7 @@
   become: true
   tasks:
   - name: Ensure group membership for given users has been rebuilt
-    ipaautomember:
+    freeipa.ansible_freeipa.ipaautomember:
       ipaadmin_password: SomeADMINpassword
       users:
       - user1

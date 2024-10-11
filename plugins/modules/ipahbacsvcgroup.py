@@ -36,7 +36,7 @@ module: ipahbacsvcgroup
 short_description: Manage FreeIPA hbacsvcgroups
 description: Manage FreeIPA hbacsvcgroups
 extends_documentation_fragment:
-  - ipamodule_base_docs
+  - freeipa.ansible_freeipa.ipamodule_base_docs
 options:
   name:
     description: The hbacsvcgroup name
@@ -73,14 +73,14 @@ author:
 
 EXAMPLES = """
 # Ensure hbacsvcgroup login is present
-- ipahbacsvcgroup:
+- freeipa.ansible_freeipa.ipahbacsvcgroup:
     ipaadmin_password: SomeADMINpassword
     name: login
     hbacsvc:
     - sshd
 
 # Ensure hbacsvc sshd is present in existing login hbacsvcgroup
-- ipahbacsvcgroup:
+- freeipa.ansible_freeipa.ipahbacsvcgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     hbacsvc:
@@ -88,7 +88,7 @@ EXAMPLES = """
     action: member
 
 # Ensure hbacsvc sshd is abdsent in existing login hbacsvcgroup
-- ipahbacsvcgroup:
+- freeipa.ansible_freeipa.ipahbacsvcgroup:
     ipaadmin_password: SomeADMINpassword
     name: databases
     hbacsvc:
@@ -97,7 +97,7 @@ EXAMPLES = """
     state: absent
 
 # Ensure hbacsvcgroup login is absent
-- ipahbacsvcgroup:
+- freeipa.ansible_freeipa.ipahbacsvcgroup:
     ipaadmin_password: SomeADMINpassword
     name: login
     state: absent
@@ -106,7 +106,7 @@ EXAMPLES = """
 RETURN = """
 """
 
-from ansible.module_utils.ansible_freeipa_module import \
+from ansible_collections.freeipa.ansible_freeipa.plugins.module_utils.ansible_freeipa_module import \
     IPAAnsibleModule, compare_args_ipa, gen_add_del_lists, gen_add_list, \
     gen_intersection_list
 

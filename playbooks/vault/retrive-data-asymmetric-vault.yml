@@ -6,7 +6,7 @@
 
   tasks:
     - name: Retrieve data from assymetric vault with a private key file.
-      ipavault:
+      freeipa.ansible_freeipa.ipavault:
         ipaadmin_password: SomeADMINpassword
         name: asymvault
         username: user01

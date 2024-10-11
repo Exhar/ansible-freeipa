@@ -5,7 +5,7 @@
 
   tasks:
   - name: Ensure permission is present with set of rights to attribute employeenumber
-    ipapermission:
+    freeipa.ansible_freeipa.ipapermission:
       ipaadmin_password: SomeADMINpassword
       name: TestPerm1
       object_type: user

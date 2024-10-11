@@ -10,7 +10,7 @@
     ansible.builtin.import_tasks: env_setup.yml
 
   - name: Ensure standard vault is present
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_type: standard
@@ -18,7 +18,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure standard vault is present, again
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_type: standard
@@ -26,7 +26,7 @@
     failed_when: result.changed or result.failed
 
   - name: Archive data to standard vault, matching `no_log` field.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_data: SomeADMINpassword
@@ -34,7 +34,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: retrieved
@@ -42,7 +42,7 @@
     failed_when: result.vault.data != 'SomeADMINpassword' or result.changed or result.failed
 
   - name: Archive data to standard vault
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_data: Hello World.
@@ -50,7 +50,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: retrieved
@@ -58,7 +58,7 @@
     failed_when: result.vault.data != 'Hello World.' or result.changed or result.failed
 
   - name: Retrieve data from standard vault into file {{ ansible_facts['env'].HOME }}/data.txt.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       out: "{{ ansible_facts['env'].HOME }}/data.txt"
@@ -73,7 +73,7 @@
     failed_when: slurpfile['content'] | b64decode != 'Hello World.'
 
   - name: Archive data with non-ASCII characters to standard vault
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_data: The world of π is half rounded.
@@ -81,7 +81,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: retrieved
@@ -89,7 +89,7 @@
     failed_when: result.vault.data != 'The world of π is half rounded.' or result.changed or result.failed
 
   - name: Archive data in standard vault, from file.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_type: standard
@@ -98,7 +98,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: retrieved
@@ -106,7 +106,7 @@
     failed_when: result.vault.data != 'Another World.' or result.changed or result.failed
 
   - name: Archive data with single character to standard vault
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       vault_data: c
@@ -114,7 +114,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Retrieve data from standard vault.
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: retrieved
@@ -122,7 +122,7 @@
     failed_when: result.vault.data != 'c' or result.changed or result.failed
 
   - name: Ensure standard vault is absent
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: absent
@@ -130,7 +130,7 @@
     failed_when: not result.changed or result.failed
 
   - name: Ensure standard vault is absent, again
-    ipavault:
+    freeipa.ansible_freeipa.ipavault:
       ipaadmin_password: SomeADMINpassword
       name: stdvault
       state: absent

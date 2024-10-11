@@ -5,7 +5,7 @@
 
   tasks:
   - name: Delete and preserve user pinky
-    ipauser:
+    freeipa.ansible_freeipa.ipauser:
       ipaadmin_password: SomeADMINpassword
       name: pinky
       preserve: yes

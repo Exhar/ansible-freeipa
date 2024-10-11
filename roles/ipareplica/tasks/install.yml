@@ -68,7 +68,7 @@
   when: ipaadmin_principal is undefined and ipaclient_keytab is undefined
 
 - name: Install - Replica installation test
-  ipareplica_test:
+  freeipa.ansible_freeipa.ipareplica_test:
     ### basic ###
     # dm_password: "{{ ipadm_password | default(omit) }}"
     # password: "{{ ipaadmin_password | default(omit) }}"
@@ -118,7 +118,7 @@
 
   - name: Install - Setup client
     ansible.builtin.include_role:
-      name: ipaclient
+      name: freeipa.ansible_freeipa.ipaclient
     vars:
       state: present
       ipaclient_domain: "{{ result_ipareplica_test.domain | default(omit) }}"
@@ -156,7 +156,7 @@
     when: ipareplica_setup_firewalld | bool
 
   - name: Install - Replica preparation
-    ipareplica_prepare:
+    freeipa.ansible_freeipa.ipareplica_prepare:
       ### basic ###
       password: "{{ ipaadmin_password | default(omit) }}"
       ip_addresses: "{{ ipareplica_ip_addresses | default([]) }}"
@@ -213,7 +213,7 @@
     register: result_ipareplica_prepare
 
   - name: Install - Add to ipaservers
-    ipareplica_add_to_ipaservers:
+    freeipa.ansible_freeipa.ipareplica_add_to_ipaservers:
       ### server ###
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
       ### additional ###
@@ -226,7 +226,7 @@
 
   - name: Install - Create dirman password
     no_log: yes
-    ipareplica_master_password:
+    freeipa.ansible_freeipa.ipareplica_master_password:
       master_password: "{{ ipareplica_master_password | default(omit) }}"
     register: result_ipareplica_master_password
 
@@ -237,11 +237,11 @@
         "{{ result_ipareplica_master_password.password }}"
 
   - name: Install - Setup certmonger
-    ipareplica_setup_certmonger:
+    freeipa.ansible_freeipa.ipareplica_setup_certmonger:
     when: result_ipareplica_prepare._ca_enabled
 
   - name: Install - Install CA certs
-    ipareplica_install_ca_certs:
+    freeipa.ansible_freeipa.ipareplica_install_ca_certs:
       ### basic ###
       dm_password: "{{ ipadm_password | default(omit) }}"
       password: "{{ ipaadmin_password | default(omit) }}"
@@ -280,7 +280,7 @@
     when: result_ipareplica_test.install_ca_certs
 
   - name: Install - Setup DS
-    ipareplica_setup_ds:
+    freeipa.ansible_freeipa.ipareplica_setup_ds:
       ### basic ###
       dm_password: "{{ ipadm_password | default(omit) }}"
       password: "{{ ipaadmin_password | default(omit) }}"
@@ -320,7 +320,7 @@
     register: result_ipareplica_setup_ds
 
   - name: Install - Create IPA conf
-    ipareplica_create_ipa_conf:
+    freeipa.ansible_freeipa.ipareplica_create_ipa_conf:
       ### basic ###
       dm_password: "{{ ipadm_password | default(omit) }}"
       password: "{{ ipaadmin_password | default(omit) }}"
@@ -355,7 +355,7 @@
       setup_ca: "{{ result_ipareplica_prepare.config_setup_ca }}"
 
   - name: Install - Setup KRB
-    ipareplica_setup_krb:
+    freeipa.ansible_freeipa.ipareplica_setup_krb:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -374,7 +374,7 @@
   # asks for HTTP certificate in newer ipa versions. In these versions
   # create_ipa_conf has the additional master argument.
   - name: Install - Create override IPA conf
-    ipareplica_create_ipa_conf:
+    freeipa.ansible_freeipa.ipareplica_create_ipa_conf:
       ### basic ###
       dm_password: "{{ ipadm_password | default(omit) }}"
       password: "{{ ipaadmin_password | default(omit) }}"
@@ -412,7 +412,7 @@
     when: result_ipareplica_test.change_master_for_certmonger
 
   - name: Install - DS enable SSL
-    ipareplica_ds_enable_ssl:
+    freeipa.ansible_freeipa.ipareplica_ds_enable_ssl:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -433,7 +433,7 @@
       ds_ca_subject: "{{ result_ipareplica_setup_ds.ds_ca_subject }}"
 
   - name: Install - Setup http
-    ipareplica_setup_http:
+    freeipa.ansible_freeipa.ipareplica_setup_http:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -454,7 +454,7 @@
 
   # Need to point back to ourself after the cert for HTTP is obtained
   - name: Install - Create original IPA conf again
-    ipareplica_create_ipa_conf:
+    freeipa.ansible_freeipa.ipareplica_create_ipa_conf:
       ### basic ###
       dm_password: "{{ ipadm_password | default(omit) }}"
       password: "{{ ipaadmin_password | default(omit) }}"
@@ -490,7 +490,7 @@
     when: result_ipareplica_test.change_master_for_certmonger
 
   - name: Install - Setup otpd
-    ipareplica_setup_otpd:
+    freeipa.ansible_freeipa.ipareplica_setup_otpd:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -507,7 +507,7 @@
       dirman_password: "{{ __derived_dirman_password }}"
 
   - name: Install - Setup custodia
-    ipareplica_setup_custodia:
+    freeipa.ansible_freeipa.ipareplica_setup_custodia:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -528,7 +528,7 @@
       dirman_password: "{{ __derived_dirman_password }}"
 
   - name: Install - Setup CA
-    ipareplica_setup_ca:
+    freeipa.ansible_freeipa.ipareplica_setup_ca:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -558,7 +558,7 @@
     when: result_ipareplica_prepare._ca_enabled
 
   - name: Install - KRB enable SSL
-    ipareplica_krb_enable_ssl:
+    freeipa.ansible_freeipa.ipareplica_krb_enable_ssl:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -576,7 +576,7 @@
       dirman_password: "{{ __derived_dirman_password }}"
 
   - name: Install - DS apply updates
-    ipareplica_ds_apply_updates:
+    freeipa.ansible_freeipa.ipareplica_ds_apply_updates:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -597,7 +597,7 @@
       ds_ca_subject: "{{ result_ipareplica_setup_ds.ds_ca_subject }}"
 
   - name: Install - Setup kra
-    ipareplica_setup_kra:
+    freeipa.ansible_freeipa.ipareplica_setup_kra:
       ### basic ###
       dm_password: "{{ ipadm_password | default(omit) }}"
       password: "{{ ipaadmin_password | default(omit) }}"
@@ -637,7 +637,7 @@
     when: result_ipareplica_test.setup_kra
 
   - name: Install - Restart KDC
-    ipareplica_restart_kdc:
+    freeipa.ansible_freeipa.ipareplica_restart_kdc:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -654,7 +654,7 @@
       dirman_password: "{{ __derived_dirman_password }}"
 
   - name: Install - Custodia import dm password
-    ipareplica_custodia_import_dm_password:
+    freeipa.ansible_freeipa.ipareplica_custodia_import_dm_password:
       ### server ###
       setup_ca: "{{ ipareplica_setup_ca }}"
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
@@ -676,7 +676,7 @@
       config_setup_ca: "{{ result_ipareplica_prepare.config_setup_ca }}"
 
   - name: Install - Promote SSSD
-    ipareplica_promote_sssd:
+    freeipa.ansible_freeipa.ipareplica_promote_sssd:
       ### replica ###
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
       ### certificate system ###
@@ -689,7 +689,7 @@
         "{{ result_ipareplica_prepare.config_master_host_name }}"
 
   - name: Install - Promote openldap.conf
-    ipareplica_promote_openldap_conf:
+    freeipa.ansible_freeipa.ipareplica_promote_openldap_conf:
       ### replica ###
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
       ### certificate system ###
@@ -702,7 +702,7 @@
         "{{ result_ipareplica_prepare.config_master_host_name }}"
 
   - name: Install - Setup DNS
-    ipareplica_setup_dns:
+    freeipa.ansible_freeipa.ipareplica_setup_dns:
       ### server ###
       setup_dns: "{{ ipareplica_setup_dns }}"
       ### replica ###
@@ -726,7 +726,7 @@
         "{{ result_ipareplica_prepare.config_master_host_name }}"
 
   - name: Install - Setup adtrust
-    ipareplica_setup_adtrust:
+    freeipa.ansible_freeipa.ipareplica_setup_adtrust:
       ### replica ###
       setup_kra: "{{ result_ipareplica_test.setup_kra }}"
       ### certificate system ###
@@ -750,7 +750,7 @@
           result_ipareplica_test.sid_generation_always
 
   - name: Install - Enable IPA
-    ipareplica_enable_ipa:
+    freeipa.ansible_freeipa.ipareplica_enable_ipa:
       hostname: "{{ result_ipareplica_test.hostname }}"
       hidden_replica: "{{ ipareplica_hidden_replica }}"
       ### server ###
